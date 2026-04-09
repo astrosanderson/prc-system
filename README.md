@@ -70,7 +70,7 @@ The team is divided into 4 groups:
 * Handles Firebase setup, authentication, and database
 * Connects frontend to backend
 
-### Frontend Team
+### Frontend Team1
 
 * Builds UI pages using HTML, CSS, and Bootstrap
 * Each member is assigned one HTML file
