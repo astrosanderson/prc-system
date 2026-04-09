@@ -120,7 +120,7 @@ daniel-dashboard
 ### 1. Clone Repository
 
 ```
-git clone <repo-url>
+git clone https://github.com/astrosanderson/prc-system.git
 cd prc-system
 ```
 
