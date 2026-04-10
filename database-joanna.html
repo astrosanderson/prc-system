@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy Registry Database | Zambezi Futures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="28">
+                <span class="fs-5">ZAMBEZI FUTURES</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="register.html">Register Player</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="database.html">Database</a></li>
+                    <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container">
+
+            <!-- Header -->
+            <div class="row align-items-end mb-5">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-black mb-3">Academy Registry <span style="color:var(--accent-color);">Database</span></h1>
+                    <p class="lead text-muted fw-medium mb-0">Browse all registered academies and training facilities. Access elite performance data and infrastructure insights.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <div class="card p-4" style="border-left:4px solid var(--accent-color);">
+                        <span class="text-uppercase fw-bold small text-muted d-block mb-1" style="letter-spacing:0.08em;">Live Count</span>
+                        <h2 class="display-4 fw-black mb-0" style="color:var(--primary-color);">124</h2>
+                        <p class="small text-muted fw-bold mb-0">Active Institutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter -->
+            <div class="card p-4 mb-5">
+                <div class="row g-3">
+                    <div class="col-lg-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-0"><span class="material-symbols-outlined text-muted">search</span></span>
+                            <input type="text" class="form-control border-0 bg-light" placeholder="Search academy name or ID...">
+                        </div>
+                    </div>
+                    <div class="col-lg-2"><select class="form-select bg-light border-0"><option selected>Province</option><option>Gauteng</option><option>Western Cape</option></select></div>
+                    <div class="col-lg-2"><select class="form-select bg-light border-0"><option selected>Age Category</option><option>U13-U15</option><option>U16-U18</option></select></div>
+                    <div class="col-lg-2"><select class="form-select bg-light border-0"><option selected>Status</option><option>Active</option><option>Inactive</option></select></div>
+                    <div class="col-lg-2 d-flex gap-2">
+                        <button class="btn btn-primary w-100 fw-bold">Apply</button>
+                        <button class="btn btn-light"><span class="material-symbols-outlined">restart_alt</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="fw-bold text-muted small text-uppercase">Found 124 Academies</span>
+                <span class="small text-muted">Sort by: <span class="fw-bold" style="color:var(--primary-color);">Recently Added</span></span>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card overflow-hidden p-0">
+                        <div class="position-relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsdZNnGqsYLwebPNSKtxtQJiN0NkeptlLmtv96fttksPboKiEK6BrxrcCOA6NIc1qwoNgTW1NYZYJXPQHvTXmrjSbtywVjPtwnTA_X5zXX4hClZWADlhXWmbrpnvGCEtB5Y5KnhRJHuS5MhxrSM8m_W6BFtGIpahknWWL_ESHr-gQ7-3x78rFFpdxSeUN8C7oefk8BKfbDwZc4l17x2G2FozxkMFBTisijbGbbSvLwm5rDul6qU17rg5LF7IcetJz7DtO50GZC5yb6" class="card-img-top" style="height:180px; object-fit:cover;" alt="Academy">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-white shadow-sm px-3 py-2 d-flex align-items-center gap-2" style="color:var(--primary-color);">
+                                <span class="bg-success rounded-circle" style="width:8px;height:8px;"></span>
+                                <span class="small fw-bold text-uppercase">Active</span>
+                            </span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h6 fw-black mb-1" style="color:var(--primary-color);">Zambezi North Elite</h3>
+                            <p class="small text-muted mb-3"><span class="material-symbols-outlined fs-6 align-middle">location_on</span> Lusaka, Zambia</p>
+                            <div class="p-3 rounded-3 d-flex justify-content-between mb-4" style="background:var(--bg-color);">
+                                <div><span class="d-block small text-muted fw-bold text-uppercase mb-1">Players</span><span class="h5 fw-black mb-0" style="color:var(--primary-color);">48</span></div>
+                                <div class="text-end"><span class="d-block small text-muted fw-bold text-uppercase mb-1">Tier</span><span class="small fw-bold" style="color:var(--accent-color);">PRO-ELITE</span></div>
+                            </div>
+                            <a href="academy.html" class="btn btn-primary w-100 fw-bold">View Academy</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card overflow-hidden p-0">
+                        <div class="position-relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY03rwUQ6UNDI3QRAxl-uwriofqC-Os0xs0XN6vPYaCIde0xsZ2vmV7KiCryDLIPyO0AzUByQ9TYJHZp0wnk9G7uT1FROgcXThOvix4g3kGbx5ru8hCA61nlrSV2EtAkypNux_r8DeOKI-CX64rtPAmq_fGXsPfp6zHmG48W430BLTDDUccg5PFOgEpd0PIQBhiLSBFbP_e4JzupRCjjoW_LEbXrjDJnV9T9FgYY7winWyzktBw02lUylj7aUlnCeT2S1VrUMmx8EB" class="card-img-top" style="height:180px; object-fit:cover;" alt="Academy">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-white shadow-sm px-3 py-2 d-flex align-items-center gap-2" style="color:var(--primary-color);">
+                                <span class="bg-success rounded-circle" style="width:8px;height:8px;"></span>
+                                <span class="small fw-bold text-uppercase">Active</span>
+                            </span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h6 fw-black mb-1" style="color:var(--primary-color);">Victoria Falls FC</h3>
+                            <p class="small text-muted mb-3"><span class="material-symbols-outlined fs-6 align-middle">location_on</span> Livingstone, Zambia</p>
+                            <div class="p-3 rounded-3 d-flex justify-content-between mb-4" style="background:var(--bg-color);">
+                                <div><span class="d-block small text-muted fw-bold text-uppercase mb-1">Players</span><span class="h5 fw-black mb-0" style="color:var(--primary-color);">112</span></div>
+                                <div class="text-end"><span class="d-block small text-muted fw-bold text-uppercase mb-1">Tier</span><span class="small fw-bold" style="color:var(--accent-color);">ACADEMY-1</span></div>
+                            </div>
+                            <a href="academy.html" class="btn btn-primary w-100 fw-bold">View Academy</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card overflow-hidden p-0">
+                        <div class="position-relative">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe5sbSN0bjG7oiSDTVYGmUQI1cz9grZSeIZvDvCfcChPxgBbth2mnOzIakNIvKk8ygK3o_E-QGfhKXlXx1-CZh5Xr4DrJNx4rjeRnQFIjOBsjcyg9vzAy5YooPXcf8eY721bsJLLgjH9laHDvDi4ofQu_6Iz-B-QrPWqOO9OWy_eg381sLNFnXQ34rbAtRgQSa7eZK1PVElxVnzsRokN1TD6LKubDvnTFizsgeNv7ct9lsotFXpjqykFuxqcZJwKVP6zBhJFrKegZZ" class="card-img-top" style="height:180px; object-fit:cover;" alt="Academy">
+                            <span class="position-absolute top-0 end-0 m-3 badge bg-white shadow-sm px-3 py-2 d-flex align-items-center gap-2 text-danger">
+                                <span class="bg-danger rounded-circle" style="width:8px;height:8px;"></span>
+                                <span class="small fw-bold text-uppercase">Inactive</span>
+                            </span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="h6 fw-black mb-1" style="color:var(--primary-color);">Copperbelt High Flyers</h3>
+                            <p class="small text-muted mb-3"><span class="material-symbols-outlined fs-6 align-middle">location_on</span> Ndola, Zambia</p>
+                            <div class="p-3 rounded-3 d-flex justify-content-between mb-4" style="background:var(--bg-color);">
+                                <div><span class="d-block small text-muted fw-bold text-uppercase mb-1">Players</span><span class="h5 fw-black mb-0" style="color:var(--primary-color);">24</span></div>
+                                <div class="text-end"><span class="d-block small text-muted fw-bold text-uppercase mb-1">Tier</span><span class="small fw-bold" style="color:var(--accent-color);">DEVELOPMENT</span></div>
+                            </div>
+                            <a href="academy.html" class="btn btn-primary w-100 fw-bold">View Academy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4 mt-5 pt-4">
+                <p class="text-muted fw-medium mb-0">Showing <span class="fw-bold" style="color:var(--primary-color);">1 to 3</span> of 124 entries</p>
+                <nav>
+                    <ul class="pagination mb-0">
+                        <li class="page-item disabled"><a class="page-link" href="#"><span class="material-symbols-outlined align-middle">chevron_left</span></a></li>
+                        <li class="page-item active"><a class="page-link border-0 shadow-sm" href="#" style="background:var(--primary-color);">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><span class="material-symbols-outlined align-middle">chevron_right</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 border-top" style="background:var(--white);">
+        <div class="container text-center">
+            <span class="fw-black d-block mb-1" style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+            <p class="small text-muted mb-0">© 2024 Zambezi Futures. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register / Edit Player | Zambezi Futures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="28">
+                <span class="fs-5">ZAMBEZI FUTURES</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="register.html">Register Player</a></li>
+                    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+                    <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <!-- Breadcrumb -->
+                    <nav aria-label="breadcrumb" class="mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item small fw-bold text-uppercase"><a href="database.html" class="text-decoration-none" style="color:var(--accent-color);">Database</a></li>
+                            <li class="breadcrumb-item small fw-bold text-uppercase"><a href="academy.html" class="text-decoration-none" style="color:var(--accent-color);">Academy</a></li>
+                            <li class="breadcrumb-item active small fw-bold text-uppercase text-muted">Register / Edit Player</li>
+                        </ol>
+                    </nav>
+
+                    <!-- Banner -->
+                    <div class="position-relative rounded-4 mb-5 shadow-lg overflow-hidden" style="background:var(--primary-color); padding:3rem 2.5rem;">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHX-XvG8G9p99z6fQYxH9o4P298G78_n3uY9_zP9yL0Z9C-9Z3qH_B_R-Y_7=s1024" alt="Player" class="position-absolute end-0 top-0 h-100 opacity-10" style="object-fit:cover; z-index:1;">
+                        <div class="position-relative" style="z-index:2;">
+                            <span class="badge-gold d-inline-block mb-3">Official Portal</span>
+                            <h1 class="display-4 fw-black text-white mb-2" style="font-family:'Montserrat',sans-serif;">Fuel the Future</h1>
+                            <p class="lead mb-0 fw-bold" style="color:rgba(255,255,255,0.5);">Player Registration & Edit Center</p>
+                        </div>
+                    </div>
+
+                    <!-- Form Card -->
+                    <div class="card p-4 p-md-5 shadow-sm" style="border-bottom:4px solid var(--accent-color);">
+                        <form action="#" method="POST">
+
+                            <!-- Portrait Section -->
+                            <div class="mb-5">
+                                <label class="form-label fw-black text-uppercase small mb-3" style="color:var(--primary-color); letter-spacing:0.05em;">Player Portrait</label>
+                                <div class="p-4 rounded-4 d-flex flex-column flex-md-row align-items-center gap-4" style="background:var(--bg-color);">
+                                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJjsNtbSEorhc9JG0KhRVduefzjya3Udt8NU4CvsCUqsusbokhQdPN6i_YV2HEcmaphOSlPCiHP02-WjWSc_pmvQ5qyYjIu7eV8YZQMFUStVZcfzNfQ_VqQ9OilTZdNdJHtHErHunuD0qvgXtoKAsGN3k8idXhBDEI48F53fVFbqmGpD7ak7jHJV03mfFhvA6TkCpuZbkOZTDd006f0mqtGbGDUix1DCn7LSWZThfRdmn8b2kvZ4zwTus5KfxISJZ8khi4WIGWmvMO" alt="Portrait" class="rounded-circle shadow" width="120" height="120" style="object-fit:cover; border:4px solid white;">
+                                    <div class="flex-grow-1 text-center text-md-start">
+                                        <p class="small text-muted mb-3 fw-medium">This image will appear on the official Athlete ID card.</p>
+                                        <div class="d-flex justify-content-center justify-content-md-start gap-2">
+                                            <button type="button" class="btn btn-sm btn-light fw-bold text-uppercase border"><span class="material-symbols-outlined align-middle fs-6">refresh</span> Change</button>
+                                            <button type="button" class="btn btn-sm btn-light fw-bold text-uppercase text-danger border"><span class="material-symbols-outlined align-middle fs-6">delete</span> Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name Fields -->
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-4">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Middle Name</label>
+                                    <input type="text" class="form-control" id="middleName" placeholder="Middle Name">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                                </div>
+                            </div>
+
+                            <!-- Date & Age Group -->
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Date of Birth</label>
+                                    <input type="date" class="form-control" id="dob" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Age Group</label>
+                                    <select class="form-select" id="ageGroup" required>
+                                        <option value="" disabled selected>Select Age Group</option>
+                                        <option>U-10</option>
+                                        <option>U-12</option>
+                                        <option>U-14</option>
+                                        <option>U-15</option>
+                                        <option>U-16</option>
+                                        <option>U-17</option>
+                                        <option>U-18</option>
+                                        <option>U-20</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Academy & Upload -->
+                            <div class="row g-4 mb-5">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Academy</label>
+                                    <input type="text" class="form-control" id="academy" placeholder="Assigned facility" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Attachment Upload</label>
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" id="idFileUpload">
+                                        <label class="input-group-text bg-white" for="idFileUpload"><span class="material-symbols-outlined">upload_file</span></label>
+                                    </div>
+                                    <div class="form-text small">Birth Certificate or Waiver</div>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="btn btn-gold w-100 py-3 d-flex align-items-center justify-content-center gap-2">
+                                <span class="fw-black fs-5" id="submitLabel">REGISTER</span>
+                                <span class="material-symbols-outlined">send</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Support -->
+                    <div class="card mt-5 p-4 d-flex flex-row gap-4 align-items-start">
+                        <div class="rounded-pill" style="width:6px; min-height:40px; background:var(--primary-color);"></div>
+                        <div>
+                            <h4 class="h6 fw-black text-uppercase" style="color:var(--primary-color); letter-spacing:0.03em;">Need Support?</h4>
+                            <p class="small text-muted mb-0">Visit our athlete help desk for technical assistance with Zambezi Futures registration. Available 24/7 for elite program members.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-5 border-top" style="background:var(--white);">
+        <div class="container text-center">
+            <span class="fw-black d-block mb-1" style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+            <p class="small text-muted mb-0">© 2024 Zambezi Futures Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Pre-fill form from URL query params (when coming from edit icon)
+        window.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.toString()) {
+                // Fill fields
+                if (params.get('first')) document.getElementById('firstName').value = params.get('first');
+                if (params.get('middle')) document.getElementById('middleName').value = params.get('middle');
+                if (params.get('last')) document.getElementById('lastName').value = params.get('last');
+                if (params.get('dob')) document.getElementById('dob').value = params.get('dob');
+                if (params.get('academy')) document.getElementById('academy').value = params.get('academy');
+
+                // Set age group dropdown
+                if (params.get('age')) {
+                    const sel = document.getElementById('ageGroup');
+                    const ageVal = params.get('age');
+                    for (let i = 0; i < sel.options.length; i++) {
+                        if (sel.options[i].text === ageVal) {
+                            sel.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                // Change button text to "UPDATE"
+                const label = document.getElementById('submitLabel');
+                if (label) label.textContent = 'UPDATE PLAYER';
+                
+                // Update banner subtitle
+                const sub = document.querySelector('.lead.mb-0');
+                if (sub) sub.textContent = 'Editing: ' + (params.get('first') || '') + ' ' + (params.get('last') || '');
+            }
+        });
+    </script>
+</body>
+</html>

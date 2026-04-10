@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Zambezi Futures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-stat { border-radius:12px; padding:2rem; position:relative; overflow:hidden; }
+        .admin-stat .bg-icon { position:absolute; right:-0.5rem; bottom:-0.5rem; font-size:7rem; opacity:0.08; }
+        .feed-item { padding:1rem; border-left:3px solid var(--border-light); margin-left:8px; transition:all 0.2s; }
+        .feed-item:hover { background:rgba(0,0,0,0.02); border-left-color:var(--accent-color); }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar — same unified ribbon as all other pages -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="28">
+                <span class="fs-5">ZAMBEZI FUTURES</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="register.html">Register Player</a></li>
+                    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+                    <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container">
+
+            <!-- Header -->
+            <div class="row align-items-end mb-5">
+                <div class="col-md-8">
+                    <span class="badge-gold d-inline-block mb-2">Executive Control</span>
+                    <h1 class="display-4 fw-black mb-0">Admin <span style="color:var(--accent-color);">Dashboard</span></h1>
+                </div>
+                <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                    <div class="card d-inline-flex flex-row align-items-center gap-3 px-4 py-2" style="border:none;">
+                        <span class="fw-bold small text-muted">ACTIVE SEASON: 2024 FALL</span>
+                        <span class="rounded-circle" style="width:10px; height:10px; background:var(--accent-color);"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="admin-stat text-white shadow-sm h-100" style="background:var(--primary-color);">
+                        <p class="small fw-black text-uppercase mb-3" style="color:var(--accent-color); letter-spacing:0.08em;">Total Players</p>
+                        <h2 class="fw-black mb-2" style="font-size:3.5rem; line-height:1;">5,402</h2>
+                        <div class="d-flex align-items-center gap-1 small fw-bold opacity-75">
+                            <span class="material-symbols-outlined fs-6">trending_up</span> +12% from last quarter
+                        </div>
+                        <span class="material-symbols-outlined bg-icon text-white">groups</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-stat bg-white shadow-sm h-100" style="border-left:4px solid var(--accent-color);">
+                        <p class="small fw-black text-uppercase text-muted mb-3" style="letter-spacing:0.08em;">Active Academies</p>
+                        <h2 class="fw-black mb-2" style="font-size:3.5rem; line-height:1; color:var(--primary-color);">52</h2>
+                        <div class="d-flex align-items-center gap-1 small fw-bold" style="color:var(--accent-color);">
+                            <span class="material-symbols-outlined fs-6">location_on</span> 8 Regions Active
+                        </div>
+                        <span class="material-symbols-outlined bg-icon" style="color:var(--primary-color);">sports_soccer</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="admin-stat text-white shadow-sm h-100" style="background:var(--accent-color);">
+                        <p class="small fw-black text-uppercase mb-3 text-white opacity-75" style="letter-spacing:0.08em;">Pending Registrations</p>
+                        <h2 class="fw-black mb-3" style="font-size:3.5rem; line-height:1;">124</h2>
+                        <button class="btn btn-sm fw-black text-uppercase px-4 bg-white" style="color:var(--accent-color);">Review Queue</button>
+                        <span class="material-symbols-outlined bg-icon text-white">pending_actions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row g-5">
+                <!-- Enrollments Table -->
+                <div class="col-lg-8">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h5 fw-black text-uppercase" style="letter-spacing:-0.01em;">Recent <span style="color:var(--accent-color);">Enrollments</span></h3>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-light btn-sm p-2 border"><span class="material-symbols-outlined fs-5" style="color:var(--primary-color);">filter_list</span></button>
+                            <button class="btn btn-light btn-sm p-2 border"><span class="material-symbols-outlined fs-5" style="color:var(--primary-color);">search</span></button>
+                        </div>
+                    </div>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="ps-4">Player</th>
+                                        <th>Academy</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th class="text-end pe-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa5fu9wZHoapvONTP-xVSTeFJcSHcmte9vTGoo0RbXUfz6B5XW6tFKJHvMK-rCrppgB3D7fIYKfKx5p3jxLOenM4T93SrYHGCYTiqnsf-SKOycrCeij1cdnGEhk_LWxfzbtad9Nyh4oDxO1Lze59xqpvwU0gI_3kW3yIJMqMOfMEN4HXqk3RJAQCFCVYtEV8y_c6f1WdrQUSh9vERpgcV-lZuKYoxuRPOATGG1t2qH8itA1f3Tv0WJvl0jiRtWVz9Vw27eklZnv-c" alt="M" class="rounded-circle shadow-sm" width="36" height="36" style="object-fit:cover;">
+                                                <span class="fw-bold" style="color:var(--primary-color);">Marcus Thorne</span>
+                                            </div>
+                                        </td>
+                                        <td class="small fw-medium text-muted">Victoria Falls FC</td>
+                                        <td><span class="badge bg-opacity-10 small fw-black text-uppercase px-2 py-1 rounded-pill" style="background:rgba(11,61,46,0.1); color:var(--primary-color);">U-14 Elite</span></td>
+                                        <td><span class="small fw-black text-success d-flex align-items-center gap-1"><span class="bg-success rounded-circle" style="width:6px;height:6px;"></span> Approved</span></td>
+                                        <td class="text-end pe-4"><button class="btn btn-link text-muted p-0"><span class="material-symbols-outlined">more_horiz</span></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-MkJR6gEU812qeoDx4Udnz-6D4syFwE33QhcyDKy5Omz7ccdWQ8rDop78Oh_YHgxfiEo3tY9szG4VqqOexAmL-kb_lZGHsSjkx64sfuskqdTVJcaXFc9SinKeStVmY_DkukXc2DvgFNM8MmaGL6gMTx-FiN6xjb6I5UH-DT2o66pPY3NWQrwAUGPK2PLQaG625Y5cM59qwcNv1qVuvGzvgKi_ivlyjMq1WlYE0CYCdJmrRQKcLwb2m59jmxIOQz2vzJVSz0cuhUA" alt="L" class="rounded-circle shadow-sm" width="36" height="36" style="object-fit:cover;">
+                                                <span class="fw-bold" style="color:var(--primary-color);">Leo Hernandez</span>
+                                            </div>
+                                        </td>
+                                        <td class="small fw-medium text-muted">Zambezi Lions</td>
+                                        <td><span class="badge bg-opacity-10 small fw-black text-uppercase px-2 py-1 rounded-pill" style="background:rgba(11,61,46,0.1); color:var(--primary-color);">U-12 Junior</span></td>
+                                        <td><span class="small fw-black text-warning d-flex align-items-center gap-1"><span class="bg-warning rounded-circle" style="width:6px;height:6px;"></span> Pending</span></td>
+                                        <td class="text-end pe-4"><button class="btn btn-link text-muted p-0"><span class="material-symbols-outlined">more_horiz</span></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="d-grid gap-4">
+                        <!-- Critical Dates -->
+                        <div class="card p-4">
+                            <h4 class="h6 fw-black text-uppercase mb-4 d-flex align-items-center gap-2" style="color:var(--primary-color); letter-spacing:0.03em;">
+                                <span class="material-symbols-outlined" style="color:var(--accent-color);">alarm</span> Critical Dates
+                            </h4>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="text-white p-2 rounded text-center" style="min-width:50px; background:var(--primary-color);">
+                                    <div class="small fw-bold">OCT</div>
+                                    <div class="h5 fw-black mb-0">12</div>
+                                </div>
+                                <div>
+                                    <p class="small fw-black mb-0" style="color:var(--primary-color);">U-14 Finals Registration</p>
+                                    <p class="text-muted mb-0 fw-bold" style="font-size:0.65rem;">Closes in 4 days</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category Mix -->
+                        <div class="card p-4 text-white" style="background:var(--primary-color); border:none;">
+                            <h4 class="h6 fw-black text-uppercase mb-4" style="color:var(--accent-color); letter-spacing:0.03em;">Category Mix</h4>
+                            <div class="d-grid gap-3">
+                                <div>
+                                    <div class="d-flex justify-content-between small fw-black text-uppercase mb-2"><span>U-14 Elite</span><span>42%</span></div>
+                                    <div class="progress" style="height:6px; background:rgba(255,255,255,0.1);"><div class="progress-bar" style="width:42%; background:var(--accent-color);"></div></div>
+                                </div>
+                                <div>
+                                    <div class="d-flex justify-content-between small fw-black text-uppercase mb-2"><span>U-12 Junior</span><span>35%</span></div>
+                                    <div class="progress" style="height:6px; background:rgba(255,255,255,0.1);"><div class="progress-bar" style="width:35%; background:var(--accent-color);"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feed -->
+                        <div>
+                            <h4 class="h6 fw-black text-uppercase mb-4" style="color:var(--primary-color); letter-spacing:0.03em;">Live Feed</h4>
+                            <div class="d-grid gap-1">
+                                <div class="feed-item">
+                                    <h6 class="small fw-black mb-1" style="color:var(--primary-color);">Marcus Thorne Approved</h6>
+                                    <p class="text-muted mb-0 fw-bold" style="font-size:0.7rem;">by Admin John D. · 2m ago</p>
+                                </div>
+                                <div class="feed-item">
+                                    <h6 class="small fw-black mb-1" style="color:var(--primary-color);">Academy Updated</h6>
+                                    <p class="text-muted mb-0 fw-bold" style="font-size:0.7rem;">Victoria Falls FC · 14m ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-5 border-top" style="background:var(--white);">
+        <div class="container text-center">
+            <span class="fw-black d-block mb-1" style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+            <p class="small text-muted mb-0">© 2024 Zambezi Futures Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
