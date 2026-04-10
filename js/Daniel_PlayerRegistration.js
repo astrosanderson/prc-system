@@ -1,5 +1,5 @@
 // Pre-fill form from URL query params (when coming from edit icon)
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     const params = new URLSearchParams(window.location.search);
     if (params.toString()) {
         // Fill fields
@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
         // Change button text to "UPDATE"
         const label = document.getElementById('submitLabel');
         if (label) label.textContent = 'UPDATE PLAYER';
-        
+
         // Update banner subtitle
         const sub = document.querySelector('.lead.mb-0');
         if (sub) sub.textContent = 'Editing: ' + (params.get('first') || '') + ' ' + (params.get('last') || '');
