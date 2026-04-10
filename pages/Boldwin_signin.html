@@ -25,22 +25,24 @@
                 <p class="text-muted small fw-bold mt-2">Elite Athlete & Academy Analytics Portal</p>
             </div>
 
-            <form action="admin.html">
+            <form action="admin.html" id="signinForm" novalidate>
                 <div class="mb-4">
-                    <label class="form-label small fw-bold text-uppercase ls-wide text-muted">Email Address</label>
-                    <div class="input-group">
+                    <label for="emailInput" class="form-label small fw-bold text-uppercase ls-wide text-muted">Email Address</label>
+                    <div class="input-group has-validation">
                         <span class="input-group-text bg-light border-0"><span class="material-symbols-outlined fs-5 text-muted">mail</span></span>
-                        <input type="email" class="form-control" placeholder="name@example.com" required>
+                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required>
+                        <div class="invalid-feedback" id="emailError">Please enter a valid email address.</div>
                     </div>
                 </div>
                 <div class="mb-4">
                     <div class="d-flex justify-content-between align-items-center">
-                        <label class="form-label small fw-bold text-uppercase ls-wide text-muted">Password</label>
+                        <label for="passwordInput" class="form-label small fw-bold text-uppercase ls-wide text-muted">Password</label>
                         <a href="#" class="small text-decoration-none text-gold fw-bold">Forgot?</a>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group has-validation">
                         <span class="input-group-text bg-light border-0"><span class="material-symbols-outlined fs-5 text-muted">lock</span></span>
-                        <input type="password" class="form-control" placeholder="••••••••" required>
+                        <input type="password" class="form-control" id="passwordInput" placeholder="••••••••" required>
+                        <div class="invalid-feedback" id="passwordError">Password must be at least 6 characters.</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 py-3 fw-bold mb-4">SIGN IN</button>
@@ -51,6 +53,9 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- Signin and generic DOM validation Script -->
+    <script src="../js/Blessings_Signup.js"></script>
 </body>
 </html>
+
