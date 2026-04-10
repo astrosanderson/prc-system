@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Zambezi Futures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .archive-hero {
+            background: linear-gradient(135deg, rgba(11,61,46,0.93) 0%, rgba(11,61,46,0.75) 100%),
+                        url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2tBlWP0TDlA9aeRLWRGR4IIh4ieRFfIse4SHsHX6N274jK8-MwQ3xy1_xgQokXYsoQRVemkjTcxDtRm0BdZrK0jca1h7EAsTcFblBUC18PzIWa6xDfvHkuYj4KsmpGZYR__sOVNxBFBZVV5HC2wmT1fEIxnQAKTyWz5i6exEaHdlBM95hgBHGHT6v2xjBYidIQA538YFKYS43KHtjFlTSDzw9c4ZSlgk1qj0ppzrSoYKd1RnKkArfYMtk9ANfMrNFgmFWFm14knk');
+            background-size: cover; background-position: center; padding:6rem 0; color:white;
+        }
+        .sidebar-archive { background:var(--white); height:calc(100vh - 60px); position:sticky; top:60px; padding:2rem; border-right:1px solid var(--border-light); }
+        .hof-card img { height:220px; object-fit:cover; transition:transform 0.4s; }
+        .hof-card:hover img { transform:scale(1.05); }
+    </style>
+</head>
+<body style="position: relative;" data-bs-spy="scroll" data-bs-target="#archiveSidebar" data-bs-offset="100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="28">
+                <span class="fs-5">ZAMBEZI FUTURES</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="register.html">Register Player</a></li>
+                    <li class="nav-item"><a class="nav-link" href="database.html">Database</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="archive.html">Archive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <aside class="col-lg-3 d-none d-lg-block sidebar-archive" id="archiveSidebar">
+                <h3 class="h5 fw-black mb-1" style="font-style:italic;">Historical Hub</h3>
+                <p class="small text-muted text-uppercase fw-bold mb-4" style="letter-spacing:0.08em;">Youth Soccer Archive</p>
+                <div class="list-group list-group-flush bg-transparent">
+                    <a href="#seasonArchives" class="list-group-item list-group-item-action bg-transparent border-0 py-3 rounded-3 mb-1 d-flex align-items-center gap-3" style="--bs-list-group-active-bg:rgba(11,61,46,0.08); --bs-list-group-active-color:var(--primary-color); --bs-list-group-active-border-color:transparent;">
+                        <span class="material-symbols-outlined">history_edu</span> Season Archives
+                    </a>
+                    <a href="#hallOfFame" class="list-group-item list-group-item-action bg-transparent border-0 py-3 rounded-3 mb-1 d-flex align-items-center gap-3">
+                        <span class="material-symbols-outlined">military_tech</span> Hall of Fame
+                    </a>
+                    <a href="#tournamentRecords" class="list-group-item list-group-item-action bg-transparent border-0 py-3 rounded-3 mb-1 d-flex align-items-center gap-3">
+                        <span class="material-symbols-outlined">emoji_events</span> Tournament Records
+                    </a>
+                    <a href="#leagueRecords" class="list-group-item list-group-item-action bg-transparent border-0 py-3 rounded-3 d-flex align-items-center gap-3">
+                        <span class="material-symbols-outlined">analytics</span> League Records
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="col-lg-9 p-0">
+
+                <!-- Hero -->
+                <section id="seasonArchives" class="archive-hero px-4 px-md-5" style="scroll-margin-top: 100px;">
+                    <span class="badge-gold d-inline-block mb-4">Established 2012</span>
+                    <h1 class="display-3 fw-black text-uppercase" style="font-family:'Montserrat',sans-serif; line-height:0.95;">Historical<br><span style="color:var(--accent-color);">Hub</span></h1>
+                    <p class="lead mt-4 opacity-75 fw-medium" style="max-width:540px;">Twelve years of excellence, developing the world's finest talents. Every match, every goal, every victory etched into our academy's DNA.</p>
+                </section>
+
+                <!-- Stats -->
+                <section class="p-4 p-md-5">
+                    <div class="row g-4">
+                        <div class="col-md-5">
+                            <div class="card p-4" style="border-bottom:4px solid var(--accent-color);">
+                                <span class="material-symbols-outlined mb-3" style="font-size:2rem; color:var(--primary-color);">school</span>
+                                <h2 class="display-4 fw-black mb-1" style="color:var(--primary-color);">142</h2>
+                                <p class="small text-muted fw-bold text-uppercase mb-2" style="letter-spacing:0.08em;">Total Graduates</p>
+                                <p class="small text-muted mb-0">Players signed to professional clubs across Europe and North America.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card p-4 text-white d-flex flex-column justify-content-between" style="background:var(--primary-color); border:none;">
+                                <span class="material-symbols-outlined mb-3" style="font-size:2rem; color:var(--accent-color);">emoji_events</span>
+                                <div><h2 class="display-4 fw-black mb-0">28</h2><p class="small fw-bold text-uppercase mb-0" style="color:var(--accent-color);">Championships Won</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card p-4 d-flex flex-column justify-content-between">
+                                <span class="material-symbols-outlined mb-3" style="font-size:2rem; color:var(--primary-color);">calendar_today</span>
+                                <div><h2 class="display-4 fw-black mb-0" style="color:var(--primary-color);">12</h2><p class="small text-muted fw-bold text-uppercase mb-0">Years Active</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hall of Fame -->
+                <section id="hallOfFame" class="py-5 px-4 px-md-5" style="background:var(--white); scroll-margin-top: 100px;">
+                    <div class="d-flex justify-content-between align-items-end mb-5">
+                        <h2 class="display-6 fw-black text-uppercase" style="font-style:italic;">Hall of <span style="color:var(--accent-color);">Fame</span></h2>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card hof-card overflow-hidden p-0 rounded-4" style="background:var(--bg-color);">
+                                <div class="p-4 pb-0">
+                                    <span class="badge-gold d-inline-block mb-3">Player of the Season</span>
+                                    <h4 class="fw-black display-6 mb-1" style="font-size:1.4rem;">Marcus Reed</h4>
+                                    <p class="small fw-bold text-uppercase mb-3" style="color:var(--accent-color);">Forward | 24 Goals</p>
+                                </div>
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQgxEsy1xi4PFMTg0WZztIXCh8W3ZgA4D52mTi3pwDxlj7Fer1EQOUzr-Q-iiopCGC37MDJrA0igoaCHhqpkpP6-4XpsfYkDUHvfpY1HucPey26f4pWGtwHAslYiY4k4xKKh2m8ZBOsyPmWLDbRhrV9txO_Qf0Uk6mlHYJpIW44oNHidth2jB_Q12jVioFcv_9CXKCe0DiPitc0wpDVAM707BwUWa64su7Kn_Gcva-cTS3IzhzijB-qWufFvHYeLpSaFTgO429HxKt" alt="HOF">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card hof-card overflow-hidden p-0 rounded-4" style="background:var(--bg-color);">
+                                <div class="p-4 pb-0">
+                                    <span class="badge-gold d-inline-block mb-3">Academy of the Year</span>
+                                    <h4 class="fw-black display-6 mb-1" style="font-size:1.4rem;">Zambezi U-17</h4>
+                                    <p class="small fw-bold text-uppercase mb-3" style="color:var(--accent-color);">National Champions</p>
+                                </div>
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAUEfWAvm7AECb4YjaXQf3l56zGzrPhkw8gwSb7IiJnE_2rM1p1D4zZwSPbheppgSe4ePDKy_5ug3wU7Mm1ZVlH7Ypm8VxKDRPmYuXuKMhv9zbXLyYi8jLDruhi1DvuKbaIPUYAKzoOu0nm12K8lm3kAAuCJbJmwLU-_Lv6pSPE1VdyNy-tm76wPGEwFhC_68Ift4CmgzB5IhvxD7mYFsksMMbsWzupRH0oXBvwsYNLqj1gGz3wc7GdSekkrU-qi8SO1nHsTyHRKH0" alt="HOF">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card hof-card overflow-hidden p-0 rounded-4" style="background:var(--bg-color);">
+                                <div class="p-4 pb-0">
+                                    <span class="badge-gold d-inline-block mb-3">Player of the Season</span>
+                                    <h4 class="fw-black display-6 mb-1" style="font-size:1.4rem;">Elena Vance</h4>
+                                    <p class="small fw-bold text-uppercase mb-3" style="color:var(--accent-color);">Midfield | 18 Assists</p>
+                                </div>
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9wWK4Pq2ww4UffE44D3MjKqp5xWNe9l-shZ55PGZE5K3ereiO3qRryjxfR1T-korGv3GYlkWqwS_JbzU8Yqv9pG-AnQxHRrvKIM9zD0pFLLwxUuUTgINos6YtMmLAUs90H__T-ovpohwrGBafENw-of04L_-q56DGp8O6qm3tu3Go5_bJLc_nbxDUNnwx8BB08M9KaulpmTyKCiJSCsP7lFXo-ZQ8ds72nQDW_bOqxxl4zvOIvcS8hFNbKR1BF7EYbyV5o-KuWcid" alt="HOF">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tournament Records -->
+                <section id="tournamentRecords" class="py-5 px-4 px-md-5" style="min-height: 80vh; scroll-margin-top: 100px;">
+                    <h2 class="display-6 fw-black text-uppercase mb-5" style="font-style:italic;">Tournament <span style="color:var(--accent-color);">Records</span></h2>
+                    <div class="card p-0 overflow-hidden">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead>
+                                    <tr><th class="ps-4">Season</th><th>Tournament</th><th>Winner</th><th>Runner-Up</th><th class="pe-4">Top Scorer</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4 fw-black">2022/23</td>
+                                        <td class="fw-bold">Continental Cup</td>
+                                        <td><span class="badge rounded-2 fw-bold d-inline-flex align-items-center gap-1 p-2" style="background:var(--accent-color); color:white;"><span class="material-symbols-outlined fs-6" style="font-variation-settings:'FILL' 1;">stars</span> Zambezi Futures</span></td>
+                                        <td class="text-muted small">Pacific Academy</td>
+                                        <td class="pe-4 small fw-bold">A. Richards (12)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-black">2021/22</td>
+                                        <td class="fw-bold">Youth Pro Shield</td>
+                                        <td><span class="badge rounded-2 fw-bold d-inline-flex align-items-center gap-1 p-2" style="background:var(--accent-color); color:white;"><span class="material-symbols-outlined fs-6" style="font-variation-settings:'FILL' 1;">stars</span> Zambezi Futures</span></td>
+                                        <td class="text-muted small">London Youth FC</td>
+                                        <td class="pe-4 small fw-bold">M. Reed (15)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <footer id="leagueRecords" class="py-5 px-4 px-md-5 border-top text-center" style="background:var(--white);">
+                    <span class="fw-black d-block mb-1" style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+                    <p class="small text-muted mb-0">© 2024 Zambezi Futures. All Rights Reserved.</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

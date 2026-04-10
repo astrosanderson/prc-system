@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAMBEZI FUTURES | Youth Soccer Registration Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .homepage-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2tBlWP0TDlA9aeRLWRGR4IIh4ieRFfIse4SHsHX6N274jK8-MwQ3xy1_xgQokXYsoQRVemkjTcxDtRm0BdZrK0jca1h7EAsTcFblBUC18PzIWa6xDfvHkuYj4KsmpGZYR__sOVNxBFBZVV5HC2wmT1fEIxnQAKTyWz5i6exEaHdlBM95hgBHGHT6v2xjBYidIQA538YFKYS43KHtjFlTSDzw9c4ZSlgk1qj0ppzrSoYKd1RnKkArfYMtk9ANfMrNFgmFWFm14knk') no-repeat center/cover;
+        }
+        .homepage-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11,61,46,0.92) 0%, rgba(11,61,46,0.7) 100%);
+            z-index: 1;
+        }
+        .homepage-hero .container { position: relative; z-index: 2; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.95; }
+        .stat-card-row { margin-top: -4rem; position: relative; z-index: 10; }
+        .academy-logo { height: 56px; object-fit: contain; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <header class="homepage-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="badge-gold mb-4 d-inline-block">Est. 2012 — Southern Africa</span>
+                    <h1 class="hero-title text-white mb-4" style="font-family:'Montserrat',sans-serif; font-weight:900;">
+                        Welcome to<br><span style="color:#B68B2C;">Zambezi Futures</span><br>Registration Hub
+                    </h1>
+                    <p class="lead text-white mb-5 opacity-75 fw-medium" style="max-width:540px;">
+                        The elite digital archive and training ground for Southern Africa's premier football talent. Building the next generation of world-class athletes.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="signin.html" class="btn btn-gold btn-lg px-5 py-3">Sign In</a>
+                        <a href="signup.html" class="btn btn-outline-light btn-lg px-5 py-3 fw-bold" style="border-width:2px;">Create Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="pb-5" style="background: var(--bg-color);">
+        <div class="container">
+            <div class="row g-4 stat-card-row">
+                <div class="col-md-4">
+                    <div class="card text-center py-5" style="border-bottom: 4px solid var(--accent-color);">
+                        <span class="material-symbols-outlined mb-3" style="font-size:2.5rem; color:var(--primary-color);">sports_soccer</span>
+                        <h2 class="display-4 fw-black" style="color:var(--primary-color);">50+</h2>
+                        <p class="text-muted fw-bold mb-0 small text-uppercase">Total Academies</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center py-5" style="border-bottom: 4px solid var(--primary-color);">
+                        <span class="material-symbols-outlined mb-3" style="font-size:2.5rem; color:var(--primary-color);">groups</span>
+                        <h2 class="display-4 fw-black" style="color:var(--primary-color);">5000+</h2>
+                        <p class="text-muted fw-bold mb-0 small text-uppercase">Registered Players</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center py-5" style="border-bottom: 4px solid #16a34a;">
+                        <span class="material-symbols-outlined mb-3" style="font-size:2.5rem; color:var(--primary-color);">stadium</span>
+                        <h2 class="display-4 fw-black" style="color:var(--primary-color);">200+</h2>
+                        <p class="text-muted fw-bold mb-0 small text-uppercase">Active Teams</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academies -->
+    <section class="py-5">
+        <div class="container my-4">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <span class="badge-gold d-inline-block mb-2">The Network</span>
+                    <h3 class="display-6 fw-black" style="color:var(--primary-color);">Elite Academies</h3>
+                </div>
+                <a href="database.html" class="fw-bold text-decoration-none d-flex align-items-center gap-1" style="color:var(--primary-color);">
+                    View All <span class="material-symbols-outlined fs-5">arrow_forward</span>
+                </a>
+            </div>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-3">
+                    <a href="academy.html" class="text-decoration-none">
+                        <div class="card text-center p-4">
+                            <div class="p-3 rounded mb-3" style="background:var(--bg-color);">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwaX6hqBK03pjbjAijqLgYnlEGTJhb7xKVLmJjAtZ0PVW1dWjbgAomTarzOsB5mM-4Kn3YpLcKlulVjG569BmuKE-lnpQZon7LqXefpZTIJWr6dqYEMtJmgbUW2PKnzr9g2fsUQTSQDxowCBNzbra33xybVwHeXdIeUvRllmol0H_La8vuhmdQ0pRNomBidGtfA-A6b6RC22rEJA5VlPMuJlobBF6ofMZCjRi-iXNaKkulVjRU25CjcrN3YHD-CVj599VPoUYzyiMx" alt="Academy" class="academy-logo">
+                            </div>
+                            <h4 class="h6 fw-black mb-1" style="color:var(--primary-color);">North Star Elite</h4>
+                            <p class="small text-muted mb-0">Manchester District</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <a href="academy.html" class="text-decoration-none">
+                        <div class="card text-center p-4">
+                            <div class="p-3 rounded mb-3" style="background:var(--bg-color);">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAETuDYODsF32cWSVrxBIVj-sXIlKhEjQtdRIilU-jPumXY1u88vqFLOOaasj27cVa-6rP3Vu--gRVEkdAQtCo45Ag0jZSlm2VCevwRfX-YIbTAdrkpiR66G8tqDM9a8aP6LZjmB8TUezHr5cEXpnE2-Bc6dX4yvebuCAdFNwaySYsB5ZOsVsMeMi12F1tgx8roFJlP2DtySa1cHzCUYMYvgVFoJOQp9XjxQ_jVJSKdhBp4b2C1UlSN8rncCx-agq8f8ubhapiHf_Em" alt="Academy" class="academy-logo">
+                            </div>
+                            <h4 class="h6 fw-black mb-1" style="color:var(--primary-color);">Vortex Youth</h4>
+                            <p class="small text-muted mb-0">London South</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <a href="academy.html" class="text-decoration-none">
+                        <div class="card text-center p-4">
+                            <div class="p-3 rounded mb-3" style="background:var(--bg-color);">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMAmgZvtd-96VAtnbisUR0yoXpJEdxZNl3MNQ5eEyGMrqzu73r6ex9CFAyuOaKGtUDP3JF3ccdG9RjFpN-IayuulPDfCOhZHdFJMUZizljxc34lpi0GxYa_ZELNtjgQ9vu1wE33IrA8RidnSXYDve7Uu6c1pYm3bFUMcz2qDr-rE-hhyZBRwbXDM9bKplcev0P5P69Fv7fIqvw8NWOfEDssyeA9fmYQJGUUyW9hEa78Sz_NoTJamRYLgixTcEMmlHkn_YCfMVMItwg" alt="Academy" class="academy-logo">
+                            </div>
+                            <h4 class="h6 fw-black mb-1" style="color:var(--primary-color);">Lionheart FC</h4>
+                            <p class="small text-muted mb-0">West Midlands</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <a href="academy.html" class="text-decoration-none">
+                        <div class="card text-center p-4">
+                            <div class="p-3 rounded mb-3" style="background:var(--bg-color);">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkmRiJrw-PEvwKwMVd9Tipmwpn12izsew7h14w5a6BOrmjnEh6oX7OmYjojY4slCETkQg5yZdQp7KN5x8fjqjji-s6Uhu626dcspuP1XNEhfoXzQcjkXVNXpR39JNzFgqD8qEyWs-TxZyHZ4nR7ijDMtZQyvGRo386Am5TPDjMMUntwylIVrfO_GFrwUYJTxkEDs435vxoDlK2wKPW3HquBQWaADepwzzB8lmdsDNOKnUHMmSi56bUTT0KIq4R7PtR17C4r0i66DQv" alt="Academy" class="academy-logo">
+                            </div>
+                            <h4 class="h6 fw-black mb-1" style="color:var(--primary-color);">Titan Academy</h4>
+                            <p class="small text-muted mb-0">Merseyside</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 border-top" style="background:var(--white);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="30">
+                        <span class="fw-black" style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+                    </div>
+                    <p class="text-muted small mb-0" style="max-width:360px;">Excellence in football development, creating a bridge for African talent to reach the global stage.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex flex-wrap justify-content-md-end gap-4 mb-3">
+                        <a href="#" class="text-muted text-decoration-none small fw-bold text-uppercase">Privacy</a>
+                        <a href="#" class="text-muted text-decoration-none small fw-bold text-uppercase">Terms</a>
+                        <a href="#" class="text-muted text-decoration-none small fw-bold text-uppercase">Contact</a>
+                    </div>
+                    <p class="small text-muted mb-0 opacity-75">© 2024 Zambezi Futures Academy. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
