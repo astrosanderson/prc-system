@@ -1,0 +1,73 @@
+/* ===============================
+   GLOBAL COLOR VARIABLES
+================================ */
+:root {
+  --primary-green: #0b3d2e;
+  --secondary-green: #145c43;
+  --gold: #c8a95b;
+  --white: #ffffff;
+  --light-bg: #f5f5f5;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar {
+  background-color: var(--primary-green);
+  padding: 12px 20px;
+}
+
+.navbar-brand {
+  color: var(--white);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.navbar-brand:hover {
+  color: var(--gold);
+}
+
+.nav-link {
+  color: var(--white) !important;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: var(--gold) !important;
+}
+
+.navbar .btn-signin {
+  background-color: var(--gold);
+  color: var(--white);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.navbar .btn-signin:hover {
+  opacity: 0.9;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  background-color: var(--primary-green);
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+footer a {
+  color: var(--gold);
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,14 @@
+/* CSS for academies.html file */
+        .player-img-table {
+            width: 44px;
+            height: 44px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(100%);
+            transition: all 0.3s;
+        }
+
+        tr:hover .player-img-table {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }

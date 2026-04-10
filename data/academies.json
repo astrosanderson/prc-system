@@ -1,10 +1,101 @@
 [
-  { "id": "a001", "name": "Victoria Falls FC",        "region": "Western",   "active": true  },
-  { "id": "a002", "name": "Zambezi Lions Academy",    "region": "Central",   "active": true  },
-  { "id": "a003", "name": "Riverside United",         "region": "Eastern",   "active": true  },
-  { "id": "a004", "name": "Copperbelt Athletic",      "region": "Northern",  "active": true  },
-  { "id": "a005", "name": "Lusaka City FC",           "region": "Lusaka",    "active": true  },
-  { "id": "a006", "name": "Southern Stars Academy",   "region": "Southern",  "active": true  },
-  { "id": "a007", "name": "Kafue River Rangers",      "region": "Central",   "active": true  },
-  { "id": "a008", "name": "Livingstone United",       "region": "Western",   "active": true  }
+  {
+    "id": "academy_001",
+    "name": "North Star Elite",
+    "location": "Lusaka",
+    "logo": "",
+    "teams": [
+      { "name": "U12", "division": "Junior" },
+      { "name": "U16", "division": "Youth" }
+    ]
+  },
+  {
+    "id": "academy_002",
+    "name": "Vortex Youth",
+    "location": "Ndola",
+    "logo": "",
+    "teams": [
+      { "name": "U14", "division": "Youth" },
+      { "name": "U18", "division": "Senior" }
+    ]
+  },
+  {
+    "id": "academy_003",
+    "name": "Lionheart FC",
+    "location": "Kitwe",
+    "logo": "",
+    "teams": [
+      { "name": "U13", "division": "Junior" }
+    ]
+  },
+  {
+    "id": "academy_004",
+    "name": "Phoenix Rising",
+    "location": "Livingstone",
+    "logo": "",
+    "teams": [
+      { "name": "U15", "division": "Youth" },
+      { "name": "U17", "division": "Senior" }
+    ]
+  },
+  {
+    "id": "academy_005",
+    "name": "Eclipse Academy",
+    "location": "Chipata",
+    "logo": "",
+    "teams": [
+      { "name": "U12", "division": "Junior" },
+      { "name": "U14", "division": "Youth" }
+    ]
+  },
+  {
+    "id": "academy_006",
+    "name": "Thunderbolt FC",
+    "location": "Kabwe",
+    "logo": "",
+    "teams": [
+      { "name": "U16", "division": "Youth" },
+      { "name": "U18", "division": "Senior" }
+    ]
+  },
+  {
+    "id": "academy_007",
+    "name": "Shadow Wolves",
+    "location": "Mongu",
+    "logo": "",
+    "teams": [
+      { "name": "U13", "division": "Junior" },
+      { "name": "U15", "division": "Youth" }
+    ]
+  },
+  {
+    "id": "academy_008",
+    "name": "Crimson Hawks",
+    "location": "Kasama",
+    "logo": "",
+    "teams": [
+      { "name": "U14", "division": "Youth" },
+      { "name": "U17", "division": "Senior" }
+    ]
+  },
+  {
+    "id": "academy_009",
+    "name": "Silver Strikers Academy",
+    "location": "Solwezi",
+    "logo": "",
+    "teams": [
+      { "name": "U12", "division": "Junior" },
+      { "name": "U16", "division": "Youth" }
+    ]
+  },
+  {
+    "id": "academy_010",
+    "name": "Golden Eagles FC",
+    "location": "Chingola",
+    "logo": "",
+    "teams": [
+      { "name": "U15", "division": "Youth" },
+      { "name": "U18", "division": "Senior" }
+    ]
+  }
 ]

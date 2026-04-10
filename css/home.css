@@ -1,0 +1,82 @@
+:root {
+  --primary-green: #0b3d2e;
+  --gold: #c8a95b;
+}
+
+.homepage-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2tBlWP0TDlA9aeRLWRGR4IIh4ieRFfIse4SHsHX6N274jK8-MwQ3xy1_xgQokXYsoQRVemkjTcxDtRm0BdZrK0jca1h7EAsTcFblBUC18PzIWa6xDfvHkuYj4KsmpGZYR__sOVNxBFBZVV5HC2wmT1fEIxnQAKTyWz5i6exEaHdlBM95hgBHGHT6v2xjBYidIQA538YFKYS43KHtjFlTSDzw9c4ZSlgk1qj0ppzrSoYKd1RnKkArfYMtk9ANfMrNFgmFWFm14knk') no-repeat center/cover;
+        }
+
+        .homepage-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 61, 46, 0.92) 0%, rgba(11, 61, 46, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .homepage-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 0.95;
+        }
+
+        .stat-card-row {
+            margin-top: -4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .academy-logo {
+            height: 56px;
+            object-fit: contain;
+        }
+        /* ===============================
+        ACADEMY CAROUSEL
+        ================================ */
+
+        .academy-carousel-wrapper {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .academy-carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: scrollRight 40s linear infinite;
+        }
+
+        .academy-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .academy-card {
+            width: 250px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .academy-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Left → Right movement */
+        @keyframes scrollRight {
+            0% {
+                transform: translateX(calc(-50%));
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }

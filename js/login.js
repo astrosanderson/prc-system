@@ -1,4 +1,5 @@
 /**
+ * Currently linked to login.html for now
  * Sign In / Google Auth Validation Script
  * Implements a clean frontend simulation of Google Authentication for Member & Admin sign-ins.
  * Uses only pure Vanilla Javascript.
