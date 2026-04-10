@@ -1,56 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In | Zambezi Futures</title>
-    <!-- Bootstrap CDN -->
+    <title>Zambezi Futures | Academy Portal</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Access the elite performance ecosystem of Zambezi Futures Academy. Review performance data, academy archives, and tactical progress.">
+
+    <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <!-- Custom Style -->
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-green: #003d2b;
+            --accent-gold: #b38b4d;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
+            --bg-light: #fcfcfc;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            overflow-x: hidden;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 61, 43, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--primary-green);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            color: white !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-gold), #8c6a3a);
+            margin-right: 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 400;
+            margin: 0 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-1px);
+        }
+
+        .btn-signin {
+            background-color: var(--accent-gold);
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .btn-signin:hover {
+            background-color: #967540;
+            color: white;
+            box-shadow: 0 4px 12px rgba(179, 139, 77, 0.3);
+        }
+
+        /* Hero Section */
+        .hero-container {
+            padding: 80px 0;
+            min-height: calc(100vh - 250px);
+            display: flex;
+            align-items: center;
+        }
+
+        .portal-label {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .welcome-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 0.9;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        .welcome-title span {
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .hero-description {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 450px;
+            margin-bottom: 40px;
+        }
+
+        .performance-card {
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 20px;
+            margin-top: 50px;
+        }
+
+        .performance-card h5 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .performance-card p {
+            color: #999;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        /* Sign-In Cards */
+        .login-cards-wrapper {
+            display: flex;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        .login-card {
+            flex: 1;
+            padding: 40px;
+            border-radius: 0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: none;
+        }
+
+        .card-member {
+            background: white;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-admin {
+            background: var(--primary-green);
+            color: white;
+            box-shadow: 0 15px 45px rgba(0, 61, 43, 0.15);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .card-member .icon-box {
+            background-color: #f0f4f2;
+            color: var(--primary-green);
+        }
+
+        .card-admin .icon-box {
+            background-color: var(--accent-gold);
+            color: white;
+        }
+
+        .card-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .google-btn {
+            width: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #ccc;
+            transform: translateY(-2px);
+        }
+
+        .google-btn img {
+            width: 18px;
+            margin-right: 12px;
+        }
+
+        .card-footer-link {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            color: inherit;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .card-footer-link:hover {
+            opacity: 1;
+        }
+
+        /* Bottom Section */
+        .bottom-action {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+
+        .bottom-action p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .bottom-action a {
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            opacity: 0.5;
+            margin-bottom: 30px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .hero-container {
+                padding: 40px 0;
+            }
+
+            .welcome-title {
+                font-size: 3.5rem;
+            }
+
+            .login-cards-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
 
-    <div class="container d-flex align-items-center justify-content-center min-vh-100 py-5">
-        <div class="card p-4 p-md-5 border-0 shadow-lg" style="max-width: 450px; width: 100%;">
-            <div class="text-center mb-5">
-                <a href="index.html" class="text-decoration-none">
-                    <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="40" class="mb-3">
-                    <h1 class="h4 fw-black text-primary">ZAMBEZI FUTURES</h1>
-                </a>
-                <p class="text-muted small fw-bold mt-2">Elite Athlete & Academy Analytics Portal</p>
-            </div>
+<body>
 
-            <form action="admin.html">
-                <div class="mb-4">
-                    <label class="form-label small fw-bold text-uppercase ls-wide text-muted">Email Address</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-0"><span class="material-symbols-outlined fs-5 text-muted">mail</span></span>
-                        <input type="email" class="form-control" placeholder="name@example.com" required>
-                    </div>
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" id="main-logo">
+                <div class="brand-icon">Z</div>
+                Zambezi Futures
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-signin" id="header-signin">Sign In</button>
                 </div>
-                <div class="mb-4">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <label class="form-label small fw-bold text-uppercase ls-wide text-muted">Password</label>
-                        <a href="#" class="small text-decoration-none text-gold fw-bold">Forgot?</a>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-0"><span class="material-symbols-outlined fs-5 text-muted">lock</span></span>
-                        <input type="password" class="form-control" placeholder="••••••••" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold mb-4">SIGN IN</button>
-            </form>
-
-            <div class="text-center">
-                <p class="small text-muted fw-medium mb-0">Don't have an account? <a href="signup.html" class="text-gold fw-bold text-decoration-none">Create Account</a></p>
             </div>
         </div>
-    </div>
+    </nav>
 
+    <!-- Main Content Selection -->
+    <main class="container hero-container">
+        <div class="row w-100 align-items-center">
+
+            <!-- Hero Text -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <span class="portal-label text-nowrap">Academy Portal</span>
+                <h1 class="welcome-title">
+                    WELCOME<br>
+                    <span>BACK</span>
+                </h1>
+                <p class="hero-description">
+                    Access the elite performance ecosystem. Review your performance data, academy archives, and tactical
+                    progress.
+                </p>
+
+                <div class="performance-card">
+                    <h5>Elite Performance Journal</h5>
+                    <p>Digital Archive of Excellence</p>
+                </div>
+            </div>
+
+            <!-- Login Cards -->
+            <div class="col-lg-6">
+                <div class="login-cards-wrapper">
+
+                    <!-- Member Card -->
+                    <div class="login-card card-member" id="member-login">
+                        <div class="icon-box">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <h2 class="card-title">Member Sign In</h2>
+                        <p class="card-subtitle">Athlete & Scholar Access</p>
+
+                        <a href="#" class="google-btn">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+                            Sign in with Google
+                        </a>
+
+                        <!-- <a href="#" class="card-footer-link">System Access Guidelines</a> -->
+                    </div>
+
+                    <!-- Admin Card -->
+                    <div class="login-card card-admin" id="admin-login">
+                        <div class="icon-box">
+                            <i class="bi bi-shield-lock-fill"></i>
+                        </div>
+                        <h2 class="card-title">Admin Sign In</h2>
+                        <p class="card-subtitle">Faculty & Management Only</p>
+
+                        <a href="#" class="google-btn">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+                            Admin Google Login
+                        </a>
+
+                        <!-- <a href="#" class="card-footer-link">Security Protocols <i class="bi bi-shield-check ms-1"></i></a> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Signup Action
+    <div class="container">
+        <div class="bottom-action">
+            <p>Don't have an account? <a href="#" id="signup-now">Sign up now <i class="bi bi-arrow-right ms-1"></i></a></p>
+        </div>
+    </div> -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                &copy; 2024 Zambezi Futures Academy. Excellence is an archive.
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vanilla JS Google Auth Validation Mock -->
+    <script src="../js/Blessings_Signup.js"></script>
 </body>
+
 </html>

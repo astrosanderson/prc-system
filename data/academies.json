@@ -1,0 +1,10 @@
+[
+  { "id": "a001", "name": "Victoria Falls FC",        "region": "Western",   "active": true  },
+  { "id": "a002", "name": "Zambezi Lions Academy",    "region": "Central",   "active": true  },
+  { "id": "a003", "name": "Riverside United",         "region": "Eastern",   "active": true  },
+  { "id": "a004", "name": "Copperbelt Athletic",      "region": "Northern",  "active": true  },
+  { "id": "a005", "name": "Lusaka City FC",           "region": "Lusaka",    "active": true  },
+  { "id": "a006", "name": "Southern Stars Academy",   "region": "Southern",  "active": true  },
+  { "id": "a007", "name": "Kafue River Rangers",      "region": "Central",   "active": true  },
+  { "id": "a008", "name": "Livingstone United",       "region": "Western",   "active": true  }
+]
