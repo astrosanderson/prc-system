@@ -1,0 +1,77 @@
+[
+  {
+    "id": "ZF-2024-8849-MT",
+    "firstName": "Marcus",
+    "lastName": "Thorne",
+    "dob": "2011-05-14",
+    "nationality": "Zambian",
+    "position": "Attacking Midfield",
+    "division": "U-14",
+    "academy": "Zambezi North Elite Academy",
+    "status": "Active",
+    "photo": "https://lh3.googleusercontent.com/aida-public/AB6AXuAiGsYgFMyQ3qNqsqUBdH_GjE3iANcjDCdrn9miiGPQf7y096_Chxhhq0LKaXg5HjtYsoM5ZuPeB_KJQqfHZY76QuQBqS_5UBgWSkGRjE4rusOmXVKSRbv8YdU6acxR_sQBGiMIWAb2L2fvSidi0z6SU_XgP3yJZ8fW922_GKoOPB3SKXt1kIXTBO6ygrrmERk6XT3w525WNFQ645x_yskPlqOueyi_12xK9XE1qdIDJuetGZmMqG6mw1hJlobkHxflXQORFkyUtNmC",
+    "coach": {
+      "name": "Victor Mwembe",
+      "role": "Head Coach",
+      "email": "v.mwembe@zamfutures.zm"
+    },
+    "manager": {
+      "name": "Sarah Lungu",
+      "role": "Player Manager",
+      "email": "s.lungu@zamfutures.zm"
+    },
+    "medical": {
+      "bloodType": "O+",
+      "height": "158 cm",
+      "weight": "52 kg",
+      "allergies": "None",
+      "lastCheckup": "2024-09-10",
+      "clearanceStatus": "Cleared",
+      "notes": "Player recovered from a minor hamstring strain in January 2024. Full medical clearance granted September 2024.",
+      "conditions": []
+    },
+    "seasons": [
+      {
+        "season": "2023/2024",
+        "matchesPlayed": 22,
+        "goals": 9,
+        "assists": 7,
+        "performance": {
+          "touches": 78,
+          "chancesCreated": 72,
+          "aerialDuelsWon": 45,
+          "defensiveContributions": 38,
+          "goals": 84,
+          "shotAttempts": 68
+        },
+        "matches": [
+          { "date": "2024-03-02", "opponent": "Kafue United U-14", "result": "W 3-1", "goals": 2, "assists": 0, "rating": 8.7 },
+          { "date": "2024-02-17", "opponent": "Lusaka City Academy U-14", "result": "D 1-1", "goals": 0, "assists": 1, "rating": 7.4 },
+          { "date": "2024-01-27", "opponent": "Copperbelt Stars U-14", "result": "W 4-0", "goals": 1, "assists": 2, "rating": 9.1 },
+          { "date": "2023-12-09", "opponent": "Livingstone Youth FC", "result": "W 2-1", "goals": 1, "assists": 0, "rating": 8.2 },
+          { "date": "2023-11-18", "opponent": "Ndola Rising U-14", "result": "L 1-2", "goals": 1, "assists": 0, "rating": 7.0 }
+        ]
+      },
+      {
+        "season": "2022/2023",
+        "matchesPlayed": 18,
+        "goals": 6,
+        "assists": 4,
+        "performance": {
+          "touches": 65,
+          "chancesCreated": 58,
+          "aerialDuelsWon": 34,
+          "defensiveContributions": 30,
+          "goals": 60,
+          "shotAttempts": 52
+        },
+        "matches": [
+          { "date": "2023-03-11", "opponent": "Eastern Province U-14", "result": "W 2-0", "goals": 1, "assists": 1, "rating": 8.0 },
+          { "date": "2023-02-04", "opponent": "Southern Stars U-14", "result": "D 0-0", "goals": 0, "assists": 0, "rating": 6.5 },
+          { "date": "2023-01-14", "opponent": "Kabwe Warriors Youth", "result": "W 3-2", "goals": 2, "assists": 0, "rating": 8.8 },
+          { "date": "2022-12-03", "opponent": "Choma FC U-14", "result": "W 1-0", "goals": 0, "assists": 1, "rating": 7.9 }
+        ]
+      }
+    ]
+  }
+]
