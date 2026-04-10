@@ -1,0 +1,385 @@
+/* ========================================
+   THE STADIUM - Custom Styles
+   ======================================== */
+
+/* --- Base Resets & Utilities --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* --- Kinetic Gradient --- */
+.kinetic-gradient {
+    background: linear-gradient(135deg, #b9003f 0%, #e70051 50%, #ff1a6c 100%);
+    background-size: 200% 200%;
+    animation: kinetic-shift 4s ease-in-out infinite;
+}
+
+@keyframes kinetic-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* --- Glass Navigation --- */
+.glass-nav {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+/* Navbar shrink on scroll */
+.nav-scrolled {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.nav-scrolled .glass-nav,
+nav.nav-scrolled {
+    box-shadow: 0 4px 30px rgba(55, 0, 60, 0.12);
+}
+
+/* --- Text Glow Effect --- */
+.text-glow {
+    text-shadow: 0 0 40px rgba(97, 255, 151, 0.3), 0 0 80px rgba(97, 255, 151, 0.15);
+}
+
+/* --- Hero Particles --- */
+.hero-particles {
+    background-image: 
+        radial-gradient(2px 2px at 10% 20%, rgba(97, 255, 151, 0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 30% 70%, rgba(246, 175, 242, 0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 50% 40%, rgba(255, 255, 255, 0.2) 0%, transparent 100%),
+        radial-gradient(2px 2px at 70% 80%, rgba(97, 255, 151, 0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 90% 30%, rgba(246, 175, 242, 0.2) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 15% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 60%, rgba(97, 255, 151, 0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 15%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 90%, rgba(246, 175, 242, 0.2) 0%, transparent 100%);
+    animation: particle-drift 20s linear infinite;
+}
+
+@keyframes particle-drift {
+    0% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-15px) translateX(10px); }
+    50% { transform: translateY(-5px) translateX(-5px); }
+    75% { transform: translateY(-20px) translateX(8px); }
+    100% { transform: translateY(0) translateX(0); }
+}
+
+/* --- Pulse Soft Animation --- */
+.animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+/* --- Fade Up Animation --- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Stat Cards Staggered Entry --- */
+.stat-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease;
+}
+
+.stat-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-card:hover {
+    box-shadow: 0 20px 60px rgba(55, 0, 60, 0.1);
+}
+
+/* --- Academy Card Tilt --- */
+.academy-card {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.academy-card:hover {
+    box-shadow: 0 20px 50px rgba(55, 0, 60, 0.15);
+}
+
+/* --- Tournament Cards --- */
+.tournament-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.tournament-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tournament-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Modal Animations --- */
+.modal-backdrop-enter {
+    animation: backdrop-fade-in 0.3s ease forwards;
+}
+
+@keyframes backdrop-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-enter {
+    animation: modal-slide-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes modal-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-exit {
+    animation: modal-slide-down 0.25s ease forwards;
+}
+
+@keyframes modal-slide-down {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+}
+
+.modal-backdrop-exit {
+    animation: backdrop-fade-out 0.25s ease forwards;
+}
+
+@keyframes backdrop-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* --- Form Step Transitions --- */
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: step-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes step-enter {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Step Indicator Transitions --- */
+.step-indicator .step-circle {
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active .step-circle {
+    background: white;
+    color: #b9003f;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.step-indicator.completed .step-circle {
+    background: #61ff97;
+    color: #00210c;
+}
+
+.step-indicator span:last-child {
+    transition: color 0.3s ease;
+}
+
+.step-indicator.active span:last-child,
+.step-indicator.completed span:last-child {
+    color: white;
+}
+
+.step-line {
+    transition: background-color 0.3s ease;
+}
+
+.step-line.filled {
+    background-color: #61ff97;
+}
+
+/* --- Success Pulse --- */
+.success-pulse {
+    animation: success-ring 1.5s ease-in-out;
+}
+
+@keyframes success-ring {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Input Error States --- */
+input.error,
+select.error,
+textarea.error {
+    border-color: #ba1a1a !important;
+    animation: input-shake 0.4s ease;
+}
+
+@keyframes input-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+}
+
+/* --- Magnetic Button Effect --- */
+.btn-magnetic {
+    position: relative;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                filter 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.btn-magnetic::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #b9003f, #e70051, #ff1a6c);
+    z-index: -1;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.3s ease;
+}
+
+.btn-magnetic:hover::after {
+    opacity: 0.5;
+}
+
+/* --- Scrollbar Styling --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f3f3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d2c2cd;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #80737d;
+}
+
+/* --- Mobile Menu Transition --- */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+#mobile-menu.open {
+    display: block;
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* --- Review Summary Items --- */
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: #f5f3f3;
+    border: 1px solid rgba(210, 194, 205, 0.2);
+}
+
+.review-item .review-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4f434d;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.review-item .review-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1b1c1c;
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2.75rem;
+    }
+
+    .stat-card {
+        text-align: center;
+    }
+
+    .stat-card .w-12 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .stat-card {
+        padding: 2rem;
+    }
+}
