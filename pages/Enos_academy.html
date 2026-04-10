@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academy Profile | Zambezi Futures</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .player-img-table { width:44px; height:44px; object-fit:cover; border-radius:8px; filter:grayscale(100%); transition:all 0.3s; }
-        tr:hover .player-img-table { filter:grayscale(0%); transform:scale(1.05); }
+        .player-img-table {
+            width: 44px;
+            height: 44px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(100%);
+            transition: all 0.3s;
+        }
+
+        tr:hover .player-img-table {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw" alt="Logo" height="28">
+                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw"
+                    alt="Logo" height="28">
                 <span class="fs-5">ZAMBEZI FUTURES</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span
+                    class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="register.html">Register Player</a></li>
@@ -42,19 +59,25 @@
                 <div class="col-lg-8">
                     <nav aria-label="breadcrumb" class="mb-3">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item small fw-bold text-uppercase"><a href="database.html" class="text-decoration-none" style="color:var(--accent-color);">Database</a></li>
-                            <li class="breadcrumb-item active small fw-bold text-uppercase text-muted">Academy Profile</li>
+                            <li class="breadcrumb-item small fw-bold text-uppercase"><a href="database.html"
+                                    class="text-decoration-none" style="color:var(--accent-color);">Database</a></li>
+                            <li class="breadcrumb-item active small fw-bold text-uppercase text-muted">Academy Profile
+                            </li>
                         </ol>
                     </nav>
                     <span class="badge-gold d-inline-block mb-2">Athlete Registry</span>
-                    <h1 class="display-4 fw-black mb-3">Zambezi Elite <span style="color:var(--accent-color);">Academy</span></h1>
-                    <p class="lead text-muted fw-medium mb-0">Comprehensive registry of academy talent across all regional divisions.</p>
+                    <h1 class="display-4 fw-black mb-3">Zambezi Elite <span
+                            style="color:var(--accent-color);">Academy</span></h1>
+                    <p class="lead text-muted fw-medium mb-0">Comprehensive registry of academy talent across all
+                        regional divisions.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
-                        <button class="btn btn-light fw-bold px-4 py-2 border d-flex align-items-center gap-2"><span class="material-symbols-outlined fs-5">filter_list</span> Filter</button>
+                        <button class="btn btn-light fw-bold px-4 py-2 border d-flex align-items-center gap-2"><span
+                                class="material-symbols-outlined fs-5">filter_list</span> Filter</button>
                         <!-- Pencil icon links to register.html for editing/adding players -->
-                        <a href="register.html" class="btn btn-primary fw-bold px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
+                        <a href="register.html"
+                            class="btn btn-primary fw-bold px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
                             <span class="material-symbols-outlined fs-5">edit</span> Edit / Register
                         </a>
                     </div>
@@ -65,7 +88,8 @@
             <div class="row g-4 mb-5">
                 <div class="col-md-4">
                     <div class="card p-4" style="border-left:4px solid var(--primary-color);">
-                        <p class="small fw-bold text-uppercase text-muted mb-1" style="letter-spacing:0.08em;">Total Players</p>
+                        <p class="small fw-bold text-uppercase text-muted mb-1" style="letter-spacing:0.08em;">Total
+                            Players</p>
                         <h3 class="display-4 fw-black mb-2" style="color:var(--primary-color);">142</h3>
                         <div class="d-flex align-items-center gap-1 text-success small fw-bold">
                             <span class="material-symbols-outlined fs-6">arrow_upward</span> 12% since last season
@@ -74,14 +98,16 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card p-4 text-white" style="background:var(--primary-color); border:none;">
-                        <p class="small fw-bold text-uppercase mb-1" style="color:var(--accent-color); letter-spacing:0.08em;">U-17 Division</p>
+                        <p class="small fw-bold text-uppercase mb-1"
+                            style="color:var(--accent-color); letter-spacing:0.08em;">U-17 Division</p>
                         <h3 class="display-4 fw-black text-white mb-2">38</h3>
                         <div class="text-white opacity-50 small fw-bold">Talent Hub</div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card p-4" style="border-left:4px solid var(--accent-color);">
-                        <p class="small fw-bold text-uppercase text-muted mb-1" style="letter-spacing:0.08em;">Average Age</p>
+                        <p class="small fw-bold text-uppercase text-muted mb-1" style="letter-spacing:0.08em;">Average
+                            Age</p>
                         <h3 class="display-4 fw-black mb-2" style="color:var(--primary-color);">15.4</h3>
                         <div class="text-muted small fw-bold">Academy Std. Optimal</div>
                     </div>
@@ -91,13 +117,15 @@
             <!-- Table Controls -->
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-4">
                 <div class="bg-white p-1 rounded-pill shadow-sm d-flex gap-1 border">
-                    <button class="btn btn-sm rounded-pill px-4 fw-bold" style="background:var(--primary-color); color:white;">All</button>
+                    <button class="btn btn-sm rounded-pill px-4 fw-bold"
+                        style="background:var(--primary-color); color:white;">All</button>
                     <button class="btn btn-light btn-sm rounded-pill px-4 fw-bold text-muted">U-15</button>
                     <button class="btn btn-light btn-sm rounded-pill px-4 fw-bold text-muted">U-17</button>
                     <button class="btn btn-light btn-sm rounded-pill px-4 fw-bold text-muted">U-20</button>
                 </div>
                 <div class="input-group" style="max-width:360px;">
-                    <span class="input-group-text bg-white border-0"><span class="material-symbols-outlined text-muted">search</span></span>
+                    <span class="input-group-text bg-white border-0"><span
+                            class="material-symbols-outlined text-muted">search</span></span>
                     <input type="text" class="form-control border-0 bg-white" placeholder="Search player...">
                 </div>
             </div>
@@ -118,28 +146,50 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="ps-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7cYZwrMsasjbebsPBQIns0eUoP2WsxToHubdXKYqJ6rYzS24NZkRA4WGbLddRWTVlgH6keHvW_e7LG9b7UWjTjl-LXYw3X8NFgUkwdfFiLzr1lSmXaKbOl-6Qer6i9jlpOG04jyTPyxjRfSoAkfL1o28VI_omF5y1tI1WCU011xQiNHVgvS5Ismg0CENWSMsO9lRTmfY9TLxIpunADOpfjVGTTQvoX9dZqY_XuIoCWUEAIGrJl3YbOgIvQB8RHkBreI_8rQuWc9o" alt="Player" class="player-img-table shadow-sm"></td>
-                                <td><h5 class="fw-black mb-0" style="color:var(--primary-color); font-size:0.95rem;">Tendai Mokoena</h5><small class="text-muted fw-bold text-uppercase" style="font-size:0.65rem;">Forward</small></td>
+                                <td class="ps-4"><img
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7cYZwrMsasjbebsPBQIns0eUoP2WsxToHubdXKYqJ6rYzS24NZkRA4WGbLddRWTVlgH6keHvW_e7LG9b7UWjTjl-LXYw3X8NFgUkwdfFiLzr1lSmXaKbOl-6Qer6i9jlpOG04jyTPyxjRfSoAkfL1o28VI_omF5y1tI1WCU011xQiNHVgvS5Ismg0CENWSMsO9lRTmfY9TLxIpunADOpfjVGTTQvoX9dZqY_XuIoCWUEAIGrJl3YbOgIvQB8RHkBreI_8rQuWc9o"
+                                        alt="Player" class="player-img-table shadow-sm"></td>
+                                <td>
+                                    <h5 class="fw-black mb-0" style="color:var(--primary-color); font-size:0.95rem;">
+                                        Tendai Mokoena</h5><small class="text-muted fw-bold text-uppercase"
+                                        style="font-size:0.65rem;">Forward</small>
+                                </td>
                                 <td class="fw-bold">16</td>
-                                <td><span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold border border-success border-opacity-25">U-17</span></td>
+                                <td><span
+                                        class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold border border-success border-opacity-25">U-17</span>
+                                </td>
                                 <td class="font-monospace text-muted small">PRC-9921-X</td>
                                 <td class="text-end pe-4">
                                     <div class="d-flex justify-content-end gap-3">
-                                        <a href="player-profile.html" style="color:var(--primary-color);"><span class="material-symbols-outlined fs-5">visibility</span></a>
-                                        <a href="register.html?first=Tendai&last=Mokoena&age=U-17&academy=Zambezi+Elite+Academy" style="color:var(--accent-color);"><span class="material-symbols-outlined fs-5">edit</span></a>
+                                        <a href="player-profile.html" style="color:var(--primary-color);"><span
+                                                class="material-symbols-outlined fs-5">visibility</span></a>
+                                        <a href="register.html?first=Tendai&last=Mokoena&age=U-17&academy=Zambezi+Elite+Academy"
+                                            style="color:var(--accent-color);"><span
+                                                class="material-symbols-outlined fs-5">edit</span></a>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="ps-4"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnyqFRlciQ2JinHqw7fftSThmU2CrGcL7qKi88RkWlzVZmVNSCVm6AZHf2BtW5dfezOJSqlAe0W6GGJ-aeJMALzQZXscpYJcrzEEjXzuhGcfd7zybQj1B36YUXGdJ2NiqWDb4D6sjZEzHMWHefJGJVlwdP8Bf_sfl_IQQyVhIa2qvNr7hztzu9qegavuh88w_zVFdX7HrprucWidzdUoziD8_ho3oLFE5qqRxHZqfV8Pco821UZ2vysRRyvXpIb5e_FT4Dne1yEpw" alt="Player" class="player-img-table shadow-sm"></td>
-                                <td><h5 class="fw-black mb-0" style="color:var(--primary-color); font-size:0.95rem;">Khensani Dlamini</h5><small class="text-muted fw-bold text-uppercase" style="font-size:0.65rem;">Midfielder</small></td>
+                                <td class="ps-4"><img
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnyqFRlciQ2JinHqw7fftSThmU2CrGcL7qKi88RkWlzVZmVNSCVm6AZHf2BtW5dfezOJSqlAe0W6GGJ-aeJMALzQZXscpYJcrzEEjXzuhGcfd7zybQj1B36YUXGdJ2NiqWDb4D6sjZEzHMWHefJGJVlwdP8Bf_sfl_IQQyVhIa2qvNr7hztzu9qegavuh88w_zVFdX7HrprucWidzdUoziD8_ho3oLFE5qqRxHZqfV8Pco821UZ2vysRRyvXpIb5e_FT4Dne1yEpw"
+                                        alt="Player" class="player-img-table shadow-sm"></td>
+                                <td>
+                                    <h5 class="fw-black mb-0" style="color:var(--primary-color); font-size:0.95rem;">
+                                        Khensani Dlamini</h5><small class="text-muted fw-bold text-uppercase"
+                                        style="font-size:0.65rem;">Midfielder</small>
+                                </td>
                                 <td class="fw-bold">14</td>
-                                <td><span class="badge bg-warning bg-opacity-10 text-warning-emphasis rounded-pill px-3 py-2 fw-bold border border-warning border-opacity-25">U-15</span></td>
+                                <td><span
+                                        class="badge bg-warning bg-opacity-10 text-warning-emphasis rounded-pill px-3 py-2 fw-bold border border-warning border-opacity-25">U-15</span>
+                                </td>
                                 <td class="font-monospace text-muted small">PRC-4452-A</td>
                                 <td class="text-end pe-4">
                                     <div class="d-flex justify-content-end gap-3">
-                                        <a href="player-profile.html" style="color:var(--primary-color);"><span class="material-symbols-outlined fs-5">visibility</span></a>
-                                        <a href="register.html?first=Khensani&last=Dlamini&age=U-15&academy=Zambezi+Elite+Academy" style="color:var(--accent-color);"><span class="material-symbols-outlined fs-5">edit</span></a>
+                                        <a href="player-profile.html" style="color:var(--primary-color);"><span
+                                                class="material-symbols-outlined fs-5">visibility</span></a>
+                                        <a href="register.html?first=Khensani&last=Dlamini&age=U-15&academy=Zambezi+Elite+Academy"
+                                            style="color:var(--accent-color);"><span
+                                                class="material-symbols-outlined fs-5">edit</span></a>
                                     </div>
                                 </td>
                             </tr>
@@ -153,11 +203,15 @@
 
     <footer class="py-5 border-top" style="background:var(--white);">
         <div class="container text-center">
-            <span class="fw-black d-block mb-1" style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+            <span class="fw-black d-block mb-1"
+                style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
             <p class="small text-muted mb-0">© 2024 Zambezi Futures. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/Enos_academy.js">
+    </script>
 </body>
+
 </html>
