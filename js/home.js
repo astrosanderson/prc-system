@@ -1,11 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     // =========================
-    // ROLE CHECK (for navbar logic)
-    // =========================
-    const role = localStorage.getItem("role");
-
-    // =========================
     // SAFE FETCH FUNCTION
     // =========================
     const safeFetchJSON = async (url) => {

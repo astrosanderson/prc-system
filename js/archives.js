@@ -1,7 +1,7 @@
 /**
- * Mirriam_archive.js
+ * archives.js
  * ─────────────────────────────────────────────────────────────────────────────
- * Backend logic for Mirriam_archive.html (Zambezi Futures – Historical Hub).
+ * Backend logic for archives.html (Zambezi Futures – Historical Hub).
  *
  * Features implemented (zero HTML modifications):
  *  1. Sidebar active-highlight that tracks scroll position.

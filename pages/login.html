@@ -4,65 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zambezi Futures | Academy Portal</title>
+    <title>Zambezi Futures | Login</title>
 
-    <!-- Meta Tags for SEO -->
-    <meta name="description"
-        content="Access the elite performance ecosystem of Zambezi Futures Academy. Review performance data, academy archives, and tactical progress.">
-
-    <!-- Bootstrap 5 CDN -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts: Outfit -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    <!-- Custom CSS -->
+    <!-- GLOBAL COMPONENTS -->
+    <link rel="stylesheet" href="../css/components.css">
+
+    <!-- PAGE CSS -->
     <link rel="stylesheet" href="../css/login.css">
+</head>
 
-<body>
+<body data-page="login" data-access="public">
 
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#" id="main-logo">
-                <div class="brand-icon">Z</div>
-                Zambezi Futures
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
-                </ul>
-                <div class="d-flex">
-                    <button class="btn btn-signin" id="header-signin">Sign In</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- NAVBAR -->
+    <div id="navbarContainer"></div>
 
-    <!-- Main Content Selection -->
+    <!-- MAIN -->
     <main class="container hero-container">
         <div class="row w-100 align-items-center">
 
-            <!-- Hero Text -->
+            <!-- LEFT -->
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <span class="portal-label text-nowrap">Academy Portal</span>
+                <span class="portal-label">Academy Portal</span>
+
                 <h1 class="welcome-title">
                     WELCOME<br>
                     <span>BACK</span>
                 </h1>
+
                 <p class="hero-description">
-                    Access the elite performance ecosystem. Review your performance data, academy archives, and tactical
-                    progress.
+                    Access the elite performance ecosystem.
                 </p>
 
                 <div class="performance-card">
@@ -71,73 +50,53 @@
                 </div>
             </div>
 
-            <!-- Login Cards -->
+            <!-- RIGHT -->
             <div class="col-lg-6">
                 <div class="login-cards-wrapper">
 
-                    <!-- Member Card -->
-                    <div class="login-card card-member" id="member-login">
+                    <!-- MEMBER -->
+                    <div class="login-card card-member" id="memberLoginCard">
                         <div class="icon-box">
                             <i class="bi bi-mortarboard-fill"></i>
                         </div>
+
                         <h2 class="card-title">Member Sign In</h2>
                         <p class="card-subtitle">Athlete & Scholar Access</p>
 
-                        <a href="#" class="google-btn">
-                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+                        <a href="#" class="google-btn" id="memberLoginBtn">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png">
                             Sign in with Google
                         </a>
-
-                        <!-- <a href="#" class="card-footer-link">System Access Guidelines</a> -->
                     </div>
 
-                    <!-- Admin Card -->
-                    <div class="login-card card-admin" id="admin-login">
+                    <!-- ADMIN -->
+                    <div class="login-card card-admin" id="adminLoginCard">
                         <div class="icon-box">
                             <i class="bi bi-shield-lock-fill"></i>
                         </div>
+
                         <h2 class="card-title">Admin Sign In</h2>
                         <p class="card-subtitle">Faculty & Management Only</p>
 
-                        <a href="#" class="google-btn">
-                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+                        <a href="#" class="google-btn" id="adminLoginBtn">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png">
                             Admin Google Login
                         </a>
-
-                        <!-- <a href="#" class="card-footer-link">Security Protocols <i class="bi bi-shield-check ms-1"></i></a> -->
                     </div>
 
                 </div>
             </div>
+
         </div>
     </main>
 
-    <!-- Bottom Signup Action
-    <div class="container">
-        <div class="bottom-action">
-            <p>Don't have an account? <a href="#" id="signup-now">Sign up now <i class="bi bi-arrow-right ms-1"></i></a></p>
-        </div>
-    </div> -->
+    <!-- FOOTER -->
+    <div id="footerContainer"></div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                &copy; 2024 Zambezi Futures Academy. Excellence is an archive.
-            </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Support</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap 5 JS -->
+    <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Vanilla JS Google Auth Validation Mock -->
+    <script src="../js/app.js"></script>
     <script src="../js/login.js"></script>
-</body>
 
+</body>
 </html>

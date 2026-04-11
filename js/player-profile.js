@@ -35,15 +35,22 @@ function loadPlayerData() {
             return r.json();
         })
         .then(data => {
+            const storedPlayers = readStoredPlayers();
+            const allPlayers = [...storedPlayers, ...data]
+                .map(normalisePlayerRecord)
+                .filter(Boolean);
+
             /* Grab first player (extend later to support query-param ?id=) */
             const params = new URLSearchParams(window.location.search);
             const targetId = params.get('id');
             playerData = targetId
-                ? data.find(p => p.id === targetId) || data[0]
-                : data[0];
+                ? allPlayers.find(p => p.id === targetId) || allPlayers[0]
+                : allPlayers[0];
 
+            if (!playerData) throw new Error('No player records available');
             currentSeason = playerData.seasons[0];
             renderPage();
+            applyRoleControls();
             wireButtons();
         })
         .catch(err => {
@@ -101,10 +108,118 @@ function setTextContent(selector, value) {
     if (el) el.textContent = value;
 }
 
+function applyRoleControls() {
+    const session = window.zfApp?.getSession?.();
+    if (!session || session.role === 'admin') return;
+
+    const canEdit = playerData?.academy === session.academyName;
+    if (canEdit) return;
+
+    const editButton = document.getElementById('btn-edit-info');
+    if (editButton) {
+        editButton.disabled = true;
+        editButton.title = 'Members can only edit players in their own academy.';
+        editButton.classList.add('opacity-50');
+    }
+}
+
 function formatDate(dateStr) {
     if (!dateStr) return '—';
     const d = new Date(dateStr);
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function readStoredPlayers() {
+    try {
+        const rawPlayers = localStorage.getItem('zfPlayers');
+        return rawPlayers ? JSON.parse(rawPlayers) : [];
+    } catch (error) {
+        console.warn('[player-profile] Failed to parse zfPlayers:', error);
+        return [];
+    }
+}
+
+function normalisePlayerRecord(rawPlayer) {
+    if (!rawPlayer) return null;
+
+    const fallbackName = rawPlayer.name || '';
+    const [fallbackFirstName = 'Player', ...remainingNames] = fallbackName.split(' ');
+    const fallbackLastName = remainingNames.join(' ') || 'Profile';
+    const firstName = rawPlayer.firstName || fallbackFirstName;
+    const lastName = rawPlayer.lastName || fallbackLastName;
+    const division = rawPlayer.division || rawPlayer.team || rawPlayer.ageGroup || 'U-14';
+    const academy = rawPlayer.academy || rawPlayer.academyName || resolveAcademyName(rawPlayer.academyId);
+
+    return {
+        id: rawPlayer.id || `player-${firstName.toLowerCase()}-${lastName.toLowerCase()}`,
+        firstName,
+        lastName,
+        photo: rawPlayer.photo || 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=600&q=80',
+        status: titleCase(rawPlayer.status || 'Active'),
+        division,
+        academy,
+        dob: rawPlayer.dob || '2011-05-14',
+        nationality: rawPlayer.nationality || 'Zambian',
+        position: rawPlayer.position || 'Midfielder',
+        coach: rawPlayer.coach || { name: 'Victor Mwembe' },
+        manager: rawPlayer.manager || { name: 'Sarah Lungu' },
+        medical: {
+            clearanceStatus: rawPlayer.medical?.clearanceStatus || rawPlayer.medical?.clearance || 'Cleared',
+            lastCheckup: rawPlayer.medical?.lastCheckup || rawPlayer.medical?.lastCheck || '2026-01-18',
+            conditions: rawPlayer.medical?.conditions || []
+        },
+        seasons: normaliseSeasons(rawPlayer.seasons, rawPlayer)
+    };
+}
+
+function normaliseSeasons(seasons, rawPlayer) {
+    if (Array.isArray(seasons) && seasons.length > 0) {
+        return seasons;
+    }
+
+    const goals = Number(rawPlayer.goals) || 4;
+    const assists = Number(rawPlayer.assists) || 3;
+
+    return [
+        {
+            season: '2025/2026',
+            matchesPlayed: Number(rawPlayer.matchesPlayed) || 12,
+            goals,
+            assists,
+            performance: {
+                touches: 74,
+                chancesCreated: 66,
+                aerialDuelsWon: 52,
+                defensiveContributions: 61,
+                goals: Math.min(95, goals * 12 + 20),
+                shotAttempts: 63
+            },
+            matchHistory: [
+                { date: '2026-03-17', opponent: 'Copperbelt High Flyers', result: 'Win', score: '3-1', rating: 8.1 },
+                { date: '2026-03-10', opponent: 'North Valley Academy', result: 'Draw', score: '1-1', rating: 7.4 },
+                { date: '2026-03-01', opponent: 'Victoria Falls FC', result: 'Win', score: '2-0', rating: 8.0 }
+            ]
+        }
+    ];
+}
+
+function resolveAcademyName(academyId) {
+    const academyMap = {
+        academy_001: 'North Star Elite',
+        academy_002: 'Vortex Youth',
+        academy_003: 'Lionheart FC',
+        academy_004: 'Phoenix Rising'
+    };
+
+    return academyMap[academyId] || 'Zambezi Futures Academy';
+}
+
+function titleCase(value) {
+    return value
+        .toString()
+        .split(' ')
+        .map(part => part ? part[0].toUpperCase() + part.slice(1).toLowerCase() : part)
+        .join(' ');
 }
 
 // ─────────────────────────────────────────────

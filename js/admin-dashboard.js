@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCriticalDates();
     initProgressBars();
     closeContextMenuOnOutsideClick();
+    initManagementHub();
 });
 
 // ================================================================
@@ -901,4 +902,432 @@ function escHtml(str) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
+}
+
+// ================================================================
+// 13. MANAGEMENT HUB — simple front-end admin tools
+// ================================================================
+async function initManagementHub() {
+    const main = document.querySelector('main.container-xxl');
+    if (!main || document.getElementById('admin-management-hub')) return;
+
+    const [academies, players] = await Promise.all([
+        readJsonFile('../data/academies.json'),
+        readJsonFile('../data/players.json')
+    ]);
+    const storedPlayers = readLocalJson('zfPlayers');
+    const adminData = getAdminData();
+
+    const mergedPlayers = [...storedPlayers, ...players].map((player) => normaliseHubPlayer(player, academies));
+    const academyRows = academies.map((academy) => {
+        const academyPlayerCount = mergedPlayers.filter((player) => player.academyId === academy.id || player.academy === academy.name).length;
+        return `
+            <tr>
+                <td class="fw-bold text-primary">${escHtml(academy.name)}</td>
+                <td>${escHtml(academy.location)}</td>
+                <td>${academy.teams?.length || 0}</td>
+                <td>${academyPlayerCount}</td>
+            </tr>
+        `;
+    }).join('');
+
+    const playerRows = mergedPlayers.slice(0, 8).map((player) => `
+        <tr>
+            <td class="fw-bold text-primary">${escHtml(player.name)}</td>
+            <td>${escHtml(player.academy)}</td>
+            <td>${escHtml(player.division)}</td>
+            <td>${escHtml(player.position)}</td>
+        </tr>
+    `).join('');
+
+    const hub = document.createElement('section');
+    hub.id = 'admin-management-hub';
+    hub.className = 'mt-5 pt-4';
+    hub.innerHTML = `
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+            <div>
+                <span class="text-secondary fw-bold text-uppercase fs-7 tracking-widest d-block mb-2">System Controls</span>
+                <h2 class="editorial-header fs-1 fw-900 text-primary mb-0">Management <span class="text-secondary">Hub</span></h2>
+            </div>
+            <p class="mb-0 text-muted fw-bold">Front-end managed for the current dev phase. Ready to swap to Firebase later.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-xl-6">
+                <div class="widget">
+                    <h3 class="widget-title text-primary">Team Members</h3>
+                    <form id="teamMemberForm" class="row g-3 mb-4">
+                        <input type="hidden" id="teamMemberId">
+                        <div class="col-md-4"><input type="text" class="form-control" id="teamMemberName" placeholder="Representative name" required></div>
+                        <div class="col-md-4"><input type="email" class="form-control" id="teamMemberEmail" placeholder="Email address" required></div>
+                        <div class="col-md-4"><input type="text" class="form-control" id="teamMemberAcademy" placeholder="Academy" required></div>
+                        <div class="col-12 d-flex gap-2">
+                            <button class="btn btn-dark btn-sm px-4" type="submit">Save Member</button>
+                            <button class="btn btn-light btn-sm px-4" type="button" id="teamMemberReset">Clear</button>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Name</th><th>Academy</th><th>Email</th><th class="text-end">Action</th></tr></thead>
+                            <tbody id="teamMembersTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="widget">
+                    <h3 class="widget-title text-primary">Admins</h3>
+                    <form id="adminUserForm" class="row g-3 mb-4">
+                        <input type="hidden" id="adminUserId">
+                        <div class="col-md-4"><input type="text" class="form-control" id="adminUserName" placeholder="Admin name" required></div>
+                        <div class="col-md-4"><input type="email" class="form-control" id="adminUserEmail" placeholder="Email address" required></div>
+                        <div class="col-md-4"><input type="text" class="form-control" id="adminUserRole" placeholder="Role title" required></div>
+                        <div class="col-12 d-flex gap-2">
+                            <button class="btn btn-dark btn-sm px-4" type="submit">Save Admin</button>
+                            <button class="btn btn-light btn-sm px-4" type="button" id="adminUserReset">Clear</button>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Name</th><th>Role</th><th>Email</th><th class="text-end">Action</th></tr></thead>
+                            <tbody id="adminsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="widget h-100">
+                    <h3 class="widget-title text-primary">Divisions</h3>
+                    <form id="divisionForm" class="d-flex gap-2 mb-3">
+                        <input type="hidden" id="divisionId">
+                        <input type="text" class="form-control" id="divisionName" placeholder="Division name" required>
+                        <button class="btn btn-dark btn-sm px-4" type="submit">Save</button>
+                    </form>
+                    <ul class="list-group list-group-flush" id="divisionList"></ul>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="widget h-100">
+                    <h3 class="widget-title text-primary">Past Games</h3>
+                    <form id="gameForm" class="row g-2 mb-3">
+                        <input type="hidden" id="gameId">
+                        <div class="col-12"><input type="text" class="form-control" id="gameFixture" placeholder="Fixture" required></div>
+                        <div class="col-6"><input type="date" class="form-control" id="gameDate" required></div>
+                        <div class="col-6"><input type="text" class="form-control" id="gameScore" placeholder="Score" required></div>
+                        <div class="col-12"><button class="btn btn-dark btn-sm px-4" type="submit">Save Game</button></div>
+                    </form>
+                    <ul class="list-group list-group-flush" id="gamesList"></ul>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="widget h-100">
+                    <h3 class="widget-title text-primary">Snapshot</h3>
+                    <div class="d-grid gap-3">
+                        <div class="p-3 bg-white border">
+                            <div class="small text-uppercase fw-bold text-muted mb-1">Academies</div>
+                            <div class="fs-3 fw-900 text-primary">${academies.length}</div>
+                        </div>
+                        <div class="p-3 bg-white border">
+                            <div class="small text-uppercase fw-bold text-muted mb-1">Players</div>
+                            <div class="fs-3 fw-900 text-primary">${mergedPlayers.length}</div>
+                        </div>
+                        <div class="p-3 bg-white border">
+                            <div class="small text-uppercase fw-bold text-muted mb-1">Team Members</div>
+                            <div class="fs-3 fw-900 text-primary" id="teamMemberCount">${adminData.teamMembers.length}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="widget">
+                    <h3 class="widget-title text-primary">All Academies</h3>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Academy</th><th>Location</th><th>Teams</th><th>Players</th></tr></thead>
+                            <tbody>${academyRows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="widget">
+                    <h3 class="widget-title text-primary">Players Under Academies</h3>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Player</th><th>Academy</th><th>Division</th><th>Position</th></tr></thead>
+                            <tbody>${playerRows}</tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    main.appendChild(hub);
+    bindManagementForms(adminData);
+}
+
+function getAdminData() {
+    const stored = readLocalJson('zfAdminData');
+    if (stored.teamMembers && stored.adminUsers && stored.divisions && stored.games) {
+        return stored;
+    }
+
+    return {
+        teamMembers: [
+            { id: 'tm-1', name: 'Lillian Tembo', academy: 'North Star Elite', email: 'lillian@northstar.test' },
+            { id: 'tm-2', name: 'Peter Daka', academy: 'Vortex Youth', email: 'peter@vortex.test' }
+        ],
+        adminUsers: [
+            { id: 'ad-1', name: 'Mary Phiri', role: 'League Admin', email: 'mary@zf.test' },
+            { id: 'ad-2', name: 'James Banda', role: 'Academy Admin', email: 'james@zf.test' }
+        ],
+        divisions: [
+            { id: 'div-1', name: 'U12 Junior' },
+            { id: 'div-2', name: 'U15 Youth' },
+            { id: 'div-3', name: 'U17 Elite' }
+        ],
+        games: [
+            { id: 'gm-1', fixture: 'North Star Elite vs Vortex Youth', date: '2026-03-12', score: '2-1' },
+            { id: 'gm-2', fixture: 'Lionheart FC vs Phoenix Rising', date: '2026-03-04', score: '1-1' }
+        ]
+    };
+}
+
+function bindManagementForms(adminData) {
+    persistAdminData(adminData);
+    renderManagementLists(adminData);
+
+    document.getElementById('teamMemberForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        upsertRecord(adminData.teamMembers, {
+            id: document.getElementById('teamMemberId').value || `tm-${Date.now()}`,
+            name: document.getElementById('teamMemberName').value.trim(),
+            email: document.getElementById('teamMemberEmail').value.trim(),
+            academy: document.getElementById('teamMemberAcademy').value.trim()
+        });
+        persistAdminData(adminData);
+        renderManagementLists(adminData);
+        event.target.reset();
+        document.getElementById('teamMemberId').value = '';
+        showToast('Team member record saved.', 'success');
+    });
+
+    document.getElementById('adminUserForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        upsertRecord(adminData.adminUsers, {
+            id: document.getElementById('adminUserId').value || `ad-${Date.now()}`,
+            name: document.getElementById('adminUserName').value.trim(),
+            email: document.getElementById('adminUserEmail').value.trim(),
+            role: document.getElementById('adminUserRole').value.trim()
+        });
+        persistAdminData(adminData);
+        renderManagementLists(adminData);
+        event.target.reset();
+        document.getElementById('adminUserId').value = '';
+        showToast('Admin record saved.', 'success');
+    });
+
+    document.getElementById('divisionForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        upsertRecord(adminData.divisions, {
+            id: document.getElementById('divisionId').value || `div-${Date.now()}`,
+            name: document.getElementById('divisionName').value.trim()
+        });
+        persistAdminData(adminData);
+        renderManagementLists(adminData);
+        event.target.reset();
+        document.getElementById('divisionId').value = '';
+        showToast('Division saved.', 'success');
+    });
+
+    document.getElementById('gameForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        upsertRecord(adminData.games, {
+            id: document.getElementById('gameId').value || `gm-${Date.now()}`,
+            fixture: document.getElementById('gameFixture').value.trim(),
+            date: document.getElementById('gameDate').value,
+            score: document.getElementById('gameScore').value.trim()
+        });
+        persistAdminData(adminData);
+        renderManagementLists(adminData);
+        event.target.reset();
+        document.getElementById('gameId').value = '';
+        showToast('Past game saved.', 'success');
+    });
+
+    document.getElementById('teamMemberReset')?.addEventListener('click', () => resetManagementForm('teamMember'));
+    document.getElementById('adminUserReset')?.addEventListener('click', () => resetManagementForm('adminUser'));
+
+    document.getElementById('admin-management-hub')?.addEventListener('click', (event) => {
+        const trigger = event.target.closest('[data-collection][data-id]');
+        if (!trigger) return;
+
+        const { collection, id, action } = trigger.dataset;
+        const targetCollection = adminData[collection];
+        const record = targetCollection.find((item) => item.id === id);
+        if (!record) return;
+
+        if (action === 'edit') {
+            hydrateManagementForm(collection, record);
+            showToast('Record loaded into the form.', 'info');
+            return;
+        }
+
+        adminData[collection] = targetCollection.filter((item) => item.id !== id);
+        persistAdminData(adminData);
+        renderManagementLists(adminData);
+        showToast('Record removed.', 'warning');
+    });
+}
+
+function renderManagementLists(adminData) {
+    const teamMembersTable = document.getElementById('teamMembersTable');
+    const adminsTable = document.getElementById('adminsTable');
+    const divisionList = document.getElementById('divisionList');
+    const gamesList = document.getElementById('gamesList');
+    const teamMemberCount = document.getElementById('teamMemberCount');
+
+    if (teamMembersTable) {
+        teamMembersTable.innerHTML = adminData.teamMembers.map((member) => `
+            <tr>
+                <td class="fw-bold text-primary">${escHtml(member.name)}</td>
+                <td>${escHtml(member.academy)}</td>
+                <td>${escHtml(member.email)}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-light border" data-collection="teamMembers" data-id="${member.id}" data-action="edit">Edit</button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    if (adminsTable) {
+        adminsTable.innerHTML = adminData.adminUsers.map((adminUser) => `
+            <tr>
+                <td class="fw-bold text-primary">${escHtml(adminUser.name)}</td>
+                <td>${escHtml(adminUser.role)}</td>
+                <td>${escHtml(adminUser.email)}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-light border" data-collection="adminUsers" data-id="${adminUser.id}" data-action="edit">Edit</button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    if (divisionList) {
+        divisionList.innerHTML = adminData.divisions.map((division) => `
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="fw-bold text-primary">${escHtml(division.name)}</span>
+                <button class="btn btn-sm btn-light border" data-collection="divisions" data-id="${division.id}" data-action="edit">Edit</button>
+            </li>
+        `).join('');
+    }
+
+    if (gamesList) {
+        gamesList.innerHTML = adminData.games.map((game) => `
+            <li class="list-group-item px-0">
+                <div class="fw-bold text-primary">${escHtml(game.fixture)}</div>
+                <div class="small text-muted">${escHtml(game.date)} · ${escHtml(game.score)}</div>
+                <button class="btn btn-sm btn-light border mt-2" data-collection="games" data-id="${game.id}" data-action="edit">Edit</button>
+            </li>
+        `).join('');
+    }
+
+    if (teamMemberCount) {
+        teamMemberCount.textContent = String(adminData.teamMembers.length);
+    }
+}
+
+function hydrateManagementForm(collection, record) {
+    if (collection === 'teamMembers') {
+        document.getElementById('teamMemberId').value = record.id;
+        document.getElementById('teamMemberName').value = record.name;
+        document.getElementById('teamMemberEmail').value = record.email;
+        document.getElementById('teamMemberAcademy').value = record.academy;
+        return;
+    }
+
+    if (collection === 'adminUsers') {
+        document.getElementById('adminUserId').value = record.id;
+        document.getElementById('adminUserName').value = record.name;
+        document.getElementById('adminUserEmail').value = record.email;
+        document.getElementById('adminUserRole').value = record.role;
+        return;
+    }
+
+    if (collection === 'divisions') {
+        document.getElementById('divisionId').value = record.id;
+        document.getElementById('divisionName').value = record.name;
+        return;
+    }
+
+    if (collection === 'games') {
+        document.getElementById('gameId').value = record.id;
+        document.getElementById('gameFixture').value = record.fixture;
+        document.getElementById('gameDate').value = record.date;
+        document.getElementById('gameScore').value = record.score;
+    }
+}
+
+function resetManagementForm(prefix) {
+    if (prefix === 'teamMember') {
+        document.getElementById('teamMemberForm')?.reset();
+        document.getElementById('teamMemberId').value = '';
+        return;
+    }
+
+    document.getElementById('adminUserForm')?.reset();
+    document.getElementById('adminUserId').value = '';
+}
+
+function upsertRecord(collection, record) {
+    const index = collection.findIndex((item) => item.id === record.id);
+    if (index === -1) {
+        collection.unshift(record);
+        return;
+    }
+
+    collection[index] = record;
+}
+
+function persistAdminData(adminData) {
+    localStorage.setItem('zfAdminData', JSON.stringify(adminData));
+}
+
+function readLocalJson(key) {
+    try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+async function readJsonFile(path) {
+    try {
+        const response = await fetch(path);
+        return response.ok ? response.json() : [];
+    } catch (error) {
+        console.warn('[admin-dashboard] Failed to load', path, error);
+        return [];
+    }
+}
+
+function normaliseHubPlayer(player, academies) {
+    const academyName = player.academy || academies.find((academy) => academy.id === player.academyId)?.name || 'Zambezi Futures Academy';
+
+    return {
+        id: player.id,
+        name: player.name || `${player.firstName || ''} ${player.lastName || ''}`.trim(),
+        academy: academyName,
+        academyId: player.academyId || academies.find((academy) => academy.name === academyName)?.id || '',
+        division: player.division || player.team || player.ageGroup || 'U-14',
+        position: player.position || 'Midfielder'
+    };
 }
