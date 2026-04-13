@@ -10,46 +10,15 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .player-img-table {
-            width: 44px;
-            height: 44px;
-            object-fit: cover;
-            border-radius: 8px;
-            filter: grayscale(100%);
-            transition: all 0.3s;
-        }
+   
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/academies.css">
 
-        tr:hover .player-img-table {
-            filter: grayscale(0%);
-            transform: scale(1.05);
-        }
-    </style>
-</head>
+<body data-page="academies" data-access="member">
 
-<body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw"
-                    alt="Logo" height="28">
-                <span class="fs-5">ZAMBEZI FUTURES</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="register.html">Register Player</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="database.html">Database</a></li>
-                    <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- NAVBAR -->
+    <div id="navbarContainer"></div>
 
     <main class="py-5">
         <div class="container">
@@ -76,7 +45,7 @@
                         <button class="btn btn-light fw-bold px-4 py-2 border d-flex align-items-center gap-2"><span
                                 class="material-symbols-outlined fs-5">filter_list</span> Filter</button>
                         <!-- Pencil icon links to register.html for editing/adding players -->
-                        <a href="register.html"
+                        <a href="player-registration.html"
                             class="btn btn-primary fw-bold px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
                             <span class="material-symbols-outlined fs-5">edit</span> Edit / Register
                         </a>
@@ -163,7 +132,7 @@
                                     <div class="d-flex justify-content-end gap-3">
                                         <a href="player-profile.html" style="color:var(--primary-color);"><span
                                                 class="material-symbols-outlined fs-5">visibility</span></a>
-                                        <a href="register.html?first=Tendai&last=Mokoena&age=U-17&academy=Zambezi+Elite+Academy"
+                                        <a href="player-registration.html?first=Tendai&last=Mokoena&age=U-17&academy=Zambezi+Elite+Academy"
                                             style="color:var(--accent-color);"><span
                                                 class="material-symbols-outlined fs-5">edit</span></a>
                                     </div>
@@ -187,7 +156,7 @@
                                     <div class="d-flex justify-content-end gap-3">
                                         <a href="player-profile.html" style="color:var(--primary-color);"><span
                                                 class="material-symbols-outlined fs-5">visibility</span></a>
-                                        <a href="register.html?first=Khensani&last=Dlamini&age=U-15&academy=Zambezi+Elite+Academy"
+                                        <a href="player-registration.html?first=Khensani&last=Dlamini&age=U-15&academy=Zambezi+Elite+Academy"
                                             style="color:var(--accent-color);"><span
                                                 class="material-symbols-outlined fs-5">edit</span></a>
                                     </div>
@@ -201,16 +170,11 @@
         </div>
     </main>
 
-    <footer class="py-5 border-top" style="background:var(--white);">
-        <div class="container text-center">
-            <span class="fw-black d-block mb-1"
-                style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
-            <p class="small text-muted mb-0">© 2024 Zambezi Futures. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div id="footerContainer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/Ronald_Academies.js "></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/academies.js"></script>
 </body>
 
 </html>

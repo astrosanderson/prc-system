@@ -1,110 +1,38 @@
 [
   {
-    "id": "p001",
-    "name": "Marcus Thorne",
-    "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuDa5fu9wZHoapvONTP-xVSTeFJcSHcmte9vTGoo0RbXUfz6B5XW6tFKJHvMK-rCrppgB3D7fIYKfKx5p3jxLOenM4T93SrYHGCYTiqnsf-SKOycrCeij1cdnGEhk_LWxfzbtad9Nyh4oDxO1Lze59xqpvwU0gI_3kW3yIJMqMOfMEN4HXqk3RJAQCFCVYtEV8y_c6f1WdrQUSh9vERpgcV-lZuKYoxuRPOATGG1t2qH8itA1f3Tv0WJvl0jiRtWVz9Vw27eklZnv-c",
-    "academy": "Victoria Falls FC",
-    "category": "U-14 Elite",
-    "status": "Approved",
-    "date": "2024-10-08"
+    "id": "player_001",
+    "name": "John Banda",
+    "age": 16,
+    "academyId": "academy_001",
+    "team": "U16",
+    "position": "Forward",
+    "status": "approved"
   },
   {
-    "id": "p002",
-    "name": "Leo Hernandez",
-    "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-MkJR6gEU812qeoDx4Udnz-6D4syFwE33QhcyDKy5Omz7ccdWQ8rDop78Oh_YHgxfiEo3tY9szG4VqqOexAmL-kb_lZGHsSjkx64sfuskqdTVJcaXFc9SinKeStVmY_DkukXc2DvgFNM8MmaGL6gMTx-FiN6xjb6I5UH-DT2o66pPY3NWQrwAUGPK2PLQaG625Y5cM59qwcNv1qVuvGzvgKi_ivlyjMq1WlYE0CYCdJmrRQKcLwb2m59jmxIOQz2vzJVSz0cuhUA",
-    "academy": "Zambezi Lions Academy",
-    "category": "U-12 Junior",
-    "status": "Pending",
-    "date": "2024-10-07"
+    "id": "player_002",
+    "name": "Peter Phiri",
+    "age": 14,
+    "academyId": "academy_001",
+    "team": "U14",
+    "position": "Midfielder",
+    "status": "pending"
   },
   {
-    "id": "p003",
-    "name": "Samuel Okoro",
-    "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuAtgTJU_gsV5ahToEgrvbV7yE3lIJRVYX1zAR5P79jokKeRkgSQt1Tq4vi8JFSvBZsDmPIU0Xhi_isUfs8FKKYFlvPq3vGEhcRvRKgKGDTOHojKdLDK7J4xTvwVHDQ81iYOSc073VuJv4Cetj0kdS1eL98FHcpqNi_pwZtiuMEPpMj0foCrULUIJVC04CdXS2e5XrwJPf9qR309HntN206KvyWFdQwxBQJsibLTZtJGMmMm3sbxQTM6VGA9IK0FVzYbNe61wBqAKu8",
-    "academy": "Riverside United",
-    "category": "U-14 Elite",
-    "status": "Approved",
-    "date": "2024-10-06"
+    "id": "player_003",
+    "name": "Emmanuel Mwila",
+    "age": 17,
+    "academyId": "academy_002",
+    "team": "U18",
+    "position": "Defender",
+    "status": "approved"
   },
   {
-    "id": "p004",
-    "name": "Amara Diallo",
-    "avatar": "https://i.pravatar.cc/40?img=10",
-    "academy": "Copperbelt Athletic",
-    "category": "U-10 Discovery",
-    "status": "Pending",
-    "date": "2024-10-05"
-  },
-  {
-    "id": "p005",
-    "name": "Kelechi Mensah",
-    "avatar": "https://i.pravatar.cc/40?img=12",
-    "academy": "Lusaka City FC",
-    "category": "U-12 Junior",
-    "status": "Approved",
-    "date": "2024-10-04"
-  },
-  {
-    "id": "p006",
-    "name": "Tendai Mwangi",
-    "avatar": "https://i.pravatar.cc/40?img=15",
-    "academy": "Southern Stars Academy",
-    "category": "U-14 Elite",
-    "status": "Rejected",
-    "date": "2024-10-03"
-  },
-  {
-    "id": "p007",
-    "name": "Blessing Nkosi",
-    "avatar": "https://i.pravatar.cc/40?img=17",
-    "academy": "Victoria Falls FC",
-    "category": "U-10 Discovery",
-    "status": "Approved",
-    "date": "2024-10-02"
-  },
-  {
-    "id": "p008",
-    "name": "Fatou Camara",
-    "avatar": "https://i.pravatar.cc/40?img=20",
-    "academy": "Zambezi Lions Academy",
-    "category": "U-12 Junior",
-    "status": "Pending",
-    "date": "2024-10-01"
-  },
-  {
-    "id": "p009",
-    "name": "Emeka Okafor",
-    "avatar": "https://i.pravatar.cc/40?img=22",
-    "academy": "Riverside United",
-    "category": "U-14 Elite",
-    "status": "Approved",
-    "date": "2024-09-30"
-  },
-  {
-    "id": "p010",
-    "name": "Zanele Dube",
-    "avatar": "https://i.pravatar.cc/40?img=25",
-    "academy": "Copperbelt Athletic",
-    "category": "U-10 Discovery",
-    "status": "Pending",
-    "date": "2024-09-29"
-  },
-  {
-    "id": "p011",
-    "name": "Chidi Eze",
-    "avatar": "https://i.pravatar.cc/40?img=28",
-    "academy": "Lusaka City FC",
-    "category": "U-14 Elite",
-    "status": "Approved",
-    "date": "2024-09-28"
-  },
-  {
-    "id": "p012",
-    "name": "Simone Banda",
-    "avatar": "https://i.pravatar.cc/40?img=30",
-    "academy": "Southern Stars Academy",
-    "category": "U-12 Junior",
-    "status": "Pending",
-    "date": "2024-09-27"
+    "id": "player_004",
+    "name": "Kelvin Zulu",
+    "age": 15,
+    "academyId": "academy_003",
+    "team": "U13",
+    "position": "Goalkeeper",
+    "status": "approved"
   }
 ]

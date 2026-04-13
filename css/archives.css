@@ -1,0 +1,27 @@
+.archive-hero {
+            background: linear-gradient(135deg, rgba(11, 61, 46, 0.93) 0%, rgba(11, 61, 46, 0.75) 100%),
+                url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2tBlWP0TDlA9aeRLWRGR4IIh4ieRFfIse4SHsHX6N274jK8-MwQ3xy1_xgQokXYsoQRVemkjTcxDtRm0BdZrK0jca1h7EAsTcFblBUC18PzIWa6xDfvHkuYj4KsmpGZYR__sOVNxBFBZVV5HC2wmT1fEIxnQAKTyWz5i6exEaHdlBM95hgBHGHT6v2xjBYidIQA538YFKYS43KHtjFlTSDzw9c4ZSlgk1qj0ppzrSoYKd1RnKkArfYMtk9ANfMrNFgmFWFm14knk');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            color: white;
+        }
+
+        .sidebar-archive {
+            background: var(--white);
+            height: calc(100vh - 60px);
+            position: sticky;
+            top: 60px;
+            padding: 2rem;
+            border-right: 1px solid var(--border-light);
+        }
+
+        .hof-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .hof-card:hover img {
+            transform: scale(1.05);
+        }

@@ -1,0 +1,4 @@
+.signup-option:hover {
+            border-color: var(--accent-color) !important;
+            background-color: rgba(182, 139, 44, 0.05) !important;
+        }

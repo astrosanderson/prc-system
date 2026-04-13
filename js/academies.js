@@ -11,8 +11,8 @@
    - Filter panel (sort by name / age / division)
    - Smooth row animations on filter/search
    - Highlight rows that match search term
-   - 👁  Eye icon  → opens inline Player Profile modal (mirrors Chibesa_player_profile.html)
-   - ✏  Pencil icon → opens inline Edit Player modal  (mirrors Boyd_register.html, pre-filled)
+   - 👁  Eye icon  → opens inline Player Profile modal
+   - ✏  Pencil icon → opens inline Edit Player modal, pre-filled
    - ➕ Edit/Register header button → opens blank Register Player modal
    ============================================================ */
 
@@ -20,7 +20,7 @@
 
 /* ============================================================
    SEED DATA — mirrors the two static rows already in the HTML.
-   Any players registered via register.html (saved in localStorage
+   Any players registered via player-registration.html (saved in localStorage
    under the key "prc_players") are merged in at runtime so the
    table always shows the full, up-to-date roster.
    ============================================================ */
@@ -73,6 +73,7 @@ const state = {
    ENTRY POINT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+    loadAcademyContext();
     injectModalStyles();
     loadPlayers();
     render();
@@ -88,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
    DATA — load & merge seed + localStorage registrations
    ============================================================ */
 function loadPlayers() {
-    // Grab anything saved by register.html
+    // Grab anything saved by the player registration flow
     let stored = [];
     try {
-        const raw = localStorage.getItem('prc_players');
+        const raw = localStorage.getItem('zfPlayers') || localStorage.getItem('prc_players');
         if (raw) {
             const parsed = JSON.parse(raw);
             if (Array.isArray(parsed)) stored = parsed;
@@ -109,7 +110,7 @@ function loadPlayers() {
         if (!pid || seenIds.has(pid)) return;
         seenIds.add(pid);
 
-        // Normalise field names — register.html may use different keys
+        // Normalise field names — registration flows may use different keys
         merged.push({
             id: pid,
             firstName: p.firstName || p.first || 'Unknown',
@@ -124,6 +125,38 @@ function loadPlayers() {
 
     state.allPlayers = merged;
     applyFilters();
+}
+
+function loadAcademyContext() {
+    const params = new URLSearchParams(window.location.search);
+    const academyId = params.get('id');
+    if (!academyId) return;
+
+    fetch('../data/academies.json')
+        .then((response) => response.ok ? response.json() : [])
+        .then((academies) => {
+            const academy = academies.find((item) => item.id === academyId);
+            if (!academy) return;
+
+            const heading = document.querySelector('h1.display-4');
+            const summary = document.querySelector('.lead.text-muted');
+            const breadcrumbs = document.querySelector('.breadcrumb-item.active');
+
+            if (heading) {
+                heading.innerHTML = `${academy.name} <span style="color:var(--accent-color);">Academy</span>`;
+            }
+
+            if (summary) {
+                summary.textContent = `Comprehensive registry of academy talent across all regional divisions for ${academy.location}.`;
+            }
+
+            if (breadcrumbs) {
+                breadcrumbs.textContent = academy.name;
+            }
+        })
+        .catch((error) => {
+            console.warn('[academies] Failed to load academy context:', error);
+        });
 }
 
 /** Normalise raw division strings like "u17", "U 17", "under-17" → "U-17" */
@@ -231,6 +264,7 @@ function buildRow(player, highlightQuery, idx) {
     const fullName = `${player.firstName} ${player.lastName}`;
     const divBadgeClass = DIVISION_BADGE[player.division] ||
         'badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 py-2 fw-bold';
+    const canEdit = userCanEditPlayer(player);
 
     const displayName = highlightQuery
         ? highlight(fullName, highlightQuery)
@@ -265,16 +299,32 @@ function buildRow(player, highlightQuery, idx) {
                   title="View Player Profile">
             <span class="material-symbols-outlined fs-5">visibility</span>
           </button>
-          <!-- Pencil icon — opens Edit Player modal pre-filled -->
+          ${canEdit ? `<!-- Pencil icon — opens Edit Player modal pre-filled -->
           <button class="btn btn-link p-0 prc-edit-btn"
                   data-player-id="${escapeAttr(player.id)}"
                   style="color:var(--accent-color,#b68b2c);"
                   title="Edit Player Details">
             <span class="material-symbols-outlined fs-5">edit</span>
-          </button>
+          </button>` : ''}
         </div>
       </td>
     </tr>`;
+}
+
+function userCanEditPlayer(player) {
+    const session = window.zfApp?.getSession?.();
+    if (!session) return false;
+    if (session.role === 'admin') return true;
+    return session.academyName === player.academy;
+}
+
+function userCanManageCurrentAcademy() {
+    const session = window.zfApp?.getSession?.();
+    if (!session) return false;
+    if (session.role === 'admin') return true;
+
+    const currentHeading = document.querySelector('h1.display-4')?.textContent || '';
+    return currentHeading.toLowerCase().includes((session.academyName || '').toLowerCase());
 }
 
 /** Update the three metric cards dynamically based on the full roster */
@@ -619,7 +669,7 @@ function escapeAttr(str) {
    Three modals injected purely via JS:
      1. prc-profile-modal  — Player Profile (eye icon)
      2. prc-register-modal — Register / Edit Player (pencil + header btn)
-   HTML files Chibesa_player_profile.html and Boyd_register.html
+   Current player profile and player registration layouts
    are NOT modified — their layout is reproduced inside these modals.
    ============================================================ */
 
@@ -769,8 +819,15 @@ function initModals() {
     }
 
     // Header "Edit / Register" button — opens blank register modal
-    const headerEditBtn = document.querySelector('a.btn.btn-primary[href="register.html"]');
+    const headerEditBtn = document.querySelector('a.btn.btn-primary[href="player-registration.html"]');
     if (headerEditBtn) {
+        if (!userCanManageCurrentAcademy()) {
+            headerEditBtn.classList.add('disabled');
+            headerEditBtn.setAttribute('aria-disabled', 'true');
+            headerEditBtn.setAttribute('title', 'Members can only add players to their own academy.');
+            return;
+        }
+
         headerEditBtn.addEventListener('click', e => {
             e.preventDefault();
             openRegisterModal(null); // null = new player
@@ -779,7 +836,7 @@ function initModals() {
 }
 
 /* ============================================================
-   PROFILE MODAL  (mirrors Chibesa_player_profile.html layout)
+   PROFILE MODAL
    ============================================================ */
 function openProfileModal(playerId) {
     const player = state.allPlayers.find(p => p.id === playerId);
@@ -961,7 +1018,7 @@ function openProfileModal(playerId) {
 }
 
 /* ============================================================
-   REGISTER / EDIT MODAL  (mirrors Boyd_register.html layout)
+   REGISTER / EDIT MODAL
    ============================================================ */
 function openRegisterModal(playerId) {
     // playerId === null  → new player (Register mode)

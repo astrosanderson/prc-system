@@ -1,0 +1,133 @@
+:root {
+  --primary-color: #0b3d2e;
+  --primary-green: #0b3d2e;
+  --secondary-green: #145c43;
+  --accent-color: #c8a95b;
+  --gold: #c8a95b;
+  --white: #ffffff;
+  --bg-color: #f4f6f1;
+  --light-bg: #f5f5f5;
+  --border-light: rgba(11, 61, 46, 0.12);
+  --text-color: #17352b;
+}
+
+body {
+  color: var(--text-color);
+}
+
+.zf-navbar {
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-green) 100%) !important;
+  box-shadow: 0 10px 24px rgba(11, 61, 46, 0.15);
+}
+
+.zf-brand-mark {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 900;
+  font-size: 0.82rem;
+}
+
+.zf-brand-text,
+.navbar-brand,
+.navbar-brand span {
+  color: var(--white) !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-weight: 600;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--accent-color) !important;
+}
+
+.zf-role-pill {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.45rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(200, 169, 91, 0.18);
+  color: var(--accent-color);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.zf-nav-action {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: 0;
+  font-weight: 800;
+  padding-inline: 0.95rem;
+}
+
+.zf-nav-action:hover {
+  background: #d7b878;
+  color: var(--primary-color);
+}
+
+.btn-gold {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  font-weight: 800;
+}
+
+.btn-gold:hover {
+  background: #d7b878;
+  color: var(--primary-color);
+}
+
+.badge-gold {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(200, 169, 91, 0.16);
+  color: var(--accent-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.zf-footer {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.zf-footer-brand {
+  color: var(--white);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.zf-footer-copy,
+.zf-footer-meta {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.zf-footer-links a {
+  color: var(--accent-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.zf-footer-links a:hover {
+  color: #e2c98e;
+}
+
+.card {
+  border-color: rgba(11, 61, 46, 0.08);
+}
