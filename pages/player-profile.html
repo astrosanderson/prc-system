@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile | Zambezi Futures</title>
+    <meta name="description" content="View and manage player profile, match history, medical reports and performance analytics for Zambezi Futures players.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+   
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/player-profile.css">
+</head>
+
+<body data-page="player-profile" data-access="member">
+
+    <!-- NAVBAR -->
+    <div id="navbarContainer"></div>
+
+    <main class="py-5">
+        <div class="container">
+
+            <!-- Header -->
+            <header class="mb-5">
+                <div class="row align-items-end g-4">
+                    <div class="col-md-8">
+                        <nav aria-label="breadcrumb" class="mb-3">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item small fw-bold text-uppercase">
+                                    <a href="database.html" class="text-decoration-none" style="color:var(--accent-color);">Database</a>
+                                </li>
+                                <li class="breadcrumb-item small fw-bold text-uppercase">
+                                    <a href="academies.html" class="text-decoration-none" style="color:var(--accent-color);">Academy</a>
+                                </li>
+                                <li class="breadcrumb-item active small fw-bold text-uppercase text-muted" id="player-name-breadcrumb">
+                                    Marcus Thorne
+                                </li>
+                            </ol>
+                        </nav>
+                        <h1 class="display-4 fw-black mb-2" id="player-name-heading">Marcus Thorne</h1>
+                        <div class="d-flex flex-wrap align-items-center gap-3 mt-3">
+                            <span class="badge-gold" id="player-division-badge">Division U-14</span>
+                            <span class="text-muted fw-bold small d-flex align-items-center gap-1">
+                                <span class="material-symbols-outlined fs-6" style="color:var(--accent-color);">location_on</span>
+                                <span id="player-academy-label">Zambezi North Elite Academy</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <div class="d-flex gap-2 justify-content-md-end flex-wrap">
+                            <button id="btn-edit-info"
+                                class="btn btn-primary fw-bold px-4 d-flex align-items-center gap-2">
+                                <span class="material-symbols-outlined fs-5">edit</span> Edit Info
+                            </button>
+                            <button id="btn-print-id"
+                                class="btn btn-light fw-bold px-4 border d-flex align-items-center gap-2">
+                                <span class="material-symbols-outlined fs-5">download</span> Print ID
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Bento Grid -->
+            <div class="row g-4">
+
+                <!-- Left Column -->
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <!-- Bio -->
+                        <div class="col-md-6">
+                            <div class="card p-4">
+                                <h3 class="h6 fw-black text-uppercase mb-4"
+                                    style="color:var(--accent-color); letter-spacing:0.05em;">Personal Details</h3>
+                                <div class="d-grid gap-3">
+                                    <div class="pb-2 border-bottom d-flex justify-content-between">
+                                        <span class="small text-muted fw-bold">DOB</span>
+                                        <span class="small fw-black" style="color:var(--primary-color);" id="detail-dob">May 14, 2011</span>
+                                    </div>
+                                    <div class="pb-2 border-bottom d-flex justify-content-between">
+                                        <span class="small text-muted fw-bold">PRC ID</span>
+                                        <span class="small fw-black" style="color:var(--accent-color);" id="detail-prc-id">ZF-2024-8849-MT</span>
+                                    </div>
+                                    <div class="pb-2 border-bottom d-flex justify-content-between">
+                                        <span class="small text-muted fw-bold">Nationality</span>
+                                        <span class="small fw-black" style="color:var(--primary-color);" id="detail-nationality">Zambian</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="small text-muted fw-bold">Position</span>
+                                        <span class="small fw-black" style="color:var(--primary-color);" id="detail-position">Attacking Midfield</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Season Rating -->
+                        <div class="col-md-6">
+                            <div class="card p-4 text-white overflow-hidden position-relative"
+                                style="background:var(--primary-color); border:none;">
+                                <div class="position-relative" style="z-index:1;">
+                                    <h3 class="h6 fw-black text-uppercase mb-auto"
+                                        style="color:var(--accent-color); letter-spacing:0.05em;">Season Rating</h3>
+                                    <div class="mt-4">
+                                        <h2 class="display-2 fw-black mb-0" id="season-rating-value">8.4</h2>
+                                        <p class="fw-bold small mb-0 d-flex align-items-center gap-1 mt-2"
+                                            style="color:var(--accent-color);">
+                                            <span class="material-symbols-outlined fs-6"
+                                                style="font-variation-settings:'FILL' 1;">trending_up</span>
+                                            <span id="season-rating-badge">Top 5% in Division</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined position-absolute bottom-0 end-0 text-white opacity-10"
+                                    style="font-size:7rem;">insights</span>
+                            </div>
+                        </div>
+
+                        <!-- Officials -->
+                        <div class="col-12">
+                            <div class="card p-4">
+                                <h3 class="h6 fw-black text-uppercase mb-4"
+                                    style="color:var(--accent-color); letter-spacing:0.05em;">Assigned Officials</h3>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded-3 d-flex align-items-center gap-3"
+                                            style="background:var(--bg-color);">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVZkX8nIoqtRJeCPDvJIV0_0y8fUkQwdqmVfVVp10VCsC96vDZyaeGAi27xLJ3mK3_qmSpRAZYxC2zvnrGNfDmxMnLJ3h3ztTWc_AtRC07ALrHpJ5Ki26Jj3rB1cmkqOzpdjc1XJpuYi719b2CmL8bgAcEkcrJVbiLdoAcBjFDy8tew0PtHsXedeKOpwv0MbzfA3mmb_e4xS4VLYSjjcrATq5_SJxiJBjBS7NHUJ4cjIN_fDRpfuvpAt80wqY3JZk89F1STN2kOWox"
+                                                alt="Coach" class="rounded-circle" width="44" height="44"
+                                                style="object-fit:cover;">
+                                            <div>
+                                                <h6 class="fw-black mb-0" id="coach-name"
+                                                    style="color:var(--primary-color); font-size:0.85rem;">Victor Mwembe</h6>
+                                                <p class="small text-muted mb-0 fw-bold">Head Coach</p>
+                                            </div>
+                                            <button class="btn btn-link ms-auto p-0" style="color:var(--accent-color);">
+                                                <span class="material-symbols-outlined">mail</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="p-3 rounded-3 d-flex align-items-center gap-3"
+                                            style="background:var(--bg-color);">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnqUv1rLZw8JbLCMGxwoteMKNlste9eCvpA2elHNMhVvD3nKwi1_T7eoBwUNOdYCO2gysQ6vHHewv5l9KOn4-I6Ngz4T98iuBzgjI8QMP8lFefL84WxJ7XBiHlxNI5VOzBtnsQnRSmUjCtmvhKFe_56-30TvtNrYgOG8erBt4h5FAME_zZMS9svjRzCqYMnwSpqWb7JzQQ8aNpDsWkwIy_miZlHaU-PZyKzU5GFloBOyUQdEii1opKLT-itoSGE8UXlMgiu9IeCLi0"
+                                                alt="Manager" class="rounded-circle" width="44" height="44"
+                                                style="object-fit:cover;">
+                                            <div>
+                                                <h6 class="fw-black mb-0" id="manager-name"
+                                                    style="color:var(--primary-color); font-size:0.85rem;">Sarah Lungu</h6>
+                                                <p class="small text-muted mb-0 fw-bold">Player Manager</p>
+                                            </div>
+                                            <button class="btn btn-link ms-auto p-0" style="color:var(--accent-color);">
+                                                <span class="material-symbols-outlined">mail</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="col-lg-4">
+                    <div class="d-grid gap-4">
+                        <!-- Hero Photo -->
+                        <div class="card p-0 border-0 shadow-lg overflow-hidden position-relative">
+                            <img id="player-hero-img"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiGsYgFMyQ3qNqsqUBdH_GjE3iANcjDCdrn9miiGPQf7y096_Chxhhq0LKaXg5HjtYsoM5ZuPeB_KJQqfHZY76QuQBqS_5UBgWSkGRjE4rusOmXVKSRbv8YdU6acxR_sQBGiMIWAb2L2fvSidi0z6SU_XgP3yJZ8fW922_GKoOPB3SKXt1kIXTBO6ygrrmERk6XT3w525WNFQ645x_yskPlqOueyi_12xK9XE1qdIDJuetGZmMqG6mw1hJlobkHxflXQORFkyUtNmC"
+                                alt="Player" class="player-hero-img">
+                            <div class="position-absolute bottom-0 start-0 w-100 p-4 pt-5"
+                                style="background:linear-gradient(transparent, rgba(11,61,46,0.9));">
+                                <p class="fw-black small text-uppercase mb-1" id="player-overlay-status"
+                                    style="color:var(--accent-color);">Status: Active</p>
+                                <h2 class="text-white h3 fw-black mb-0" id="player-overlay-name">M. THORNE</h2>
+                            </div>
+                        </div>
+
+                        <!-- ID Card -->
+                        <div class="id-card shadow-lg">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div class="d-flex align-items-center gap-2"
+                                    style="font-size:0.7rem; font-weight:900; letter-spacing:0.1em; color:var(--accent-color);">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0uiCKz2IEXlmfk9nb0UVNmGO2UMnYBrYpn7vRMu0LVCrlR_x2cmMNmRYx4wQTGeVRChKMNcVlLcN1PpaZjQ9K8McDFTzjC4oDa5As1RUNImpMgwRadVYjzh0c_UcaYBEMk_tn46MRfHx7pFbBkGALWmoU0j_9ATZBD-ID5QbJOCVx2m3IMiNZ1wIbMdIrvR7etXEbugERRB3h7WjBVvlV335euRZYxRG_pflBVnlKnRz45Hv0yIdgMcxugTDJ2Ip7DM62XbuBM7ljw"
+                                        height="18" style="filter:brightness(0) invert(1);"> ZAMBEZI FUTURES
+                                </div>
+                                <span class="material-symbols-outlined fs-5" style="color:var(--accent-color);">qr_code_2</span>
+                            </div>
+                            <div class="d-flex gap-3 align-items-center">
+                                <img id="id-card-thumb"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiGR4vWn9YB6ygox0-Xf0mcgQqzsvuSMv8hF0gXDu9FqcWWQGb1f6EKwH8T3g73zuNwhJSn9LVHABZmvArXrF4n-SC-9D8R_-Sum1Kw1xfLXobMkJmk3dZeeR1XAgRFShU4fXezyK7aLxf5D1mhFq5Dw8y_8FQuAxPge8mC-f1MuGhW_wpp_4LXx9VMWH5NhpB7pXLRwSngOFF1Z-R9IAlFc1S4HsgU6j6AKDiNkcwbZQaSCUkBDfrLt_k7Cca1sqE3ZkKB51P51Wb"
+                                    alt="Thumb" class="rounded border border-white p-1 bg-white" width="65" height="80"
+                                    style="object-fit:cover;">
+                                <div>
+                                    <h4 class="text-white h5 fw-black mb-0" style="line-height:1.2;">
+                                        <span id="id-card-name-first">MARCUS</span><br>
+                                        <span id="id-card-name-last">THORNE</span>
+                                    </h4>
+                                    <p class="fw-bold mb-1" style="font-size:0.6rem; color:var(--accent-color);">
+                                        ID: <span id="id-card-id">ZF-2024-8849-MT</span>
+                                    </p>
+                                    <p class="text-white text-opacity-50 small mb-0 fw-bold" style="font-size:0.55rem;">EXP: 12/2025</p>
+                                </div>
+                            </div>
+                            <button id="btn-download-id-card"
+                                class="btn btn-gold btn-sm w-100 mt-4 fw-bold d-flex align-items-center justify-content-center gap-2">
+                                <span class="material-symbols-outlined fs-6">download</span> DOWNLOAD ID
+                            </button>
+                        </div>
+
+                        <!-- Sidebar Action Buttons -->
+                        <div class="list-group shadow-sm border rounded-3 overflow-hidden">
+                            <button id="btn-medical-reports"
+                                class="kpp-sidebar-btn list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0 border-bottom">
+                                <span class="fw-bold" style="color:var(--primary-color);">Medical Reports</span>
+                                <span class="material-symbols-outlined" style="color:var(--accent-color);">medical_services</span>
+                            </button>
+                            <button id="btn-match-history"
+                                class="kpp-sidebar-btn list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0 border-bottom">
+                                <span class="fw-bold" style="color:var(--primary-color);">Match History</span>
+                                <span class="material-symbols-outlined" style="color:var(--accent-color);">sports_soccer</span>
+                            </button>
+                            <button
+                                class="kpp-sidebar-btn list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3 border-0">
+                                <span class="fw-bold" style="color:var(--primary-color);">Academic Standing</span>
+                                <span class="material-symbols-outlined" style="color:var(--accent-color);">school</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-5 border-top" style="background:var(--white);">
+        <div class="container text-center">
+            <span class="fw-black d-block mb-1"
+                style="font-family:'Montserrat',sans-serif; color:var(--primary-color);">ZAMBEZI FUTURES</span>
+            <p class="small text-muted mb-0">© 2024 Zambezi Futures. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         MODAL 1: Edit Profile
+    ═══════════════════════════════════════════════════ -->
+    <div class="kpp-modal-backdrop" id="modal-edit-profile" role="dialog" aria-modal="true"
+        aria-labelledby="edit-modal-title">
+        <div class="kpp-modal">
+            <div class="kpp-modal-header">
+                <h2 class="kpp-modal-title" id="edit-modal-title">
+                    <span class="material-symbols-outlined fs-6 me-1" style="vertical-align:middle;">edit</span>
+                    Edit Player Profile
+                </h2>
+                <button class="kpp-modal-close" data-modal-close="modal-edit-profile" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="kpp-modal-body">
+                <form id="edit-profile-form" novalidate>
+                    <!-- Photo Upload -->
+                    <div class="mb-4">
+                        <label class="kpp-form-label">Profile Photo</label>
+                        <div class="kpp-photo-upload-area" onclick="document.getElementById('photo-upload-input').click()">
+                            <img id="edit-photo-preview"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiGsYgFMyQ3qNqsqUBdH_GjE3iANcjDCdrn9miiGPQf7y096_Chxhhq0LKaXg5HjtYsoM5ZuPeB_KJQqfHZY76QuQBqS_5UBgWSkGRjE4rusOmXVKSRbv8YdU6acxR_sQBGiMIWAb2L2fvSidi0z6SU_XgP3yJZ8fW922_GKoOPB3SKXt1kIXTBO6ygrrmERk6XT3w525WNFQ645x_yskPlqOueyi_12xK9XE1qdIDJuetGZmMqG6mw1hJlobkHxflXQORFkyUtNmC"
+                                alt="Player photo preview" class="kpp-photo-preview">
+                            <p class="small mb-0" style="color:rgba(255,255,255,0.5);">
+                                <span class="material-symbols-outlined fs-6" style="vertical-align:middle;">upload</span>
+                                Click to upload or change photo
+                            </p>
+                            <input type="file" id="photo-upload-input" accept="image/*" style="display:none;">
+                        </div>
+                    </div>
+
+                    <!-- Name Row -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label for="edit-first-name" class="kpp-form-label">First Name</label>
+                            <input type="text" id="edit-first-name" class="kpp-form-input" placeholder="First name" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="edit-last-name" class="kpp-form-label">Last Name</label>
+                            <input type="text" id="edit-last-name" class="kpp-form-input" placeholder="Last name" required>
+                        </div>
+                    </div>
+
+                    <!-- DOB + Nationality -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label for="edit-dob" class="kpp-form-label">Date of Birth</label>
+                            <input type="date" id="edit-dob" class="kpp-form-input" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="edit-nationality" class="kpp-form-label">Nationality</label>
+                            <input type="text" id="edit-nationality" class="kpp-form-input" placeholder="Nationality">
+                        </div>
+                    </div>
+
+                    <!-- Position + Division -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label for="edit-position" class="kpp-form-label">Position</label>
+                            <select id="edit-position" class="kpp-form-input">
+                                <option value="">Select position</option>
+                                <option value="Goalkeeper">Goalkeeper</option>
+                                <option value="Centre Back">Centre Back</option>
+                                <option value="Full Back">Full Back</option>
+                                <option value="Defensive Midfield">Defensive Midfield</option>
+                                <option value="Central Midfield">Central Midfield</option>
+                                <option value="Attacking Midfield">Attacking Midfield</option>
+                                <option value="Winger">Winger</option>
+                                <option value="Striker">Striker</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="edit-division" class="kpp-form-label">Division</label>
+                            <select id="edit-division" class="kpp-form-input">
+                                <option value="U-10">U-10</option>
+                                <option value="U-12">U-12</option>
+                                <option value="U-14">U-14</option>
+                                <option value="U-16">U-16</option>
+                                <option value="U-18">U-18</option>
+                                <option value="Senior">Senior</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Academy + Status -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-8">
+                            <label for="edit-academy" class="kpp-form-label">Academy</label>
+                            <input type="text" id="edit-academy" class="kpp-form-input" placeholder="Academy name">
+                        </div>
+                        <div class="col-4">
+                            <label for="edit-status" class="kpp-form-label">Status</label>
+                            <select id="edit-status" class="kpp-form-input">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Injured">Injured</option>
+                                <option value="Suspended">Suspended</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Hidden submit — triggered from footer button -->
+                    <button type="submit" id="edit-submit-hidden" style="display:none;">Save</button>
+                </form>
+            </div>
+
+            <div class="kpp-modal-footer">
+                <button class="kpp-btn kpp-btn--ghost" data-modal-close="modal-edit-profile">Cancel</button>
+                <button class="kpp-btn kpp-btn--primary"
+                    onclick="document.getElementById('edit-submit-hidden').click()">
+                    <span class="material-symbols-outlined fs-6">save</span> Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         MODAL 2: Medical Reports
+    ═══════════════════════════════════════════════════ -->
+    <div class="kpp-modal-backdrop" id="modal-medical" role="dialog" aria-modal="true"
+        aria-labelledby="medical-modal-title">
+        <div class="kpp-modal">
+            <div class="kpp-modal-header">
+                <h2 class="kpp-modal-title" id="medical-modal-title">
+                    <span class="material-symbols-outlined fs-6 me-1" style="vertical-align:middle;">medical_services</span>
+                    Medical Reports
+                </h2>
+                <button class="kpp-modal-close" data-modal-close="modal-medical" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="kpp-modal-body">
+                <!-- Clearance Banner -->
+                <div class="d-flex align-items-center gap-3 p-3 rounded-3 mb-4"
+                    style="background:rgba(26,122,74,0.15); border:1px solid rgba(34,197,94,0.3);">
+                    <span class="material-symbols-outlined" style="color:#22c55e; font-size:2rem;">verified</span>
+                    <div>
+                        <p class="fw-black mb-0" style="color:#22c55e; font-size:0.85rem;">Clearance Status</p>
+                        <span id="med-clearance" class="kpp-status-badge kpp-badge--green">Cleared</span>
+                    </div>
+                </div>
+
+                <!-- Vitals Grid -->
+                <h3 class="kpp-form-label mb-3">Vitals &amp; Basic Info</h3>
+                <div class="row g-2 mb-4">
+                    <div class="col-4">
+                        <div class="text-center p-3 rounded-3" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+                            <div style="font-size:1.4rem; font-weight:900; color:#b68b2c;" id="med-blood-type">O+</div>
+                            <div style="font-size:0.65rem; text-transform:uppercase; font-weight:700; color:rgba(255,255,255,0.45);">Blood Type</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center p-3 rounded-3" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+                            <div style="font-size:1.4rem; font-weight:900; color:#b68b2c;" id="med-height">158 cm</div>
+                            <div style="font-size:0.65rem; text-transform:uppercase; font-weight:700; color:rgba(255,255,255,0.45);">Height</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center p-3 rounded-3" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+                            <div style="font-size:1.4rem; font-weight:900; color:#b68b2c;" id="med-weight">52 kg</div>
+                            <div style="font-size:0.65rem; text-transform:uppercase; font-weight:700; color:rgba(255,255,255,0.45);">Weight</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Rows -->
+                <h3 class="kpp-form-label mb-3">Medical Details</h3>
+                <div class="mb-4">
+                    <div class="kpp-info-row">
+                        <span class="kpp-info-label">Allergies</span>
+                        <span class="kpp-info-value" id="med-allergies">None</span>
+                    </div>
+                    <div class="kpp-info-row">
+                        <span class="kpp-info-label">Last Checkup</span>
+                        <span class="kpp-info-value" id="med-last-checkup">10 September 2024</span>
+                    </div>
+                    <div class="kpp-info-row">
+                        <span class="kpp-info-label">Known Conditions</span>
+                        <span class="kpp-info-value">
+                            <ul id="med-conditions-list" class="mb-0 ps-3"
+                                style="list-style:disc; color:rgba(255,255,255,0.8); font-size:0.82rem;">
+                                <li class="text-muted">No recorded conditions.</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Clinical Notes -->
+                <h3 class="kpp-form-label mb-2">Clinical Notes</h3>
+                <div class="p-3 rounded-3" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+                    <p class="mb-0" id="med-notes" style="font-size:0.83rem; color:rgba(255,255,255,0.75); line-height:1.6;">
+                        No notes on record.
+                    </p>
+                </div>
+            </div>
+
+            <div class="kpp-modal-footer">
+                <button class="kpp-btn kpp-btn--ghost" data-modal-close="modal-medical">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         MODAL 3: Match History + Radar Chart
+    ═══════════════════════════════════════════════════ -->
+    <div class="kpp-modal-backdrop" id="modal-match-history" role="dialog" aria-modal="true"
+        aria-labelledby="history-modal-title">
+        <div class="kpp-modal kpp-modal--wide">
+            <div class="kpp-modal-header">
+                <h2 class="kpp-modal-title" id="history-modal-title">
+                    <span class="material-symbols-outlined fs-6 me-1" style="vertical-align:middle;">sports_soccer</span>
+                    Match History &amp; Performance
+                </h2>
+                <button class="kpp-modal-close" data-modal-close="modal-match-history" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="kpp-modal-body">
+                <!-- Season Selector -->
+                <div class="kpp-season-bar">
+                    <label for="season-selector">Season</label>
+                    <select id="season-selector"></select>
+                </div>
+
+                <!-- Stats Summary -->
+                <div class="kpp-stat-grid">
+                    <div class="kpp-stat-card">
+                        <div class="kpp-stat-number" id="stat-matches">22</div>
+                        <div class="kpp-stat-label">Matches Played</div>
+                    </div>
+                    <div class="kpp-stat-card">
+                        <div class="kpp-stat-number" id="stat-goals">9</div>
+                        <div class="kpp-stat-label">Goals Scored</div>
+                    </div>
+                    <div class="kpp-stat-card">
+                        <div class="kpp-stat-number" id="stat-assists">7</div>
+                        <div class="kpp-stat-label">Assists</div>
+                    </div>
+                </div>
+
+                <!-- Radar Chart -->
+                <h3 class="kpp-form-label mb-3">Performance Radar – <span id="stat-season-label">2023/2024</span></h3>
+                <div class="kpp-radar-wrap">
+                    <canvas id="radar-chart-canvas" width="500" height="400"></canvas>
+                </div>
+
+                <!-- Match Table -->
+                <h3 class="kpp-form-label mb-3">Recent Matches</h3>
+                <div style="overflow-x:auto;">
+                    <table class="kpp-match-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Opponent</th>
+                                <th>Result</th>
+                                <th>G / A</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody id="match-history-tbody">
+                            <tr><td colspan="5" class="text-center text-muted py-3">Loading…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="kpp-modal-footer">
+                <button class="kpp-btn kpp-btn--ghost" data-modal-close="modal-match-history">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         MODAL 4: Print / Download ID
+    ═══════════════════════════════════════════════════ -->
+    <div class="kpp-modal-backdrop" id="modal-print" role="dialog" aria-modal="true"
+        aria-labelledby="print-modal-title">
+        <div class="kpp-modal kpp-modal--print">
+            <div class="kpp-modal-header">
+                <h2 class="kpp-modal-title" id="print-modal-title">
+                    <span class="material-symbols-outlined fs-6 me-1" style="vertical-align:middle;">download</span>
+                    Player ID &amp; Season Report
+                </h2>
+                <button class="kpp-modal-close" data-modal-close="modal-print" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="kpp-modal-body" style="background:#fff;">
+                <div class="kpp-print-card">
+                    <!-- Card Header -->
+                    <div class="kpp-print-card-header">
+                        <div style="font-size:0.7rem; font-weight:900; letter-spacing:0.12em; color:#b68b2c;">
+                            ZAMBEZI FUTURES · PLAYER RECORD CARD
+                        </div>
+                        <span class="material-symbols-outlined" style="color:#b68b2c; font-size:1.2rem;">qr_code_2</span>
+                    </div>
+
+                    <div class="kpp-print-card-body">
+                        <!-- Player Row -->
+                        <div class="kpp-print-player-row">
+                            <img id="print-player-photo"
+                                src="" alt="Player" class="kpp-print-photo">
+                            <div>
+                                <h3 class="kpp-print-name" id="print-player-name">MARCUS THORNE</h3>
+                                <p class="kpp-print-detail" id="print-position">Attacking Midfield</p>
+                                <p class="kpp-print-detail" id="print-academy">Zambezi North Elite Academy</p>
+                                <p class="kpp-print-detail" id="print-division">Division U-14</p>
+                                <p class="kpp-print-id-tag">PRC ID: <span id="print-prc-id">ZF-2024-8849-MT</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Season Stats -->
+                        <div style="font-size:0.65rem; text-transform:uppercase; font-weight:700; color:rgba(10,46,34,0.5); letter-spacing:0.06em; margin-bottom:0.5rem;">
+                            Season: <span id="print-season">2023/2024</span>
+                        </div>
+                        <div class="kpp-print-stats">
+                            <div class="kpp-print-stat">
+                                <div class="kpp-print-stat-num" id="print-matches">22</div>
+                                <div class="kpp-print-stat-lbl">Matches</div>
+                            </div>
+                            <div class="kpp-print-stat">
+                                <div class="kpp-print-stat-num" id="print-goals">9</div>
+                                <div class="kpp-print-stat-lbl">Goals</div>
+                            </div>
+                            <div class="kpp-print-stat">
+                                <div class="kpp-print-stat-num" id="print-assists">7</div>
+                                <div class="kpp-print-stat-lbl">Assists</div>
+                            </div>
+                        </div>
+
+                        <!-- Season Rating -->
+                        <div class="kpp-print-rating-section">
+                            <div>
+                                <div style="font-size:0.62rem; text-transform:uppercase; font-weight:700; color:rgba(10,46,34,0.45); letter-spacing:0.06em; margin-bottom:0.2rem;">
+                                    Overall Season Rating
+                                </div>
+                                <div class="kpp-print-big-rating" id="print-rating">8.4</div>
+                                <div style="font-size:0.62rem; color:rgba(10,46,34,0.4); margin-top:0.15rem;">out of 10.0</div>
+                            </div>
+                            <div>
+                                <span id="print-rating-badge" class="kpp-print-tier-badge kpp-tier--elite">ELITE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kpp-print-footer-bar">
+                        <span>ISSUED: <span id="print-issued-date">10/04/2026</span></span>
+                        <span>ZAMBEZI FUTURES ACADEMY SYSTEM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kpp-modal-footer" style="background:#fff; border-top:1px solid rgba(10,46,34,0.1);">
+                <button class="kpp-btn kpp-btn--ghost" data-modal-close="modal-print"
+                    style="background:rgba(10,46,34,0.08); color:#0a2e22; border-color:rgba(10,46,34,0.15);">
+                    Cancel
+                </button>
+                <button class="kpp-btn kpp-btn--dark" id="btn-trigger-print">
+                    <span class="material-symbols-outlined fs-6">print</span> Print / Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footerContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/player-profile.js"></script>
+</body>
+
+</html>

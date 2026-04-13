@@ -1,0 +1,23 @@
+[
+  {
+    "id": "award_001",
+    "title": "Top Scorer",
+    "playerId": "player_001",
+    "academyId": "academy_001",
+    "year": 2024
+  },
+  {
+    "id": "award_002",
+    "title": "Best Goalkeeper",
+    "playerId": "player_004",
+    "academyId": "academy_003",
+    "year": 2024
+  },
+  {
+    "id": "award_003",
+    "title": "Most Valuable Player",
+    "playerId": "player_003",
+    "academyId": "academy_002",
+    "year": 2024
+  }
+]
