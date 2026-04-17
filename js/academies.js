@@ -52,9 +52,12 @@ const SEED_PLAYERS = [
    Maps a division string to Bootstrap badge classes.
    ============================================================ */
 const DIVISION_BADGE = {
-    'U-15': 'badge bg-warning bg-opacity-10 text-warning-emphasis rounded-pill px-3 py-2 fw-bold border border-warning border-opacity-25',
-    'U-17': 'badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold border border-success border-opacity-25',
-    'U-20': 'badge bg-info bg-opacity-10 text-info rounded-pill px-3 py-2 fw-bold border border-info border-opacity-25'
+    'U-8': 'badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 py-2 fw-bold border border-secondary border-opacity-25',
+    'U-10': 'badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-2 fw-bold border border-primary border-opacity-25',
+    'U-12': 'badge bg-warning bg-opacity-10 text-warning-emphasis rounded-pill px-3 py-2 fw-bold border border-warning border-opacity-25',
+    'U-14': 'badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold border border-success border-opacity-25',
+    'U-16': 'badge bg-info bg-opacity-10 text-info rounded-pill px-3 py-2 fw-bold border border-info border-opacity-25',
+    'U-18': 'badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-2 fw-bold border border-danger border-opacity-25'
 };
 
 /* ============================================================
@@ -161,12 +164,15 @@ function loadAcademyContext() {
 
 /** Normalise raw division strings like "u17", "U 17", "under-17" → "U-17" */
 function normaliseDivision(raw) {
-    if (!raw) return 'U-17';
+    if (!raw) return 'U-14';
     const cleaned = raw.toString().toUpperCase().replace(/\s+/g, '').replace('UNDER', 'U');
-    if (cleaned.includes('15')) return 'U-15';
-    if (cleaned.includes('17')) return 'U-17';
-    if (cleaned.includes('20')) return 'U-20';
-    return raw; // keep as-is if unrecognised
+    if (cleaned.includes('8')) return 'U-8';
+    if (cleaned.includes('10')) return 'U-10';
+    if (cleaned.includes('12')) return 'U-12';
+    if (cleaned.includes('14')) return 'U-14';
+    if (cleaned.includes('16')) return 'U-16';
+    if (cleaned.includes('18')) return 'U-18';
+    return raw; // keep as-is if unrecognized
 }
 
 /* ============================================================

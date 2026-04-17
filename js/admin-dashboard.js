@@ -17,7 +17,7 @@ const PLAYERS = [
         name: 'Marcus Thorne',
         avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDa5fu9wZHoapvONTP-xVSTeFJcSHcmte9vTGoo0RbXUfz6B5XW6tFKJHvMK-rCrppgB3D7fIYKfKx5p3jxLOenM4T93SrYHGCYTiqnsf-SKOycrCeij1cdnGEhk_LWxfzbtad9Nyh4oDxO1Lze59xqpvwU0gI_3kW3yIJMqMOfMEN4HXqk3RJAQCFCVYtEV8y_c6f1WdrQUSh9vERpgcV-lZuKYoxuRPOATGG1t2qH8itA1f3Tv0WJvl0jiRtWVz9Vw27eklZnv-c',
         academy: 'Victoria Falls FC',
-        category: 'U-14 Elite',
+        category: 'U-14',
         status: 'Approved',
         date: '2024-10-08',
     },
@@ -26,7 +26,7 @@ const PLAYERS = [
         name: 'Leo Hernandez',
         avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-MkJR6gEU812qeoDx4Udnz-6D4syFwE33QhcyDKy5Omz7ccdWQ8rDop78Oh_YHgxfiEo3tY9szG4VqqOexAmL-kb_lZGHsSjkx64sfuskqdTVJcaXFc9SinKeStVmY_DkukXc2DvgFNM8MmaGL6gMTx-FiN6xjb6I5UH-DT2o66pPY3NWQrwAUGPK2PLQaG625Y5cM59qwcNv1qVuvGzvgKi_ivlyjMq1WlYE0CYCdJmrRQKcLwb2m59jmxIOQz2vzJVSz0cuhUA',
         academy: 'Zambezi Lions Academy',
-        category: 'U-12 Junior',
+        category: 'U-12',
         status: 'Pending',
         date: '2024-10-07',
     },
@@ -35,7 +35,7 @@ const PLAYERS = [
         name: 'Samuel Okoro',
         avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtgTJU_gsV5ahToEgrvbV7yE3lIJRVYX1zAR5P79jokKeRkgSQt1Tq4vi8JFSvBZsDmPIU0Xhi_isUfs8FKKYFlvPq3vGEhcRvRKgKGDTOHojKdLDK7J4xTvwVHDQ81iYOSc073VuJv4Cetj0kdS1eL98FHcpqNi_pwZtiuMEPpMj0foCrULUIJVC04CdXS2e5XrwJPf9qR309HntN206KvyWFdQwxBQJsibLTZtJGMmMm3sbxQTM6VGA9IK0FVzYbNe61wBqAKu8',
         academy: 'Riverside United',
-        category: 'U-14 Elite',
+        category: 'U-14',
         status: 'Approved',
         date: '2024-10-06',
     },
@@ -44,7 +44,7 @@ const PLAYERS = [
         name: 'Amara Diallo',
         avatar: 'https://i.pravatar.cc/40?img=10',
         academy: 'Copperbelt Athletic',
-        category: 'U-10 Discovery',
+        category: 'U-10',
         status: 'Pending',
         date: '2024-10-05',
     },
@@ -53,7 +53,7 @@ const PLAYERS = [
         name: 'Kelechi Mensah',
         avatar: 'https://i.pravatar.cc/40?img=12',
         academy: 'Lusaka City FC',
-        category: 'U-12 Junior',
+        category: 'U-12',
         status: 'Approved',
         date: '2024-10-04',
     },
@@ -62,7 +62,7 @@ const PLAYERS = [
         name: 'Tendai Mwangi',
         avatar: 'https://i.pravatar.cc/40?img=15',
         academy: 'Southern Stars Academy',
-        category: 'U-14 Elite',
+        category: 'U-14',
         status: 'Rejected',
         date: '2024-10-03',
     },
@@ -71,7 +71,7 @@ const PLAYERS = [
         name: 'Blessing Nkosi',
         avatar: 'https://i.pravatar.cc/40?img=17',
         academy: 'Victoria Falls FC',
-        category: 'U-10 Discovery',
+        category: 'U-10',
         status: 'Approved',
         date: '2024-10-02',
     },
@@ -80,7 +80,7 @@ const PLAYERS = [
         name: 'Fatou Camara',
         avatar: 'https://i.pravatar.cc/40?img=20',
         academy: 'Zambezi Lions Academy',
-        category: 'U-12 Junior',
+        category: 'U-12',
         status: 'Pending',
         date: '2024-10-01',
     },
@@ -89,7 +89,7 @@ const PLAYERS = [
         name: 'Emeka Okafor',
         avatar: 'https://i.pravatar.cc/40?img=22',
         academy: 'Riverside United',
-        category: 'U-14 Elite',
+        category: 'U-14',
         status: 'Approved',
         date: '2024-09-30',
     },
@@ -98,7 +98,7 @@ const PLAYERS = [
         name: 'Zanele Dube',
         avatar: 'https://i.pravatar.cc/40?img=25',
         academy: 'Copperbelt Athletic',
-        category: 'U-10 Discovery',
+        category: 'U-10',
         status: 'Pending',
         date: '2024-09-29',
     },
@@ -107,7 +107,7 @@ const PLAYERS = [
         name: 'Chidi Eze',
         avatar: 'https://i.pravatar.cc/40?img=28',
         academy: 'Lusaka City FC',
-        category: 'U-14 Elite',
+        category: 'U-14',
         status: 'Approved',
         date: '2024-09-28',
     },
@@ -116,7 +116,7 @@ const PLAYERS = [
         name: 'Simone Banda',
         avatar: 'https://i.pravatar.cc/40?img=30',
         academy: 'Southern Stars Academy',
-        category: 'U-12 Junior',
+        category: 'U-12',
         status: 'Pending',
         date: '2024-09-27',
     },
@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProgressBars();
     closeContextMenuOnOutsideClick();
     initManagementHub();
+    initRejectionWorkflow();
 });
 
 // ================================================================
@@ -437,7 +438,7 @@ function buildFilterUI(triggerBtn) {
   `;
 
     const statusOptions = ['all', 'Approved', 'Pending', 'Rejected'];
-    const categoryOptions = ['all', 'U-14 Elite', 'U-12 Junior', 'U-10 Discovery'];
+    const categoryOptions = ['all', 'U-8', 'U-10', 'U-12', 'U-14', 'U-16', 'U-18'];
 
     const makeChips = (options, key, label) => {
         const wrap = document.createElement('div');
@@ -583,7 +584,7 @@ function toggleContextMenu(triggerEl, playerId) {
     const menuItems = [
         { icon: 'visibility', label: 'View Profile', action: () => viewProfile(player) },
         { icon: 'check_circle', label: 'Approve', action: () => changeStatus(player, 'Approved'), disabled: player.status === 'Approved' },
-        { icon: 'cancel', label: 'Reject', action: () => changeStatus(player, 'Rejected'), disabled: player.status === 'Rejected' },
+        { icon: 'cancel', label: 'Reject', action: () => openRejectionModal(player), disabled: player.status === 'Rejected' },
         { icon: 'delete', label: 'Remove', action: () => removePlayer(player), danger: true },
     ];
 
@@ -653,9 +654,14 @@ function viewProfile(player) {
 }
 
 /** Change a player's status in both PLAYERS array and state.players */
-function changeStatus(player, newStatus) {
+function changeStatus(player, newStatus, comment = '') {
     const masterPlayer = PLAYERS.find((p) => p.id === player.id);
-    if (masterPlayer) masterPlayer.status = newStatus;
+    if (masterPlayer) {
+        masterPlayer.status = newStatus;
+        if (newStatus === 'Rejected' && comment) {
+            masterPlayer.rejectionReason = comment;
+        }
+    }
 
     applyFilters();
     updatePendingCount();
@@ -664,12 +670,69 @@ function changeStatus(player, newStatus) {
         newStatus === 'Approved' ? 'bg-success-subtle' : 'bg-danger-subtle',
         newStatus === 'Approved' ? 'text-success' : 'text-danger',
         `${escHtml(player.name)} ${newStatus}`,
-        'by Admin • just now'
+        newStatus === 'Rejected' ? `Reason: ${escHtml(truncate(comment, 30))}` : 'by Admin • just now'
     );
     showToast(
         `<strong>${escHtml(player.name)}</strong> marked as <strong>${newStatus}</strong>`,
         newStatus === 'Approved' ? 'success' : 'warning'
     );
+}
+
+/** Truncate helper for feedback display */
+function truncate(str, n) {
+    return (str.length > n) ? str.substr(0, n - 1) + '…' : str;
+}
+
+// ----------------------------------------------------------------
+// REJECTION WORKFLOW LOGIC
+// ----------------------------------------------------------------
+let playerPendingRejection = null;
+
+function initRejectionWorkflow() {
+    const confirmBtn = document.getElementById('confirmRejectionBtn');
+    const commentArea = document.getElementById('rejectionComment');
+    const errorMsg = document.getElementById('rejectionError');
+    const modalEl = document.getElementById('rejectionModal');
+
+    if (!confirmBtn || !commentArea || !modalEl) return;
+
+    confirmBtn.addEventListener('click', () => {
+        const comment = commentArea.value.trim();
+        if (!comment) {
+            errorMsg.style.display = 'block';
+            commentArea.classList.add('is-invalid');
+            return;
+        }
+
+        if (playerPendingRejection) {
+            changeStatus(playerPendingRejection, 'Rejected', comment);
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            modal.hide();
+        }
+    });
+
+    // Clear error on input
+    commentArea.addEventListener('input', () => {
+        errorMsg.style.display = 'none';
+        commentArea.classList.remove('is-invalid');
+    });
+
+    // Reset when modal closes
+    modalEl.addEventListener('hidden.bs.modal', () => {
+        commentArea.value = '';
+        errorMsg.style.display = 'none';
+        commentArea.classList.remove('is-invalid');
+        playerPendingRejection = null;
+    });
+}
+
+function openRejectionModal(player) {
+    playerPendingRejection = player;
+    const modalEl = document.getElementById('rejectionModal');
+    if (modalEl) {
+        const modal = new bootstrap.Modal(modalEl);
+        modal.show();
+    }
 }
 
 /** Remove player from both arrays */

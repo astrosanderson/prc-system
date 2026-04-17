@@ -3,7 +3,8 @@
 
   const componentPaths = {
     navbar: '../components/navbar.html',
-    footer: '../components/footer.html'
+    footer: '../components/footer.html',
+    disclaimer: '../components/disclaimer.html'
   };
 
   const routeAccess = {
@@ -17,7 +18,11 @@
   async function initAppShell() {
     syncLegacyRole();
     enforcePageAccess();
-    await Promise.all([loadComponent('navbarContainer', componentPaths.navbar), loadComponent('footerContainer', componentPaths.footer)]);
+    await Promise.all([
+      loadComponent('navbarContainer', componentPaths.navbar),
+      loadComponent('footerContainer', componentPaths.footer),
+      loadComponent('disclaimerContainer', componentPaths.disclaimer)
+    ]);
     setupNavbar();
     setupFooterContext();
   }
