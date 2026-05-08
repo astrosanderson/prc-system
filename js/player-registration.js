@@ -27,6 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
     academyInput.classList.add('bg-light');
   }
 
+  const registrationMessage = document.createElement('div');
+  registrationMessage.id = 'registrationWindowMessage';
+  registrationMessage.className = 'alert alert-warning fw-bold d-none';
+  form.prepend(registrationMessage);
+
+  if (session?.role === 'member' && !isRegistrationOpen()) {
+    registrationMessage.textContent = 'Registration is currently closed. Please contact PRC administration for the next opening window.';
+    registrationMessage.classList.remove('d-none');
+    submitButton.disabled = true;
+  }
+
   prefillForm(params, editingPlayer);
 
   form.addEventListener('submit', (event) => {
@@ -46,6 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!playerRecord) {
       window.alert('Members can only edit players in their own academy.');
+      return;
+    }
+
+    if (session?.role === 'member' && !isRegistrationOpen()) {
+      window.alert('Registration is closed. Members can only register players during the active registration window.');
+      return;
+    }
+
+    const limitMessage = validateDivisionLimit(existingPlayers, playerRecord, editingPlayerId);
+    if (limitMessage) {
+      window.alert(limitMessage);
       return;
     }
 
@@ -124,12 +146,12 @@ function buildPlayerRecord({ editingPlayerId, previousRecord, firstNameInput, mi
     name: `${firstName} ${lastName}`.trim(),
     dob,
     age,
-    division,
-    ageGroup: division,
+    division: normaliseDivision(division),
+    ageGroup: normaliseDivision(division),
     academy,
     academyId: academy.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
     position,
-    status: previousRecord?.status || 'Active',
+    status: previousRecord?.status || 'Pending',
     nationality: previousRecord?.nationality || 'Zambian',
     photo: previousRecord?.photo || 'https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=600&q=80',
     coach: previousRecord?.coach || { name: 'Victor Mwembe' },
@@ -162,6 +184,40 @@ function buildPlayerRecord({ editingPlayerId, previousRecord, firstNameInput, mi
     ownerRole: session?.role || 'member',
     ownerAcademy: academy
   };
+}
+
+function validateDivisionLimit(players, playerRecord, editingPlayerId) {
+  const academy = playerRecord.academy.toLowerCase();
+  const division = normaliseDivision(playerRecord.division);
+  const count = players.filter((player) => {
+    if (editingPlayerId && player.id === editingPlayerId) return false;
+    return String(player.academy || '').toLowerCase() === academy
+      && normaliseDivision(player.division || player.team || player.ageGroup) === division;
+  }).length;
+
+  if (count >= 15) {
+    return `Maximum reached: ${playerRecord.academy} already has 15 players in ${division}.`;
+  }
+
+  return '';
+}
+
+function isRegistrationOpen() {
+  try {
+    const settings = JSON.parse(localStorage.getItem('zfSettings') || '{}');
+    if (!settings.registrationOpen || !settings.registrationClose) return true;
+    const now = Date.now();
+    return now >= new Date(settings.registrationOpen).getTime()
+      && now <= new Date(settings.registrationClose).getTime();
+  } catch (error) {
+    return true;
+  }
+}
+
+function normaliseDivision(raw) {
+  const value = String(raw || 'U-14').toUpperCase().replace(/\s+/g, '').replace('UNDER', 'U');
+  const match = value.match(/U-?(\d+)/);
+  return match ? `U-${match[1]}` : 'U-14';
 }
 
 function mergePlayerRecord(players, nextRecord) {

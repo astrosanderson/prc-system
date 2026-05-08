@@ -131,3 +131,35 @@ body {
 .card {
   border-color: rgba(11, 61, 46, 0.08);
 }
+
+@media (max-width: 767.98px) {
+  .zf-brand-text {
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+  }
+
+  .navbar-nav {
+    padding-top: 0.75rem;
+  }
+
+  .navbar .nav-link,
+  .zf-nav-action {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.7rem 0.25rem;
+  }
+
+  .table-responsive {
+    border: 1px solid var(--border-light);
+  }
+
+  .modal-dialog {
+    margin: 0.75rem;
+  }
+
+  .display-3,
+  .display-4 {
+    font-size: 2.25rem;
+  }
+}

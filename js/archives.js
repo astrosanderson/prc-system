@@ -899,7 +899,45 @@ document.addEventListener("DOMContentLoaded", () => {
     initHallOfFameCarousel();
     initTournamentSearch();
     initLeagueRecords();
+    initPastGamesFromAdmin();
 
     // Let Bootstrap finish its own ScrollSpy boot, then refresh
     setTimeout(ensureBootstrapScrollSpy, 300);
 });
+
+function initPastGamesFromAdmin() {
+    let games = [];
+    try {
+        games = JSON.parse(localStorage.getItem('zfAdminData') || '{}').games || [];
+    } catch (error) {
+        games = [];
+    }
+    if (!games.length) return;
+
+    const section = document.getElementById('tournamentRecords');
+    if (!section || document.getElementById('adminPastGamesArchive')) return;
+
+    const panel = document.createElement('div');
+    panel.id = 'adminPastGamesArchive';
+    panel.className = 'card p-0 overflow-hidden mt-4';
+    panel.innerHTML = `
+        <div class="p-4 border-bottom">
+            <h3 class="h5 fw-black mb-0" style="color:var(--primary-color);">Past Games Added by Admin</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead><tr><th class="ps-4">Date</th><th>Fixture</th><th class="pe-4">Score</th></tr></thead>
+                <tbody>
+                    ${games.map((game) => `
+                        <tr>
+                            <td class="ps-4 fw-bold">${game.date || ''}</td>
+                            <td>${game.fixture || ''}</td>
+                            <td class="pe-4 fw-bold">${game.score || ''}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+    section.appendChild(panel);
+}

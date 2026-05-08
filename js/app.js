@@ -111,7 +111,7 @@
     }
 
     if (requiredAccess === routeAccess.admin && session.role !== 'admin') {
-      window.location.replace('database.html');
+      window.location.replace('member-dashboard.html');
     }
   }
 
@@ -122,6 +122,11 @@
     const session = getSession();
     const currentPage = getCurrentPageKey();
     const navItems = buildNavItems(session);
+    const brandLink = document.querySelector('.navbar-brand');
+
+    if (brandLink) {
+      brandLink.href = getBrandHref(session);
+    }
 
     navLinks.innerHTML = navItems.map((item) => {
       if (item.type === 'button') {
@@ -133,11 +138,10 @@
       }
 
       const activeClass = item.pageKey === currentPage ? ' active' : '';
-      const badgeHtml = item.badge ? `<span class="zf-role-pill">${item.badge}</span>` : '';
 
       return `
         <li class="nav-item">
-          <a class="nav-link${activeClass}" href="${item.href}">${item.label}${badgeHtml}</a>
+          <a class="nav-link${activeClass}" href="${item.href}">${item.label}</a>
         </li>
       `;
     }).join('');
@@ -151,34 +155,44 @@
   }
 
   function buildNavItems(session) {
+    if (getCurrentPageKey() === 'home') {
+      return [
+        { href: 'login.html', label: 'Sign In', pageKey: 'login' }
+      ];
+    }
+
     if (!session || !session.role) {
       return [
         { href: 'home.html', label: 'Home', pageKey: 'home' },
-        { href: 'register.html', label: 'Register', pageKey: 'register' },
-        { href: 'login.html', label: 'Login', pageKey: 'login' }
+        { href: 'login.html', label: 'Sign In', pageKey: 'login' }
       ];
     }
 
     if (session.role === 'admin') {
       return [
-        { href: 'home.html', label: 'Home', pageKey: 'home' },
-        { href: 'admin-dashboard.html', label: 'Admin Dashboard', pageKey: 'admin-dashboard', badge: 'Admin' },
+        { href: 'admin-dashboard.html', label: 'Dashboard', pageKey: 'admin-dashboard' },
+        { href: 'management-hub.html', label: 'Management Hub', pageKey: 'management-hub' },
         { href: 'database.html', label: 'Academies', pageKey: 'database' },
-        { href: 'academies.html', label: 'Players', pageKey: 'academies' },
-        { href: 'player-registration.html', label: 'Register Player', pageKey: 'player-registration' },
-        { href: 'archives.html', label: 'Archives', pageKey: 'archives' },
+        { href: 'academies.html', label: 'All Players', pageKey: 'academies' },
+        { href: 'archives.html', label: 'Past Games', pageKey: 'archives' },
         { type: 'button', label: 'Logout', action: 'logout' }
       ];
     }
 
     return [
-      { href: 'home.html', label: 'Home', pageKey: 'home' },
+      { href: 'member-dashboard.html', label: 'Dashboard', pageKey: 'member-dashboard' },
+      { href: 'academies.html', label: 'My Players', pageKey: 'academies' },
+      { href: 'player-registration.html', label: 'Add Player', pageKey: 'player-registration' },
       { href: 'database.html', label: 'Academies', pageKey: 'database' },
-      { href: 'academies.html', label: 'Players', pageKey: 'academies' },
-      { href: 'player-registration.html', label: 'Add Player', pageKey: 'player-registration', badge: 'Member' },
-      { href: 'archives.html', label: 'Archives', pageKey: 'archives' },
+      { href: 'archives.html', label: 'Past Games', pageKey: 'archives' },
       { type: 'button', label: 'Logout', action: 'logout' }
     ];
+  }
+
+  function getBrandHref(session) {
+    if (session?.role === 'admin') return 'admin-dashboard.html';
+    if (session?.role === 'member') return 'member-dashboard.html';
+    return 'home.html';
   }
 
   function setupFooterContext() {
@@ -203,7 +217,8 @@
     const aliases = {
       'player-profile': 'academies',
       'member-registration': 'register',
-      'admin-registration': 'register'
+      'admin-registration': 'register',
+      'member-dashboard': 'member-dashboard'
     };
 
     return aliases[pageKey] || pageKey;

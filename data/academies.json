@@ -4,9 +4,15 @@
     "name": "North Star Elite",
     "location": "Lusaka",
     "logo": "",
+    "representativeId": "tm-1",
+    "divisions": ["U-8", "U-10", "U-12", "U-14", "U-16", "U-18"],
     "teams": [
-      { "name": "U12", "division": "Junior" },
-      { "name": "U16", "division": "Youth" }
+      { "name": "U-8", "division": "U-8" },
+      { "name": "U-10", "division": "U-10" },
+      { "name": "U-12", "division": "U-12" },
+      { "name": "U-14", "division": "U-14" },
+      { "name": "U-16", "division": "U-16" },
+      { "name": "U-18", "division": "U-18" }
     ]
   },
   {
@@ -14,9 +20,12 @@
     "name": "Vortex Youth",
     "location": "Ndola",
     "logo": "",
+    "representativeId": "tm-2",
+    "divisions": ["U-10", "U-14", "U-18"],
     "teams": [
-      { "name": "U14", "division": "Youth" },
-      { "name": "U18", "division": "Senior" }
+      { "name": "U-10", "division": "U-10" },
+      { "name": "U-14", "division": "U-14" },
+      { "name": "U-18", "division": "U-18" }
     ]
   },
   {
@@ -24,8 +33,12 @@
     "name": "Lionheart FC",
     "location": "Kitwe",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-8", "U-12", "U-16"],
     "teams": [
-      { "name": "U13", "division": "Junior" }
+      { "name": "U-8", "division": "U-8" },
+      { "name": "U-12", "division": "U-12" },
+      { "name": "U-16", "division": "U-16" }
     ]
   },
   {
@@ -33,9 +46,12 @@
     "name": "Phoenix Rising",
     "location": "Livingstone",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-10", "U-14", "U-18"],
     "teams": [
-      { "name": "U15", "division": "Youth" },
-      { "name": "U17", "division": "Senior" }
+      { "name": "U-10", "division": "U-10" },
+      { "name": "U-14", "division": "U-14" },
+      { "name": "U-18", "division": "U-18" }
     ]
   },
   {
@@ -43,9 +59,11 @@
     "name": "Eclipse Academy",
     "location": "Chipata",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-12", "U-14"],
     "teams": [
-      { "name": "U12", "division": "Junior" },
-      { "name": "U14", "division": "Youth" }
+      { "name": "U-12", "division": "U-12" },
+      { "name": "U-14", "division": "U-14" }
     ]
   },
   {
@@ -53,9 +71,11 @@
     "name": "Thunderbolt FC",
     "location": "Kabwe",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-16", "U-18"],
     "teams": [
-      { "name": "U16", "division": "Youth" },
-      { "name": "U18", "division": "Senior" }
+      { "name": "U-16", "division": "U-16" },
+      { "name": "U-18", "division": "U-18" }
     ]
   },
   {
@@ -63,9 +83,11 @@
     "name": "Shadow Wolves",
     "location": "Mongu",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-12", "U-14"],
     "teams": [
-      { "name": "U13", "division": "Junior" },
-      { "name": "U15", "division": "Youth" }
+      { "name": "U-12", "division": "U-12" },
+      { "name": "U-14", "division": "U-14" }
     ]
   },
   {
@@ -73,9 +95,11 @@
     "name": "Crimson Hawks",
     "location": "Kasama",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-14", "U-18"],
     "teams": [
-      { "name": "U14", "division": "Youth" },
-      { "name": "U17", "division": "Senior" }
+      { "name": "U-14", "division": "U-14" },
+      { "name": "U-18", "division": "U-18" }
     ]
   },
   {
@@ -83,9 +107,11 @@
     "name": "Silver Strikers Academy",
     "location": "Solwezi",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-12", "U-16"],
     "teams": [
-      { "name": "U12", "division": "Junior" },
-      { "name": "U16", "division": "Youth" }
+      { "name": "U-12", "division": "U-12" },
+      { "name": "U-16", "division": "U-16" }
     ]
   },
   {
@@ -93,9 +119,11 @@
     "name": "Golden Eagles FC",
     "location": "Chingola",
     "logo": "",
+    "representativeId": "",
+    "divisions": ["U-14", "U-18"],
     "teams": [
-      { "name": "U15", "division": "Youth" },
-      { "name": "U18", "division": "Senior" }
+      { "name": "U-14", "division": "U-14" },
+      { "name": "U-18", "division": "U-18" }
     ]
   }
 ]

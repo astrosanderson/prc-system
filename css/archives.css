@@ -25,3 +25,18 @@
         .hof-card:hover img {
             transform: scale(1.05);
         }
+
+        .archive-page-wrap {
+            width: min(100%, 1320px);
+            margin: 0 auto;
+            padding: 0 0.75rem;
+        }
+
+        .archive-page-wrap main {
+            background: var(--bg-color);
+        }
+
+        .archive-page-wrap .archive-hero,
+        .archive-page-wrap section {
+            border-radius: 0;
+        }

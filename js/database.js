@@ -7,7 +7,7 @@ const AcademyRegistry = (() => {
     searchTerm: '',
     filters: {
       province: '',
-      ageCategory: '',
+      division: '',
       status: ''
     },
     pagination: {
@@ -57,10 +57,12 @@ const AcademyRegistry = (() => {
       ]);
 
       const academies = academiesResponse.ok ? await academiesResponse.json() : [];
+      const storedAcademies = readStoredAcademies();
       const playerSeeds = playersResponse.ok ? await playersResponse.json() : [];
       const storedPlayers = readStoredPlayers();
 
-      state.academies = academies.map((academy) => normaliseAcademy(academy, playerSeeds, storedPlayers));
+      state.academies = [...new Map([...academies, ...storedAcademies].map((academy) => [academy.id, academy])).values()]
+        .map((academy) => normaliseAcademy(academy, playerSeeds, storedPlayers));
     } catch (error) {
       console.error('[database] Failed to load academy data:', error);
       state.academies = [];
@@ -82,9 +84,8 @@ const AcademyRegistry = (() => {
       name: academy.name,
       location: `${academy.location}, Zambia`,
       status: isActive,
-      ageCategory: primaryAgeGroup,
+      division: normaliseDivision(primaryAgeGroup),
       players: academyPlayers.length,
-      tier: academy.teams?.length > 1 ? 'ACADEMY-1' : 'DEVELOPMENT',
       img: academy.logo || 'https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1200&q=80',
       teams: academy.teams || []
     };
@@ -110,7 +111,7 @@ const AcademyRegistry = (() => {
   function handleApply(event) {
     event.preventDefault();
     state.filters.province = sanitiseSelectValue(dom.provinceSelect?.value, 'Province');
-    state.filters.ageCategory = sanitiseSelectValue(dom.ageSelect?.value, 'Age Category');
+    state.filters.division = sanitiseSelectValue(dom.ageSelect?.value, 'Division');
     state.filters.status = sanitiseSelectValue(dom.statusSelect?.value, 'Status');
     state.pagination.page = 1;
     applyFilters();
@@ -120,7 +121,7 @@ const AcademyRegistry = (() => {
   function handleReset(event) {
     event.preventDefault();
     state.searchTerm = '';
-    state.filters = { province: '', ageCategory: '', status: '' };
+    state.filters = { province: '', division: '', status: '' };
     state.pagination.page = 1;
 
     if (dom.searchInput) dom.searchInput.value = '';
@@ -138,7 +139,7 @@ const AcademyRegistry = (() => {
         || academy.name.toLowerCase().includes(state.searchTerm)
         || academy.id.toLowerCase().includes(state.searchTerm);
       const matchesProvince = !state.filters.province || academy.location.toLowerCase().includes(state.filters.province.toLowerCase());
-      const matchesAge = !state.filters.ageCategory || academy.teams.some((team) => `${team.name}-${team.division}`.includes(state.filters.ageCategory.replace(/\s/g, '')) || team.name.includes(state.filters.ageCategory.replace(/\s/g, '')));
+      const matchesAge = !state.filters.division || academy.teams.some((team) => normaliseDivision(team.name || team.division) === state.filters.division);
       const matchesStatus = !state.filters.status || academy.status.toLowerCase() === state.filters.status.toLowerCase();
       return matchesSearch && matchesProvince && matchesAge && matchesStatus;
     });
@@ -184,8 +185,8 @@ const AcademyRegistry = (() => {
                 <span class="h5 fw-black mb-0" style="color:var(--primary-color);">${academy.players}</span>
               </div>
               <div class="text-end">
-                <span class="d-block small text-muted fw-bold text-uppercase mb-1">Tier</span>
-                <span class="small fw-bold" style="color:var(--accent-color);">${academy.tier}</span>
+                <span class="d-block small text-muted fw-bold text-uppercase mb-1">Divisions</span>
+                <span class="small fw-bold" style="color:var(--accent-color);">${academy.teams.map((team) => normaliseDivision(team.name || team.division)).join(', ')}</span>
               </div>
             </div>
             <button class="btn btn-primary w-100 fw-bold mt-auto" data-academy-id="${academy.id}">View Academy</button>
@@ -268,6 +269,21 @@ const AcademyRegistry = (() => {
   function sanitiseSelectValue(value, placeholder) {
     if (!value || value === placeholder) return '';
     return value;
+  }
+
+  function readStoredAcademies() {
+    try {
+      const raw = localStorage.getItem('zfAcademies');
+      return raw ? JSON.parse(raw) : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function normaliseDivision(raw) {
+    const value = String(raw || 'U-14').toUpperCase().replace(/\s+/g, '').replace('UNDER', 'U');
+    const match = value.match(/U-?(\d+)/);
+    return match ? `U-${match[1]}` : 'U-14';
   }
 
   return { boot };

@@ -6,15 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (role === 'admin') {
       return {
         role: 'admin',
-        displayName: 'Admin User',
+        displayName: 'Mary Phiri',
         academyName: 'Zambezi Futures HQ'
       };
     }
 
     return {
       role: 'member',
-      displayName: 'Team Representative',
-      academyName: 'North Star Elite'
+      displayName: 'Lillian Tembo',
+      academyName: 'North Star Elite',
+      academyId: 'academy_001'
     };
   }
 
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (memberBtn) {
     memberBtn.addEventListener('click', (event) => {
       event.preventDefault();
-      simulateAuth(memberBtn, 'member', 'database.html');
+      simulateAuth(memberBtn, 'member', 'member-dashboard.html');
     });
   }
 

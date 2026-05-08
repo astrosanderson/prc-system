@@ -17,7 +17,8 @@ const PLAYERS = [
         name: 'Marcus Thorne',
         avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDa5fu9wZHoapvONTP-xVSTeFJcSHcmte9vTGoo0RbXUfz6B5XW6tFKJHvMK-rCrppgB3D7fIYKfKx5p3jxLOenM4T93SrYHGCYTiqnsf-SKOycrCeij1cdnGEhk_LWxfzbtad9Nyh4oDxO1Lze59xqpvwU0gI_3kW3yIJMqMOfMEN4HXqk3RJAQCFCVYtEV8y_c6f1WdrQUSh9vERpgcV-lZuKYoxuRPOATGG1t2qH8itA1f3Tv0WJvl0jiRtWVz9Vw27eklZnv-c',
         academy: 'Victoria Falls FC',
-        category: 'U-14 Elite',
+        category: 'U-14',
+        division: 'U-14',
         status: 'Approved',
         date: '2024-10-08',
     },
@@ -26,7 +27,8 @@ const PLAYERS = [
         name: 'Leo Hernandez',
         avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-MkJR6gEU812qeoDx4Udnz-6D4syFwE33QhcyDKy5Omz7ccdWQ8rDop78Oh_YHgxfiEo3tY9szG4VqqOexAmL-kb_lZGHsSjkx64sfuskqdTVJcaXFc9SinKeStVmY_DkukXc2DvgFNM8MmaGL6gMTx-FiN6xjb6I5UH-DT2o66pPY3NWQrwAUGPK2PLQaG625Y5cM59qwcNv1qVuvGzvgKi_ivlyjMq1WlYE0CYCdJmrRQKcLwb2m59jmxIOQz2vzJVSz0cuhUA',
         academy: 'Zambezi Lions Academy',
-        category: 'U-12 Junior',
+        category: 'U-12',
+        division: 'U-12',
         status: 'Pending',
         date: '2024-10-07',
     },
@@ -35,7 +37,8 @@ const PLAYERS = [
         name: 'Samuel Okoro',
         avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtgTJU_gsV5ahToEgrvbV7yE3lIJRVYX1zAR5P79jokKeRkgSQt1Tq4vi8JFSvBZsDmPIU0Xhi_isUfs8FKKYFlvPq3vGEhcRvRKgKGDTOHojKdLDK7J4xTvwVHDQ81iYOSc073VuJv4Cetj0kdS1eL98FHcpqNi_pwZtiuMEPpMj0foCrULUIJVC04CdXS2e5XrwJPf9qR309HntN206KvyWFdQwxBQJsibLTZtJGMmMm3sbxQTM6VGA9IK0FVzYbNe61wBqAKu8',
         academy: 'Riverside United',
-        category: 'U-14 Elite',
+        category: 'U-14',
+        division: 'U-14',
         status: 'Approved',
         date: '2024-10-06',
     },
@@ -44,7 +47,8 @@ const PLAYERS = [
         name: 'Amara Diallo',
         avatar: 'https://i.pravatar.cc/40?img=10',
         academy: 'Copperbelt Athletic',
-        category: 'U-10 Discovery',
+        category: 'U-10',
+        division: 'U-10',
         status: 'Pending',
         date: '2024-10-05',
     },
@@ -53,7 +57,8 @@ const PLAYERS = [
         name: 'Kelechi Mensah',
         avatar: 'https://i.pravatar.cc/40?img=12',
         academy: 'Lusaka City FC',
-        category: 'U-12 Junior',
+        category: 'U-12',
+        division: 'U-12',
         status: 'Approved',
         date: '2024-10-04',
     },
@@ -62,7 +67,8 @@ const PLAYERS = [
         name: 'Tendai Mwangi',
         avatar: 'https://i.pravatar.cc/40?img=15',
         academy: 'Southern Stars Academy',
-        category: 'U-14 Elite',
+        category: 'U-14',
+        division: 'U-14',
         status: 'Rejected',
         date: '2024-10-03',
     },
@@ -71,7 +77,8 @@ const PLAYERS = [
         name: 'Blessing Nkosi',
         avatar: 'https://i.pravatar.cc/40?img=17',
         academy: 'Victoria Falls FC',
-        category: 'U-10 Discovery',
+        category: 'U-10',
+        division: 'U-10',
         status: 'Approved',
         date: '2024-10-02',
     },
@@ -80,7 +87,8 @@ const PLAYERS = [
         name: 'Fatou Camara',
         avatar: 'https://i.pravatar.cc/40?img=20',
         academy: 'Zambezi Lions Academy',
-        category: 'U-12 Junior',
+        category: 'U-12',
+        division: 'U-12',
         status: 'Pending',
         date: '2024-10-01',
     },
@@ -89,7 +97,8 @@ const PLAYERS = [
         name: 'Emeka Okafor',
         avatar: 'https://i.pravatar.cc/40?img=22',
         academy: 'Riverside United',
-        category: 'U-14 Elite',
+        category: 'U-14',
+        division: 'U-14',
         status: 'Approved',
         date: '2024-09-30',
     },
@@ -98,7 +107,8 @@ const PLAYERS = [
         name: 'Zanele Dube',
         avatar: 'https://i.pravatar.cc/40?img=25',
         academy: 'Copperbelt Athletic',
-        category: 'U-10 Discovery',
+        category: 'U-10',
+        division: 'U-10',
         status: 'Pending',
         date: '2024-09-29',
     },
@@ -107,7 +117,8 @@ const PLAYERS = [
         name: 'Chidi Eze',
         avatar: 'https://i.pravatar.cc/40?img=28',
         academy: 'Lusaka City FC',
-        category: 'U-14 Elite',
+        category: 'U-14',
+        division: 'U-14',
         status: 'Approved',
         date: '2024-09-28',
     },
@@ -116,7 +127,8 @@ const PLAYERS = [
         name: 'Simone Banda',
         avatar: 'https://i.pravatar.cc/40?img=30',
         academy: 'Southern Stars Academy',
-        category: 'U-12 Junior',
+        category: 'U-12',
+        division: 'U-12',
         status: 'Pending',
         date: '2024-09-27',
     },
@@ -139,6 +151,7 @@ const state = {
 // BOOT
 // ----------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
+    renderAdminIdentity();
     initNavActiveState();
     initScrollAnimations();
     initStatCounters();
@@ -149,8 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initCriticalDates();
     initProgressBars();
     closeContextMenuOnOutsideClick();
-    initManagementHub();
 });
+
+function renderAdminIdentity() {
+    const label = document.getElementById('adminIdentityLabel');
+    const session = window.zfApp?.getSession?.();
+    if (label) {
+        label.textContent = `Logged in as: ${session?.displayName || 'Mary Phiri'}`;
+    }
+}
 
 // ================================================================
 // 1. NAV — highlight active link
@@ -311,7 +331,7 @@ function buildRow(player) {
         </div>
       </td>
       <td class="text-muted fw-bold">${escHtml(player.academy)}</td>
-      <td><span class="badge-elite">${escHtml(player.category)}</span></td>
+      <td><span class="badge-elite">${escHtml(player.division || player.category)}</span></td>
       <td>
         <span class="fw-bold ${cfg.textClass}">
           <span class="status-dot ${cfg.dotClass}"></span>${escHtml(player.status)}
@@ -437,7 +457,7 @@ function buildFilterUI(triggerBtn) {
   `;
 
     const statusOptions = ['all', 'Approved', 'Pending', 'Rejected'];
-    const categoryOptions = ['all', 'U-14 Elite', 'U-12 Junior', 'U-10 Discovery'];
+    const categoryOptions = ['all', 'U-8', 'U-10', 'U-12', 'U-14', 'U-16', 'U-18'];
 
     const makeChips = (options, key, label) => {
         const wrap = document.createElement('div');
@@ -471,7 +491,7 @@ function buildFilterUI(triggerBtn) {
     };
 
     filterBar.appendChild(makeChips(statusOptions, 'filterStatus', 'Status'));
-    filterBar.appendChild(makeChips(categoryOptions, 'filterCategory', 'Category'));
+    filterBar.appendChild(makeChips(categoryOptions, 'filterCategory', 'Division'));
 
     const tableSection = document.querySelector('.table-responsive');
     tableSection?.parentNode.insertBefore(filterBar, tableSection);
@@ -501,13 +521,13 @@ function applyFilters() {
             !state.searchQuery ||
             p.name.toLowerCase().includes(state.searchQuery) ||
             p.academy.toLowerCase().includes(state.searchQuery) ||
-            p.category.toLowerCase().includes(state.searchQuery);
+            (p.division || p.category).toLowerCase().includes(state.searchQuery);
 
         const matchStatus =
             state.filterStatus === 'all' || p.status === state.filterStatus;
 
         const matchCategory =
-            state.filterCategory === 'all' || p.category === state.filterCategory;
+            state.filterCategory === 'all' || (p.division || p.category) === state.filterCategory;
 
         return matchSearch && matchStatus && matchCategory;
     });
@@ -1089,9 +1109,12 @@ function getAdminData() {
             { id: 'ad-2', name: 'James Banda', role: 'Academy Admin', email: 'james@zf.test' }
         ],
         divisions: [
-            { id: 'div-1', name: 'U12 Junior' },
-            { id: 'div-2', name: 'U15 Youth' },
-            { id: 'div-3', name: 'U17 Elite' }
+            { id: 'div-1', name: 'U-8' },
+            { id: 'div-2', name: 'U-10' },
+            { id: 'div-3', name: 'U-12' },
+            { id: 'div-4', name: 'U-14' },
+            { id: 'div-5', name: 'U-16' },
+            { id: 'div-6', name: 'U-18' }
         ],
         games: [
             { id: 'gm-1', fixture: 'North Star Elite vs Vortex Youth', date: '2026-03-12', score: '2-1' },
@@ -1249,6 +1272,7 @@ function hydrateManagementForm(collection, record) {
         document.getElementById('teamMemberId').value = record.id;
         document.getElementById('teamMemberName').value = record.name;
         document.getElementById('teamMemberEmail').value = record.email;
+        updateMemberAcademyOptions(record.academy);
         document.getElementById('teamMemberAcademy').value = record.academy;
         return;
     }
@@ -1330,4 +1354,265 @@ function normaliseHubPlayer(player, academies) {
         division: player.division || player.team || player.ageGroup || 'U-14',
         position: player.position || 'Midfielder'
     };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(mergeStoredPlayersIntoAdminQueue, 250);
+});
+
+function mergeStoredPlayersIntoAdminQueue() {
+    const stored = readLocalJson('zfPlayers');
+    stored.forEach((player) => {
+        if (PLAYERS.some((item) => item.id === player.id)) return;
+        PLAYERS.unshift({
+            id: player.id,
+            name: player.name || `${player.firstName || ''} ${player.lastName || ''}`.trim(),
+            avatar: player.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name || player.firstName || 'Player')}&background=0b3d2e&color=fff&size=88`,
+            academy: player.academy || 'North Star Elite',
+            category: normaliseAdminDivision(player.division || player.team || player.ageGroup),
+            division: normaliseAdminDivision(player.division || player.team || player.ageGroup),
+            position: player.position || 'Midfielder',
+            age: player.age || '',
+            status: titleCase(player.status || 'Pending'),
+            rejectionFeedback: player.rejectionFeedback || ''
+        });
+    });
+    applyFilters();
+}
+
+function viewProfile(player) {
+    document.getElementById('adminPlayerModal')?.remove();
+    const avatar = player.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=0b3d2e&color=fff&size=160`;
+    const modal = document.createElement('div');
+    modal.className = 'modal fade';
+    modal.id = 'adminPlayerModal';
+    modal.tabIndex = -1;
+    modal.innerHTML = `
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold text-primary">Player Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex gap-3 align-items-center mb-4">
+                        <img src="${escHtml(avatar)}" class="rounded-circle" width="88" height="88" style="object-fit:cover;" alt="${escHtml(player.name)}">
+                        <div>
+                            <h3 class="h5 fw-bold text-primary mb-1">${escHtml(player.name)}</h3>
+                            <div class="badge-elite">${escHtml(player.division || player.category)}</div>
+                        </div>
+                    </div>
+                    ${adminDetailRow('Age', player.age || 'Not captured')}
+                    ${adminDetailRow('Academy', player.academy)}
+                    ${adminDetailRow('Division', player.division || player.category)}
+                    ${adminDetailRow('Position', player.position || 'Midfielder')}
+                    ${adminDetailRow('Status', player.status || 'Pending')}
+                    ${player.rejectionFeedback ? `<div class="alert alert-warning mt-3 mb-0"><strong>Rejection feedback:</strong> ${escHtml(player.rejectionFeedback)}</div>` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    bootstrap.Modal.getOrCreateInstance(modal).show();
+}
+
+function changeStatus(player, newStatus) {
+    if (newStatus === 'Rejected') {
+        const comment = window.prompt(`Rejection feedback for ${player.name}:`, player.rejectionFeedback || '');
+        if (!comment || !comment.trim()) {
+            showToast('Rejection feedback is required.', 'warning');
+            return;
+        }
+        player.rejectionFeedback = comment.trim();
+    }
+
+    const masterPlayer = PLAYERS.find((p) => p.id === player.id);
+    if (masterPlayer) {
+        masterPlayer.status = newStatus;
+        if (player.rejectionFeedback) masterPlayer.rejectionFeedback = player.rejectionFeedback;
+    }
+
+    persistPlayerStatus(player.id, newStatus, player.rejectionFeedback || '');
+    applyFilters();
+    updatePendingCount();
+    addLiveFeedEvent(
+        newStatus === 'Approved' ? 'check_circle' : 'cancel',
+        newStatus === 'Approved' ? 'bg-success-subtle' : 'bg-danger-subtle',
+        newStatus === 'Approved' ? 'text-success' : 'text-danger',
+        `${escHtml(player.name)} ${newStatus}`,
+        'by Admin - just now'
+    );
+    showToast(`<strong>${escHtml(player.name)}</strong> marked as <strong>${newStatus}</strong>`, newStatus === 'Approved' ? 'success' : 'warning');
+}
+
+function persistPlayerStatus(id, status, rejectionFeedback) {
+    const stored = readLocalJson('zfPlayers');
+    const updated = stored.map((player) => player.id === id ? {
+        ...player,
+        status,
+        rejectionFeedback: status === 'Rejected' ? rejectionFeedback : ''
+    } : player);
+    localStorage.setItem('zfPlayers', JSON.stringify(updated));
+    localStorage.setItem('prc_players', JSON.stringify(updated));
+}
+
+function initRegistrationSettingsPanel() {
+    const hub = document.getElementById('admin-management-hub');
+    if (!hub || document.getElementById('registrationSettingsForm')) return;
+    const settings = readLocalJson('zfSettings');
+    const panel = document.createElement('div');
+    panel.className = 'widget mt-4';
+    panel.innerHTML = `
+        <h3 class="widget-title text-primary">Registration Window</h3>
+        <form id="registrationSettingsForm" class="row g-3">
+            <div class="col-md-5">
+                <label class="form-label small fw-bold text-uppercase text-muted">Opening date/time</label>
+                <input type="datetime-local" class="form-control" id="registrationOpen" value="${escHtml(settings.registrationOpen || '')}">
+            </div>
+            <div class="col-md-5">
+                <label class="form-label small fw-bold text-uppercase text-muted">Closing date/time</label>
+                <input type="datetime-local" class="form-control" id="registrationClose" value="${escHtml(settings.registrationClose || '')}">
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button class="btn btn-dark w-100" type="submit">Save</button>
+            </div>
+        </form>
+    `;
+    hub.prepend(panel);
+    document.getElementById('registrationSettingsForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        localStorage.setItem('zfSettings', JSON.stringify({
+            registrationOpen: document.getElementById('registrationOpen').value,
+            registrationClose: document.getElementById('registrationClose').value
+        }));
+        showToast('Registration window saved.', 'success');
+    });
+    initMemberAcademyAssignmentSelect();
+    initAcademyLogoManager(hub);
+}
+
+async function initAcademyLogoManager(hub) {
+    if (document.getElementById('academyForm')) return;
+    const academies = [...await readJsonFile('../data/academies.json'), ...readLocalJson('zfAcademies')];
+    const panel = document.createElement('div');
+    panel.className = 'widget mt-4';
+    panel.innerHTML = `
+        <h3 class="widget-title text-primary">Academies</h3>
+        <form id="academyForm" class="row g-3 mb-4">
+            <input type="hidden" id="academyId">
+            <div class="col-md-3"><input type="text" class="form-control" id="academyName" placeholder="Academy name" required></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="academyLocation" placeholder="Location" required></div>
+            <div class="col-md-3"><input type="url" class="form-control" id="academyLogo" placeholder="Logo image URL"></div>
+            <div class="col-md-3"><button class="btn btn-dark w-100" type="submit">Save Academy</button></div>
+        </form>
+        <div class="table-responsive">
+            <table class="table align-middle mb-0">
+                <thead><tr><th>Logo</th><th>Academy</th><th>Location</th><th>Divisions</th><th class="text-end">Action</th></tr></thead>
+                <tbody id="academyManagerTable"></tbody>
+            </table>
+        </div>
+    `;
+    hub.appendChild(panel);
+
+    function renderAcademyManager() {
+        const rows = academies.map((academy) => {
+            const logo = academy.logo || `https://ui-avatars.com/api/?name=${encodeURIComponent(academy.name)}&background=0b3d2e&color=fff&size=88`;
+            const divisions = (academy.divisions || academy.teams?.map((team) => normaliseAdminDivision(team.name || team.division)) || ['U-14']).join(', ');
+            return `
+                <tr>
+                    <td><img src="${escHtml(logo)}" width="44" height="44" class="rounded-circle" style="object-fit:cover;" alt="${escHtml(academy.name)}"></td>
+                    <td class="fw-bold text-primary">${escHtml(academy.name)}</td>
+                    <td>${escHtml(academy.location)}</td>
+                    <td>${escHtml(divisions)}</td>
+                    <td class="text-end"><button class="btn btn-sm btn-light border" data-academy-edit="${escHtml(academy.id)}">Edit</button></td>
+                </tr>
+            `;
+        }).join('');
+        document.getElementById('academyManagerTable').innerHTML = rows;
+    }
+
+    document.getElementById('academyForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const id = document.getElementById('academyId').value || `academy_${Date.now()}`;
+        const next = {
+            id,
+            name: document.getElementById('academyName').value.trim(),
+            location: document.getElementById('academyLocation').value.trim(),
+            logo: document.getElementById('academyLogo').value.trim(),
+            representativeId: '',
+            divisions: ['U-8', 'U-10', 'U-12', 'U-14', 'U-16', 'U-18'],
+            teams: ['U-8', 'U-10', 'U-12', 'U-14', 'U-16', 'U-18'].map((division) => ({ name: division, division }))
+        };
+        const index = academies.findIndex((academy) => academy.id === id);
+        if (index === -1) academies.unshift(next);
+        else academies[index] = { ...academies[index], ...next };
+        localStorage.setItem('zfAcademies', JSON.stringify(academies));
+        event.target.reset();
+        document.getElementById('academyId').value = '';
+        renderAcademyManager();
+        showToast('Academy saved with logo details.', 'success');
+    });
+
+    panel.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-academy-edit]');
+        if (!button) return;
+        const academy = academies.find((item) => item.id === button.dataset.academyEdit);
+        if (!academy) return;
+        document.getElementById('academyId').value = academy.id;
+        document.getElementById('academyName').value = academy.name;
+        document.getElementById('academyLocation').value = academy.location;
+        document.getElementById('academyLogo').value = academy.logo || '';
+    });
+
+    renderAcademyManager();
+}
+
+async function initMemberAcademyAssignmentSelect() {
+    const input = document.getElementById('teamMemberAcademy');
+    if (!input || input.tagName === 'SELECT') return;
+    const academies = await readJsonFile('../data/academies.json');
+    const select = document.createElement('select');
+    select.className = input.className;
+    select.id = input.id;
+    select.required = true;
+    input.replaceWith(select);
+    window.zfAcademyNames = academies.map((academy) => academy.name);
+    updateMemberAcademyOptions('');
+}
+
+function updateMemberAcademyOptions(currentAcademy) {
+    const select = document.getElementById('teamMemberAcademy');
+    if (!select || select.tagName !== 'SELECT') return;
+    const adminData = getAdminData();
+    const assigned = new Set(adminData.teamMembers
+        .map((member) => member.academy)
+        .filter((academy) => academy && academy !== currentAcademy));
+    const academyNames = window.zfAcademyNames || [];
+    select.innerHTML = '<option value="">Assign Team Member</option>' + academyNames
+        .filter((academy) => !assigned.has(academy) || academy === currentAcademy)
+        .map((academy) => `<option value="${escHtml(academy)}">${escHtml(academy)}</option>`)
+        .join('');
+    if (currentAcademy) select.value = currentAcademy;
+}
+
+function adminDetailRow(label, value) {
+    return `<div class="d-flex justify-content-between border-bottom py-2"><span class="text-muted fw-bold">${escHtml(label)}</span><span class="fw-bold">${escHtml(String(value))}</span></div>`;
+}
+
+function normaliseAdminDivision(raw) {
+    const value = String(raw || 'U-14').toUpperCase().replace(/\s+/g, '').replace('UNDER', 'U');
+    const match = value.match(/U-?(\d+)/);
+    if (!match) return 'U-14';
+    const age = Number(match[1]);
+    if (age <= 8) return 'U-8';
+    if (age <= 10) return 'U-10';
+    if (age <= 12) return 'U-12';
+    if (age <= 14) return 'U-14';
+    if (age <= 16) return 'U-16';
+    return 'U-18';
+}
+
+function titleCase(value) {
+    const text = String(value || '');
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }

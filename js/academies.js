@@ -31,7 +31,7 @@ const SEED_PLAYERS = [
         lastName: 'Mokoena',
         position: 'Forward',
         age: 16,
-        division: 'U-17',
+        division: 'U-16',
         academy: 'Zambezi Elite Academy',
         photo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA7cYZwrMsasjbebsPBQIns0eUoP2WsxToHubdXKYqJ6rYzS24NZkRA4WGbLddRWTVlgH6keHvW_e7LG9b7UWjTjl-LXYw3X8NFgUkwdfFiLzr1lSmXaKbOl-6Qer6i9jlpOG04jyTPyxjRfSoAkfL1o28VI_omF5y1tI1WCU011xQiNHVgvS5Ismg0CENWSMsO9lRTmfY9TLxIpunADOpfjVGTTQvoX9dZqY_XuIoCWUEAIGrJl3YbOgIvQB8RHkBreI_8rQuWc9o'
     },
@@ -41,7 +41,7 @@ const SEED_PLAYERS = [
         lastName: 'Dlamini',
         position: 'Midfielder',
         age: 14,
-        division: 'U-15',
+        division: 'U-14',
         academy: 'Zambezi Elite Academy',
         photo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDnyqFRlciQ2JinHqw7fftSThmU2CrGcL7qKi88RkWlzVZmVNSCVm6AZHf2BtW5dfezOJSqlAe0W6GGJ-aeJMALzQZXscpYJcrzEEjXzuhGcfd7zybQj1B36YUXGdJ2NiqWDb4D6sjZEzHMWHefJGJVlwdP8Bf_sfl_IQQyVhIa2qvNr7hztzu9qegavuh88w_zVFdX7HrprucWidzdUoziD8_ho3oLFE5qqRxHZqfV8Pco821UZ2vysRRyvXpIb5e_FT4Dne1yEpw'
     }
@@ -52,9 +52,12 @@ const SEED_PLAYERS = [
    Maps a division string to Bootstrap badge classes.
    ============================================================ */
 const DIVISION_BADGE = {
-    'U-15': 'badge bg-warning bg-opacity-10 text-warning-emphasis rounded-pill px-3 py-2 fw-bold border border-warning border-opacity-25',
-    'U-17': 'badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold border border-success border-opacity-25',
-    'U-20': 'badge bg-info bg-opacity-10 text-info rounded-pill px-3 py-2 fw-bold border border-info border-opacity-25'
+    'U-8': 'badge bg-info bg-opacity-10 text-info rounded-pill px-3 py-2 fw-bold border border-info border-opacity-25',
+    'U-10': 'badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2 fw-bold border border-success border-opacity-25',
+    'U-12': 'badge bg-warning bg-opacity-10 text-warning-emphasis rounded-pill px-3 py-2 fw-bold border border-warning border-opacity-25',
+    'U-14': 'badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-2 fw-bold border border-primary border-opacity-25',
+    'U-16': 'badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 py-2 fw-bold border border-secondary border-opacity-25',
+    'U-18': 'badge bg-dark bg-opacity-10 text-dark rounded-pill px-3 py-2 fw-bold border border-dark border-opacity-25'
 };
 
 /* ============================================================
@@ -65,6 +68,7 @@ const state = {
     filtered: [],         // players currently displayed
     activeDiv: 'All',     // active division tab
     searchQuery: '',      // current search string
+    filters: { academy: '', age: '', division: '', status: '' },
     sortKey: 'name',      // 'name' | 'age' | 'division'
     sortDir: 'asc'        // 'asc' | 'desc'
 };
@@ -72,11 +76,14 @@ const state = {
 /* ============================================================
    ENTRY POINT
    ============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-    loadAcademyContext();
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadAcademyContext();
+    configureAllPlayersHeading();
+    configureHeaderActions();
     injectModalStyles();
-    loadPlayers();
+    await loadPlayers();
     render();
+    initRosterFilters();
 
     initDivisionTabs();
     initSearch();
@@ -85,10 +92,32 @@ document.addEventListener('DOMContentLoaded', () => {
     initModals();
 });
 
+function configureAllPlayersHeading() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('id')) return;
+    const heading = document.querySelector('h1.display-4');
+    const summary = document.querySelector('.lead.text-muted');
+    const breadcrumb = document.querySelector('.breadcrumb-item.active');
+    if (heading) heading.innerHTML = `All <span style="color:var(--accent-color);">Players</span>`;
+    if (summary) summary.textContent = 'Review all registered players across academies, divisions, ages, and approval statuses.';
+    if (breadcrumb) breadcrumb.textContent = 'All Players';
+}
+
+function configureHeaderActions() {
+    const session = window.zfApp?.getSession?.();
+    const headerLink = document.querySelector('a[href^="player-registration.html"].btn');
+    if (session?.role === 'admin' && headerLink) {
+        headerLink.removeAttribute('href');
+        headerLink.classList.add('disabled');
+        headerLink.setAttribute('aria-disabled', 'true');
+        headerLink.innerHTML = '<span class="material-symbols-outlined fs-5">visibility</span> Admin Review Only';
+    }
+}
+
 /* ============================================================
    DATA — load & merge seed + localStorage registrations
    ============================================================ */
-function loadPlayers() {
+async function loadPlayers() {
     // Grab anything saved by the player registration flow
     let stored = [];
     try {
@@ -105,7 +134,8 @@ function loadPlayers() {
     const seenIds = new Set();
     const merged = [];
 
-    [...SEED_PLAYERS, ...stored].forEach(p => {
+    const seedJsonPlayers = await loadSeedJsonPlayers();
+    [...SEED_PLAYERS, ...seedJsonPlayers, ...stored].forEach(p => {
         const pid = (p.id || p.prcId || '').trim().toUpperCase();
         if (!pid || seenIds.has(pid)) return;
         seenIds.add(pid);
@@ -115,11 +145,14 @@ function loadPlayers() {
             id: pid,
             firstName: p.firstName || p.first || 'Unknown',
             lastName: p.lastName || p.last || '',
+            name: p.name || `${p.firstName || p.first || 'Unknown'} ${p.lastName || p.last || ''}`.trim(),
             position: p.position || '—',
             age: Number(p.age) || 0,
             division: normaliseDivision(p.division || p.ageGroup || p['age-group'] || ''),
             academy: p.academy || 'Zambezi Elite Academy',
-            photo: p.photo || p.photoUrl || ''
+            photo: p.photo || p.photoUrl || '',
+            status: p.status || 'Pending',
+            rejectionFeedback: p.rejectionFeedback || p.rejectionComment || ''
         });
     });
 
@@ -127,12 +160,38 @@ function loadPlayers() {
     applyFilters();
 }
 
-function loadAcademyContext() {
+async function loadSeedJsonPlayers() {
+    try {
+        const [playersResponse, academiesResponse] = await Promise.all([
+            fetch('../data/players.json'),
+            fetch('../data/academies.json')
+        ]);
+        const players = playersResponse.ok ? await playersResponse.json() : [];
+        const academies = academiesResponse.ok ? await academiesResponse.json() : [];
+        return players.map((player) => {
+            const academy = academies.find((item) => item.id === player.academyId);
+            const names = (player.name || '').split(' ');
+            return {
+                ...player,
+                firstName: player.firstName || names[0] || 'Player',
+                lastName: player.lastName || names.slice(1).join(' '),
+                academy: player.academy || academy?.name || 'Unknown Academy',
+                division: player.division || player.team,
+                photo: player.photo || ''
+            };
+        });
+    } catch (error) {
+        console.warn('[academies] Failed to load seed players:', error);
+        return [];
+    }
+}
+
+async function loadAcademyContext() {
     const params = new URLSearchParams(window.location.search);
     const academyId = params.get('id');
     if (!academyId) return;
 
-    fetch('../data/academies.json')
+    return fetch('../data/academies.json')
         .then((response) => response.ok ? response.json() : [])
         .then((academies) => {
             const academy = academies.find((item) => item.id === academyId);
@@ -161,11 +220,14 @@ function loadAcademyContext() {
 
 /** Normalise raw division strings like "u17", "U 17", "under-17" → "U-17" */
 function normaliseDivision(raw) {
-    if (!raw) return 'U-17';
+    if (!raw) return 'U-14';
     const cleaned = raw.toString().toUpperCase().replace(/\s+/g, '').replace('UNDER', 'U');
-    if (cleaned.includes('15')) return 'U-15';
-    if (cleaned.includes('17')) return 'U-17';
-    if (cleaned.includes('20')) return 'U-20';
+    if (cleaned.includes('8')) return 'U-8';
+    if (cleaned.includes('10')) return 'U-10';
+    if (cleaned.includes('12') || cleaned.includes('13')) return 'U-12';
+    if (cleaned.includes('14') || cleaned.includes('15')) return 'U-14';
+    if (cleaned.includes('16') || cleaned.includes('17')) return 'U-16';
+    if (cleaned.includes('18') || cleaned.includes('20')) return 'U-18';
     return raw; // keep as-is if unrecognised
 }
 
@@ -178,6 +240,22 @@ function applyFilters() {
     // 1. Division tab filter
     if (state.activeDiv !== 'All') {
         list = list.filter(p => p.division === state.activeDiv);
+    }
+
+    if (state.filters.academy) {
+        list = list.filter(p => p.academy === state.filters.academy);
+    }
+
+    if (state.filters.age) {
+        list = list.filter(p => String(p.age) === state.filters.age);
+    }
+
+    if (state.filters.division) {
+        list = list.filter(p => p.division === state.filters.division);
+    }
+
+    if (state.filters.status) {
+        list = list.filter(p => normaliseStatus(p.status) === state.filters.status);
     }
 
     // 2. Search filter (name or PRC ID)
@@ -219,6 +297,7 @@ function applyFilters() {
 function render() {
     renderTable();
     renderMetrics();
+    renderRosterFilterOptions();
 }
 
 /** Re-render the <tbody> with current filtered list */
@@ -231,7 +310,7 @@ function renderTable() {
     if (state.filtered.length === 0) {
         tbody.innerHTML = `
       <tr id="empty-row">
-        <td colspan="6" class="text-center py-5 text-muted fw-bold">
+        <td colspan="8" class="text-center py-5 text-muted fw-bold">
           <span class="material-symbols-outlined d-block mb-2" style="font-size:2.5rem;opacity:.35;">
             search_off
           </span>
@@ -243,6 +322,18 @@ function renderTable() {
 
     // Build rows, then fade them in
     tbody.innerHTML = state.filtered.map((p, idx) => buildRow(p, q, idx)).join('');
+    tbody.querySelectorAll('tr[data-player-row]').forEach((row, index) => {
+        const player = state.filtered[index];
+        const academyCell = row.insertCell(2);
+        academyCell.className = 'fw-bold text-muted';
+        academyCell.textContent = player.academy || 'Unknown Academy';
+
+        const positionCell = row.insertCell(5);
+        positionCell.className = 'fw-bold text-muted';
+        positionCell.textContent = player.position || 'Midfielder';
+
+        if (row.cells[7]) row.deleteCell(7);
+    });
 
     // Staggered fade-in animation
     tbody.querySelectorAll('tr[data-player-row]').forEach((row, i) => {
@@ -285,10 +376,11 @@ function buildRow(player, highlightQuery, idx) {
       </td>
       <td>
         <h5 class="fw-black mb-0" style="color:var(--primary-color); font-size:0.95rem;">${displayName}</h5>
-        <small class="text-muted fw-bold text-uppercase" style="font-size:0.65rem;">${escapeHtml(player.position)}</small>
+        <small class="text-muted fw-bold text-uppercase" style="font-size:0.65rem;">${escapeHtml(player.academy)} · ${escapeHtml(player.position)}</small>
       </td>
       <td class="fw-bold">${escapeHtml(String(player.age || '—'))}</td>
       <td><span class="${divBadgeClass}">${escapeHtml(player.division)}</span></td>
+      <td class="fw-bold">${escapeHtml(normaliseStatus(player.status))}</td>
       <td class="font-monospace text-muted small">${escapeHtml(player.id)}</td>
       <td class="text-end pe-4">
         <div class="d-flex justify-content-end gap-3">
@@ -331,7 +423,7 @@ function userCanManageCurrentAcademy() {
 function renderMetrics() {
     const all = state.allPlayers;
     const total = all.length;
-    const u17Count = all.filter(p => p.division === 'U-17').length;
+    const u14Count = all.filter(p => p.division === 'U-14').length;
     const avgAge = total
         ? (all.reduce((sum, p) => sum + (Number(p.age) || 0), 0) / total).toFixed(1)
         : '0.0';
@@ -346,7 +438,7 @@ function renderMetrics() {
 
     // Card 1 — U-17 Division count
     const u17El = metricCards[1]?.querySelector('h3.display-4');
-    if (u17El) animateNumber(u17El, u17Count);
+    if (u17El) animateNumber(u17El, u14Count);
 
     // Card 2 — Average Age (decimal, so no integer animation)
     const avgEl = metricCards[2]?.querySelector('h3.display-4');
@@ -390,7 +482,7 @@ function initDivisionTabs() {
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            const divText = btn.textContent.trim(); // "All", "U-15", "U-17", "U-20"
+            const divText = btn.textContent.trim();
 
             // Update active state styling
             buttons.forEach(b => {
@@ -409,6 +501,60 @@ function initDivisionTabs() {
             render();
         });
     });
+}
+
+function initRosterFilters() {
+    const tableCard = document.querySelector('.card.p-0.overflow-hidden');
+    if (!tableCard || document.getElementById('rosterFilterBar')) return;
+
+    const filterBar = document.createElement('div');
+    filterBar.id = 'rosterFilterBar';
+    filterBar.className = 'card p-3 mb-4';
+    filterBar.innerHTML = `
+      <div class="row g-3">
+        <div class="col-md-3"><select class="form-select" id="filterAcademy"><option value="">All academies</option></select></div>
+        <div class="col-md-2"><select class="form-select" id="filterAge"><option value="">All ages</option></select></div>
+        <div class="col-md-3"><select class="form-select" id="filterDivision"><option value="">All divisions</option></select></div>
+        <div class="col-md-3"><select class="form-select" id="filterStatus"><option value="">All statuses</option></select></div>
+        <div class="col-md-1"><button class="btn btn-light border w-100" id="clearRosterFilters" type="button"><span class="material-symbols-outlined align-middle">restart_alt</span></button></div>
+      </div>
+    `;
+    tableCard.before(filterBar);
+
+    ['Academy', 'Age', 'Division', 'Status'].forEach((key) => {
+        document.getElementById(`filter${key}`)?.addEventListener('change', (event) => {
+            state.filters[key.toLowerCase()] = event.target.value;
+            applyFilters();
+            renderTable();
+        });
+    });
+
+    document.getElementById('clearRosterFilters')?.addEventListener('click', () => {
+        state.filters = { academy: '', age: '', division: '', status: '' };
+        document.querySelectorAll('#rosterFilterBar select').forEach((select) => { select.value = ''; });
+        applyFilters();
+        renderTable();
+    });
+
+    renderRosterFilterOptions();
+}
+
+function renderRosterFilterOptions() {
+    const academySelect = document.getElementById('filterAcademy');
+    if (!academySelect) return;
+
+    const makeOptions = (items, selected) => items
+        .map((item) => `<option value="${escapeAttr(item)}" ${item === selected ? 'selected' : ''}>${escapeHtml(item)}</option>`)
+        .join('');
+    const academies = uniqueSorted(state.allPlayers.map((p) => p.academy).filter(Boolean));
+    const ages = uniqueSorted(state.allPlayers.map((p) => String(p.age)).filter((age) => age && age !== '0'));
+    const divisions = ['U-8', 'U-10', 'U-12', 'U-14', 'U-16', 'U-18'];
+    const statuses = uniqueSorted(state.allPlayers.map((p) => normaliseStatus(p.status)).filter(Boolean));
+
+    academySelect.innerHTML = `<option value="">All academies</option>${makeOptions(academies, state.filters.academy)}`;
+    document.getElementById('filterAge').innerHTML = `<option value="">All ages</option>${makeOptions(ages, state.filters.age)}`;
+    document.getElementById('filterDivision').innerHTML = `<option value="">All divisions</option>${makeOptions(divisions, state.filters.division)}`;
+    document.getElementById('filterStatus').innerHTML = `<option value="">All statuses</option>${makeOptions(statuses, state.filters.status)}`;
 }
 
 /* ============================================================
@@ -888,7 +1034,7 @@ function openProfileModal(playerId) {
                 <span class="prc-stat-value">${escapeHtml(fullName)}</span>
               </div>
               <div class="prc-stat-row">
-                <span class="prc-stat-label">Age</span>
+            <span class="prc-stat-label">Age</span>
                 <span class="prc-stat-value">${escapeHtml(String(player.age || '—'))}</span>
               </div>
               <div class="prc-stat-row">
@@ -907,6 +1053,11 @@ function openProfileModal(playerId) {
                 <span class="prc-stat-label">Academy</span>
                 <span class="prc-stat-value">${escapeHtml(player.academy)}</span>
               </div>
+              <div class="prc-stat-row">
+                <span class="prc-stat-label">Status</span>
+                <span class="prc-stat-value">${escapeHtml(player.status || 'Pending')}</span>
+              </div>
+              ${player.rejectionFeedback ? `<div class="alert alert-warning mt-3 mb-0"><strong>Rejection feedback:</strong> ${escapeHtml(player.rejectionFeedback)}</div>` : ''}
             </div>
 
             <!-- Season rating -->
@@ -945,7 +1096,7 @@ function openProfileModal(playerId) {
                    onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=1a2e4a&color=fff&size=256'">
               <div style="position:absolute;bottom:0;left:0;width:100%;padding:1rem 1.25rem 1.1rem;
                           background:linear-gradient(transparent,rgba(11,61,46,0.92));">
-                <p style="font-weight:900;font-size:0.65rem;text-transform:uppercase;color:var(--accent-color,#b68b2c);margin:0 0 0.15rem;">Status: Active</p>
+                <p style="font-weight:900;font-size:0.65rem;text-transform:uppercase;color:var(--accent-color,#b68b2c);margin:0 0 0.15rem;">Status: ${escapeHtml(player.status || 'Pending')}</p>
                 <h3 style="color:#fff;font-weight:900;margin:0;font-size:1.1rem;">${escapeHtml(player.lastName.toUpperCase())}</h3>
               </div>
             </div>
@@ -1034,7 +1185,7 @@ function openRegisterModal(playerId) {
     backdrop.className = 'prc-backdrop';
     backdrop.id = 'prc-register-modal';
 
-    const divOptions = ['U-10', 'U-12', 'U-14', 'U-15', 'U-16', 'U-17', 'U-18', 'U-20']
+    const divOptions = ['U-8', 'U-10', 'U-12', 'U-14', 'U-16', 'U-18']
         .map(d => `<option value="${d}" ${player?.division === d ? 'selected' : ''}>${d}</option>`)
         .join('');
 
@@ -1224,6 +1375,10 @@ function savePlayer(backdrop, existingPlayer) {
     if (!last) errors.push('Last name is required.');
     if (!division) errors.push('Please select an Age Group.');
     if (!academy) errors.push('Academy name is required.');
+    const session = window.zfApp?.getSession?.();
+    if (session?.role === 'member' && academy !== session.academyName) {
+        errors.push('Members can only edit players from their own academy.');
+    }
 
     if (errors.length) {
         errorBox.textContent = errors.join('  •  ');
@@ -1262,7 +1417,9 @@ function savePlayer(backdrop, existingPlayer) {
         dob,
         division: normaliseDivision(division),
         academy,
-        photo: photoSrc
+        photo: photoSrc,
+        status: existingPlayer?.status || 'Pending',
+        rejectionFeedback: existingPlayer?.rejectionFeedback || ''
     };
 
     // Update state.allPlayers
@@ -1302,4 +1459,13 @@ function closePrcModal(backdrop) {
             document.body.style.overflow = '';
         }
     }, 280);
+}
+
+function uniqueSorted(items) {
+    return [...new Set(items)].sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
+}
+
+function normaliseStatus(status) {
+    const text = String(status || 'Pending');
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 }

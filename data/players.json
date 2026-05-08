@@ -4,7 +4,8 @@
     "name": "John Banda",
     "age": 16,
     "academyId": "academy_001",
-    "team": "U16",
+    "team": "U-16",
+    "division": "U-16",
     "position": "Forward",
     "status": "approved"
   },
@@ -13,7 +14,8 @@
     "name": "Peter Phiri",
     "age": 14,
     "academyId": "academy_001",
-    "team": "U14",
+    "team": "U-14",
+    "division": "U-14",
     "position": "Midfielder",
     "status": "pending"
   },
@@ -22,7 +24,8 @@
     "name": "Emmanuel Mwila",
     "age": 17,
     "academyId": "academy_002",
-    "team": "U18",
+    "team": "U-18",
+    "division": "U-18",
     "position": "Defender",
     "status": "approved"
   },
@@ -31,7 +34,8 @@
     "name": "Kelvin Zulu",
     "age": 15,
     "academyId": "academy_003",
-    "team": "U13",
+    "team": "U-12",
+    "division": "U-12",
     "position": "Goalkeeper",
     "status": "approved"
   }
