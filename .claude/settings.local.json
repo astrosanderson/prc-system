@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Recurse \"c:\\\\Users\\\\hviyuyi\\\\Documents\\\\Gamma\\\\prc-system\" -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(require\\('./package.json'\\).dependencies\\)\")",
+      "Bash(mkdir -p app/login app/register \"app/\\(member\\)/dashboard\" \"app/\\(member\\)/players/register\" \"app/\\(member\\)/players\" \"app/\\(member\\)/academies\" \"app/\\(member\\)/archives\" app/admin/dashboard app/admin/management context lib components/layout components/ui components/dashboard)",
+      "Bash(node -e \"const p = require\\('./node_modules/next/package.json'\\); console.log\\('Version:', p.version\\); console.log\\('Main:', p.main\\);\")",
+      "Bash(npm run *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\hviyuyi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-hviyuyi-Documents-Gamma-prc-system\\\\e761b568-5ee4-4f6b-9789-a8a1691d380e\\\\tasks\\\\byjttmcxg.output\" -Tail 20)",
+      "Bash(mkdir -p \"c:\\\\Users\\\\hviyuyi\\\\Documents\\\\Gamma\\\\prc-system\\\\nextjs-version\\\\app\\\\\\(member\\)\\\\academies\\\\[id]\" 2>&1; echo \"done\")",
+      "Bash(xargs ls -lt)",
+      "Bash(grep -oE '\\\\.text-primary[^{]{0,50}\\\\{[^}]{0,80}\\\\}' .next/static/chunks/0j_~da58.-4md.css)",
+      "PowerShell(Get-Location | ForEach-Object { $_.Path })"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\hviyuyi\\Documents\\Gamma\\prc-system\\nextjs-version\\app\\(member)\\academies"
+    ]
+  }
+}
